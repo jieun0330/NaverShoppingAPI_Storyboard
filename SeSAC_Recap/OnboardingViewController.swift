@@ -8,7 +8,7 @@
 import UIKit
 
 class OnboardingViewController: UIViewController {
-
+    
     @IBOutlet var sesacShopping: UIImageView!
     @IBOutlet var mainImg: UIImageView!
     @IBOutlet var startButton: UIButton!
@@ -16,9 +16,16 @@ class OnboardingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        startButton.addTarget(self, action: #selector(startButtonClicked), for: .touchUpInside)
         configureUI()
-
+        
     }
+    
+    @objc func startButtonClicked() {
+        let vc = storyboard?.instantiateViewController(identifier: "NicknameViewController") as! NicknameViewController
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
 extension OnboardingViewController {
