@@ -22,6 +22,7 @@
 		C2F9EFE32B5AB25F00D0BBA1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F9EFE22B5AB25F00D0BBA1 /* MainViewController.swift */; };
 		C2F9EFEA2B5ABD7300D0BBA1 /* ProfileImgCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F9EFE82B5ABD7300D0BBA1 /* ProfileImgCollectionViewCell.swift */; };
 		C2F9EFEB2B5ABD7300D0BBA1 /* ProfileImgCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2F9EFE92B5ABD7300D0BBA1 /* ProfileImgCollectionViewCell.xib */; };
+		C2F9EFF32B5ACD6800D0BBA1 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F9EFF22B5ACD6800D0BBA1 /* SettingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		C2F9EFE22B5AB25F00D0BBA1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = SeSAC_Recap/MainView/MainViewController.swift; sourceTree = SOURCE_ROOT; };
 		C2F9EFE82B5ABD7300D0BBA1 /* ProfileImgCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImgCollectionViewCell.swift; sourceTree = "<group>"; };
 		C2F9EFE92B5ABD7300D0BBA1 /* ProfileImgCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileImgCollectionViewCell.xib; sourceTree = "<group>"; };
+		C2F9EFF22B5ACD6800D0BBA1 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 		C20F839B2B591CF4006B2463 /* SeSAC_Recap */ = {
 			isa = PBXGroup;
 			children = (
+				C2F9EFF12B5ACD1D00D0BBA1 /* SettingView */,
 				C2F9EFF02B5AC5EA00D0BBA1 /* Protocol */,
 				C2F9EFEF2B5AC5D300D0BBA1 /* MainView */,
 				C2F9EFED2B5AC59700D0BBA1 /* Profile */,
@@ -140,6 +143,14 @@
 				C2F9EFD92B5A325200D0BBA1 /* Protocol.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		C2F9EFF12B5ACD1D00D0BBA1 /* SettingView */ = {
+			isa = PBXGroup;
+			children = (
+				C2F9EFF22B5ACD6800D0BBA1 /* SettingViewController.swift */,
+			);
+			path = SettingView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,6 +240,7 @@
 				C2F9EFCE2B59378B00D0BBA1 /* OnboardingViewController.swift in Sources */,
 				C2F9EFE32B5AB25F00D0BBA1 /* MainViewController.swift in Sources */,
 				C2F9EFEA2B5ABD7300D0BBA1 /* ProfileImgCollectionViewCell.swift in Sources */,
+				C2F9EFF32B5ACD6800D0BBA1 /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
