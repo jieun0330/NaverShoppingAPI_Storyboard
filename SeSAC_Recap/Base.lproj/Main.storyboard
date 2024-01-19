@@ -134,6 +134,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cEA-xW-VBD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Gph-2x-98L" firstAttribute="trailing" secondItem="aHO-iH-kA4" secondAttribute="trailing" constant="5" id="2kz-pm-kOC"/>
                             <constraint firstItem="6aH-J2-zX7" firstAttribute="top" secondItem="aHO-iH-kA4" secondAttribute="bottom" constant="40" id="Chq-Ju-tNR"/>
@@ -148,6 +149,9 @@
                             <constraint firstItem="aHO-iH-kA4" firstAttribute="top" secondItem="cEA-xW-VBD" secondAttribute="top" constant="20" id="iiB-Xb-t6z"/>
                             <constraint firstItem="aHO-iH-kA4" firstAttribute="centerX" secondItem="Yvj-ju-mzY" secondAttribute="centerX" id="pzF-WG-P19"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="uwp-wA-mfq" appends="YES" id="Gf0-xk-Jcp"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="c4K-zb-KCW"/>
                     <connections>
@@ -163,6 +167,11 @@
                 <tapGestureRecognizer id="Jo4-jx-ra5">
                     <connections>
                         <action selector="imageClicked:" destination="bcy-DC-pkE" id="Q9t-RA-bVq"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="uwp-wA-mfq">
+                    <connections>
+                        <action selector="keyboardDismiss:" destination="bcy-DC-pkE" id="Gr4-7i-wiu"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
