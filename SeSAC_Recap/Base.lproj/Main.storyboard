@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3lD-w8-o8e">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WJT-z7-4Vd">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
@@ -84,20 +84,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aHO-iH-kA4">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aHO-iH-kA4">
                                 <rect key="frame" x="156.66666666666666" y="123" width="80" height="80"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="SW1-zu-boY"/>
                                     <constraint firstAttribute="width" constant="80" id="Ubf-Fw-lDK"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Jo4-jx-ra5" appends="YES" id="Q9h-18-GWe"/>
+                                </connections>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6aH-J2-zX7" customClass="IsaoTextField" customModule="TextFieldEffects">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6aH-J2-zX7">
                                 <rect key="frame" x="20" y="243" width="353" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="sE2-gF-NNE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="nickNameTextFieldTapped:" destination="PBg-fr-2M3" eventType="editingDidEnd" id="c2Y-on-paW"/>
+                                    <action selector="nickNameTextFieldTapped:" destination="bcy-DC-pkE" eventType="editingDidEnd" id="fN6-4a-O85"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vpa-x4-wNM">
                                 <rect key="frame" x="20.000000000000004" y="308" width="41.333333333333343" height="22"/>
@@ -117,7 +125,7 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gph-2x-98L">
-                                <rect key="frame" x="228" y="173" width="35" height="35"/>
+                                <rect key="frame" x="206.66666666666666" y="173" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="GVL-xJ-LFK"/>
                                     <constraint firstAttribute="height" constant="35" id="oL4-Kb-BNL"/>
@@ -127,18 +135,18 @@
                         <viewLayoutGuide key="safeArea" id="cEA-xW-VBD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Gph-2x-98L" firstAttribute="top" secondItem="cEA-xW-VBD" secondAttribute="top" constant="70" id="1u1-x8-Dad"/>
+                            <constraint firstItem="Gph-2x-98L" firstAttribute="trailing" secondItem="aHO-iH-kA4" secondAttribute="trailing" constant="5" id="2kz-pm-kOC"/>
                             <constraint firstItem="6aH-J2-zX7" firstAttribute="top" secondItem="aHO-iH-kA4" secondAttribute="bottom" constant="40" id="Chq-Ju-tNR"/>
                             <constraint firstItem="9m9-NY-jdS" firstAttribute="leading" secondItem="cEA-xW-VBD" secondAttribute="leading" constant="20" id="JRI-Uf-P8j"/>
+                            <constraint firstItem="6aH-J2-zX7" firstAttribute="leading" secondItem="cEA-xW-VBD" secondAttribute="leading" constant="20" id="Koj-eX-p2o"/>
                             <constraint firstItem="cEA-xW-VBD" firstAttribute="trailing" secondItem="6aH-J2-zX7" secondAttribute="trailing" constant="20" id="NPi-ue-nZ6"/>
                             <constraint firstItem="cEA-xW-VBD" firstAttribute="trailing" secondItem="9m9-NY-jdS" secondAttribute="trailing" constant="20" id="NiF-vq-Obx"/>
                             <constraint firstItem="9m9-NY-jdS" firstAttribute="top" secondItem="Vpa-x4-wNM" secondAttribute="bottom" constant="30" id="YJZ-b3-lpM"/>
                             <constraint firstItem="Vpa-x4-wNM" firstAttribute="leading" secondItem="cEA-xW-VBD" secondAttribute="leading" constant="20" id="Ygu-a7-XJK"/>
+                            <constraint firstItem="Gph-2x-98L" firstAttribute="bottom" secondItem="aHO-iH-kA4" secondAttribute="bottom" constant="5" id="azb-dW-fOk"/>
                             <constraint firstItem="Vpa-x4-wNM" firstAttribute="top" secondItem="6aH-J2-zX7" secondAttribute="bottom" constant="20" id="fGN-Gu-vpm"/>
-                            <constraint firstItem="cEA-xW-VBD" firstAttribute="trailing" secondItem="Gph-2x-98L" secondAttribute="trailing" constant="130" id="fJh-ZO-XFG"/>
                             <constraint firstItem="aHO-iH-kA4" firstAttribute="top" secondItem="cEA-xW-VBD" secondAttribute="top" constant="20" id="iiB-Xb-t6z"/>
                             <constraint firstItem="aHO-iH-kA4" firstAttribute="centerX" secondItem="Yvj-ju-mzY" secondAttribute="centerX" id="pzF-WG-P19"/>
-                            <constraint firstItem="6aH-J2-zX7" firstAttribute="leading" secondItem="cEA-xW-VBD" secondAttribute="leading" constant="20" id="u0h-lv-c3v"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="c4K-zb-KCW"/>
@@ -151,8 +159,49 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0kk-iI-PZ3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="PBg-fr-2M3" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="Jo4-jx-ra5">
+                    <connections>
+                        <action selector="imageClicked:" destination="bcy-DC-pkE" id="Q9t-RA-bVq"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2173.2824427480914" y="665.49295774647885"/>
+            <point key="canvasLocation" x="2173.2824427480914" y="664.78873239436621"/>
+        </scene>
+        <!--Setting Profile View Controller-->
+        <scene sceneID="LRe-p4-Vsi">
+            <objects>
+                <viewController storyboardIdentifier="SettingProfileViewController" id="PQR-yW-6QR" customClass="SettingProfileViewController" customModule="SeSAC_Recap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i13-r5-WCo">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ztd-ej-T7h">
+                                <rect key="frame" x="131.66666666666666" y="79" width="129.99999999999997" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="Uy4-gH-z7O"/>
+                                    <constraint firstAttribute="height" constant="130" id="bNu-94-Ltd"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oV-Iq-D6Y">
+                                <rect key="frame" x="175" y="313" width="30" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="N6S-Vg-6a7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ztd-ej-T7h" firstAttribute="top" secondItem="N6S-Vg-6a7" secondAttribute="top" constant="20" id="KJb-V6-hMm"/>
+                            <constraint firstItem="Ztd-ej-T7h" firstAttribute="centerX" secondItem="i13-r5-WCo" secondAttribute="centerX" id="qhu-91-IKv"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6qx-YN-EHh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2171.7557251908397" y="1358.4507042253522"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="T29-7b-4VC">

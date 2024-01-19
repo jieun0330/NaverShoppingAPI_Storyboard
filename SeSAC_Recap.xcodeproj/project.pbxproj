@@ -17,7 +17,8 @@
 		C2F9EFD12B59392400D0BBA1 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F9EFD02B59392400D0BBA1 /* UIViewControllerExtension.swift */; };
 		C2F9EFD32B59486500D0BBA1 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F9EFD22B59486500D0BBA1 /* NicknameViewController.swift */; };
 		C2F9EFDA2B5A325200D0BBA1 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F9EFD92B5A325200D0BBA1 /* Protocol.swift */; };
-		C2F9EFDD2B5A3B1200D0BBA1 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = C2F9EFDC2B5A3B1200D0BBA1 /* TextFieldEffects */; };
+		C2F9EFDF2B5A43DF00D0BBA1 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F9EFDE2B5A43DF00D0BBA1 /* UIButton.swift */; };
+		C2F9EFE12B5A4BA100D0BBA1 /* SettingProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F9EFE02B5A4BA100D0BBA1 /* SettingProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,8 @@
 		C2F9EFD02B59392400D0BBA1 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		C2F9EFD22B59486500D0BBA1 /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		C2F9EFD92B5A325200D0BBA1 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		C2F9EFDE2B5A43DF00D0BBA1 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		C2F9EFE02B5A4BA100D0BBA1 /* SettingProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,7 +43,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2F9EFDD2B5A3B1200D0BBA1 /* TextFieldEffects in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +79,7 @@
 				C2F9EFCD2B59378B00D0BBA1 /* OnboardingViewController.swift */,
 				C2F9EFD22B59486500D0BBA1 /* NicknameViewController.swift */,
 				C2F9EFD92B5A325200D0BBA1 /* Protocol.swift */,
+				C2F9EFE02B5A4BA100D0BBA1 /* SettingProfileViewController.swift */,
 			);
 			path = SeSAC_Recap;
 			sourceTree = "<group>";
@@ -85,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				C2F9EFD02B59392400D0BBA1 /* UIViewControllerExtension.swift */,
+				C2F9EFDE2B5A43DF00D0BBA1 /* UIButton.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -106,7 +110,6 @@
 			);
 			name = SeSAC_Recap;
 			packageProductDependencies = (
-				C2F9EFDC2B5A3B1200D0BBA1 /* TextFieldEffects */,
 			);
 			productName = SeSAC_Recap;
 			productReference = C20F83992B591CF4006B2463 /* SeSAC_Recap.app */;
@@ -137,7 +140,6 @@
 			);
 			mainGroup = C20F83902B591CF4006B2463;
 			packageReferences = (
-				C2F9EFDB2B5A3B1200D0BBA1 /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
 			);
 			productRefGroup = C20F839A2B591CF4006B2463 /* Products */;
 			projectDirPath = "";
@@ -166,11 +168,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2F9EFE12B5A4BA100D0BBA1 /* SettingProfileViewController.swift in Sources */,
 				C20F83A12B591CF4006B2463 /* ViewController.swift in Sources */,
 				C20F839D2B591CF4006B2463 /* AppDelegate.swift in Sources */,
 				C2F9EFD12B59392400D0BBA1 /* UIViewControllerExtension.swift in Sources */,
 				C2F9EFDA2B5A325200D0BBA1 /* Protocol.swift in Sources */,
 				C20F839F2B591CF4006B2463 /* SceneDelegate.swift in Sources */,
+				C2F9EFDF2B5A43DF00D0BBA1 /* UIButton.swift in Sources */,
 				C2F9EFD32B59486500D0BBA1 /* NicknameViewController.swift in Sources */,
 				C2F9EFCE2B59378B00D0BBA1 /* OnboardingViewController.swift in Sources */,
 			);
@@ -395,25 +399,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		C2F9EFDB2B5A3B1200D0BBA1 /* XCRemoteSwiftPackageReference "TextFieldEffects" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/raulriera/TextFieldEffects";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.7.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		C2F9EFDC2B5A3B1200D0BBA1 /* TextFieldEffects */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C2F9EFDB2B5A3B1200D0BBA1 /* XCRemoteSwiftPackageReference "TextFieldEffects" */;
-			productName = TextFieldEffects;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C20F83912B591CF4006B2463 /* Project object */;
 }

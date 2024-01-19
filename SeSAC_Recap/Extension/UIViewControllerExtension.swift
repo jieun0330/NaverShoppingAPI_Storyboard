@@ -7,6 +7,9 @@
 
 import UIKit
 
+//Mark: - struct와 Extension 구분해서 정리하고, 개념도 정리하기
+
+//Mark: - Color Extension 개념 정리하기
 struct Colors {
     static let pointColor = UIColor.init(red: 73, green: 200, blue: 146)
     static let backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 1)

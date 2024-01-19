@@ -7,6 +7,7 @@
 
 import UIKit
 
+//Mark: - identifier protocol 개념 정리하기
 protocol ReusableProtocol {
     static var identifier: String { get }
 }
