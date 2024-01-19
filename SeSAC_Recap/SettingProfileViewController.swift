@@ -9,13 +9,44 @@ import UIKit
 
 class SettingProfileViewController: UIViewController {
 
+    @IBOutlet var profileImg: UIImageView!
+    @IBOutlet var images: [UIImageView]!
+    
+    var test: Int = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 아래 프로필 이미지 많은 뷰 -> 서로 어떻게 공간을 나눠갖는지 autolayout 개념 정리하기, stackView도
+        configureUI()
+        
+        for index in 0...3 {
+            images[index].image = UIImage(named: "profile\(index)")
+            
+            images[index].contentMode = .scaleAspectFit
+        }
 
+        
+        
+//        let randomNum = Int.random(in: 1...14)
+//        profileImg.image = UIImage(named: "profile\(randomNum)")
+        
     }
 
+    
+}
 
-
+extension SettingProfileViewController {
+    func configureUI() {
+        navigationItem.title = "프로필 설정"
+        
+        profileImg.contentMode = .scaleAspectFill
+        profileImg.layer.masksToBounds = false
+        profileImg.layer.cornerRadius = profileImg.frame.height / 2
+        profileImg.clipsToBounds = true
+        profileImg.layer.borderWidth = 5
+        profileImg.layer.borderColor = Colors.pointColor.cgColor
+//        images[2].image.content
+        
+        
+    }
 }
