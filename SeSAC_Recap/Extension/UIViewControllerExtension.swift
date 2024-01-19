@@ -36,3 +36,8 @@ extension UIViewController: ReusableProtocol {
     }
 }
 
+extension UICollectionViewCell: ReusableProtocol {
+    static var identifier: String {
+        return String(describing: self)
+    }
+}

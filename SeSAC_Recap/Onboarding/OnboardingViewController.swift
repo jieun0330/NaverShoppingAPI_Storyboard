@@ -18,6 +18,8 @@ class OnboardingViewController: UIViewController {
         
         startButton.addTarget(self, action: #selector(startButtonClicked), for: .touchUpInside)
         configureUI()
+
+        
         
     }
 
