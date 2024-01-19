@@ -18,11 +18,12 @@ class OnboardingViewController: UIViewController {
         
         startButton.addTarget(self, action: #selector(startButtonClicked), for: .touchUpInside)
         configureUI()
+
         
     }
     
     @objc func startButtonClicked() {
-        let vc = storyboard?.instantiateViewController(identifier: "NicknameViewController") as! NicknameViewController
+        let vc = storyboard?.instantiateViewController(identifier: NicknameViewController.identifier) as! NicknameViewController
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -37,5 +38,10 @@ extension OnboardingViewController {
         startButton.layer.cornerRadius = 12
         startButton.setTitleColor(Colors.textColor, for: .normal)
         startButton.titleLabel?.font = Fonts.font13
+        
+        navigationItem.backButtonTitle = ""
+        navigationController?.navigationBar.tintColor = .white
+    
+        
     }
 }

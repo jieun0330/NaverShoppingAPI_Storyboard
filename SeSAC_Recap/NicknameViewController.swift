@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import TextFieldEffects
 
 class NicknameViewController: UIViewController {
 
     @IBOutlet var profileImg: UIImageView!
-    @IBOutlet var nicknameTextField: UITextField!
+    @IBOutlet var cameraImg: UIImageView!
+    @IBOutlet var nicknameTextField: IsaoTextField!
     @IBOutlet var nicknameCondition: UILabel!
     @IBOutlet var doneButton: UIButton!
     
@@ -26,16 +28,34 @@ extension NicknameViewController {
     func configureUI() {
         navigationItem.title = "프로필 설정"
         
-        // 2. 프로필 이미지 랜덤으로 가져오기
         let randomNum = Int.random(in: 1...14)
         profileImg.image = UIImage(named: "profile\(randomNum)")
-//        profileImg.image =
-//        emotionButton[tagNum].setImage(UIImage(named: "slime\(tagNum+1)"), for: .normal)
+        
+        profileImg.contentMode = .scaleAspectFill
+        profileImg.layer.masksToBounds = false
+        profileImg.layer.cornerRadius = profileImg.frame.height / 2
+        profileImg.clipsToBounds = true
+        profileImg.layer.borderWidth = 1
+//        profileImg.layer.borderColor =
+        cameraImg.image = .camera
+        
+        nicknameTextField.placeholder = "닉네임을 입력해주세요 :)"
+        nicknameTextField.font = Fonts.font13
+        
+        nicknameCondition.text = "닉네임에 뭐가 포함될 수 없대"
+        nicknameCondition.textColor = Colors.pointColor
+        nicknameCondition.font = Fonts.font13
+        
+        doneButton.setTitle("완료", for: .normal)
+        doneButton.backgroundColor = Colors.pointColor
+        doneButton.layer.cornerRadius = 12
+        doneButton.setTitleColor(Colors.textColor, for: .normal)
+        doneButton.titleLabel?.font = Fonts.font13
+
 
     }
 }
 
 
 
-// 인스펙터 지정하고 -> outlet 연결하기
 
