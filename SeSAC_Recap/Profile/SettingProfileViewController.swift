@@ -56,7 +56,7 @@ extension SettingProfileViewController {
         let spacing: CGFloat = 10
         let cellWidth = UIScreen.main.bounds.width - (spacing * 5)
         
-        layout.itemSize = CGSize(width: cellWidth / 2.5, height: cellWidth / 1.7)
+        layout.itemSize = CGSize(width: cellWidth / 4, height: cellWidth / 4)
         layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
@@ -73,9 +73,26 @@ extension SettingProfileViewController: UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileImgCollectionViewCell.identifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileImgCollectionViewCell.identifier, for: indexPath) as! ProfileImgCollectionViewCell
+    
+        
+        
+        
+        cell.profileImg.image = UIImage(named: "profile\(indexPath.row+1)")
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileImgCollectionViewCell.identifier, for: indexPath) as! ProfileImgCollectionViewCell
+        profileImg.image = UIImage(named: "profile\(indexPath.row+1)")
+//        profileListView[indexPath.row]
+        
+
+        
+//        print(indexPath.row)
+
     }
     
 }

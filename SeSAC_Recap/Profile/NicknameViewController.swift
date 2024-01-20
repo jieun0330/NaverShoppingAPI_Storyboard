@@ -26,32 +26,17 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         nicknameTextField.smartDashesType = .no
         
         doneButton.addTarget(self, action: #selector(doneButtonClicked), for: .touchUpInside)
+        
     }
+
+    
+    
     
     @objc func doneButtonClicked() {
         let vc = storyboard?.instantiateViewController(identifier: MainViewController.identifier) as! MainViewController
         navigationController?.pushViewController(vc, animated: true)
-    }
-    
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        if string == "#@$%" {
-//            return false
-//        }
-//        return true
-//    }
-    
-    @IBAction func nickNameTextFieldTapped(_ sender: UITextField) {
-        
-        if let nickname = Int(sender.text!) {
-            nicknameCondition.text = "닉네임에 숫자는 포함할 수 없어요"
-        } else if sender.text!.count < 2 || sender.text!.count > 10 {
-            nicknameCondition.text = "2글자 이상 10글자 미만으로 설정해주세요"
-        } else {
-            nicknameCondition.text = "사용할 수 있는 닉네임이에요"
-        }
         
         UserDefaults.standard.set(nicknameTextField.text, forKey: "Nickname")
-        
     }
     
     @IBAction func imageClicked(_ sender: UITapGestureRecognizer) {
@@ -62,9 +47,7 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
     @IBAction func keyboardDismiss(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
         UserDefaults.standard.set(nicknameTextField.text, forKey: "Nickname")
-        
     }
-    
 }
 
 extension NicknameViewController {
@@ -90,6 +73,9 @@ extension NicknameViewController {
         
         doneButton.configurePrimaryStyle(title: "완료")
         
+        navigationItem.backButtonTitle = ""
+
+
     }
     
 }

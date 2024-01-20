@@ -14,19 +14,17 @@ class ProfileImgCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
         
-        for index in 0...3 {
-            profileImg.image = UIImage(named: "profile\(index)")
-//            
-        }
+        configureUI()
+    }
+}
+
+extension ProfileImgCollectionViewCell {
+    func configureUI() {
         
         profileImg.contentMode = .scaleAspectFill
         profileImg.layer.masksToBounds = false
-        profileImg.layer.cornerRadius = profileImg.frame.height / 2
+        profileImg.layer.cornerRadius = profileImg.frame.height / 4.7
         profileImg.clipsToBounds = true
-
-
     }
-
 }
