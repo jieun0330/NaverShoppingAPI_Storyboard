@@ -20,6 +20,7 @@
 		C25FC4522B5BD8F3000D8F6E /* ResultCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C25FC4502B5BD8F3000D8F6E /* ResultCollectionViewCell.xib */; };
 		C25FC4552B5BDE68000D8F6E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C25FC4542B5BDE68000D8F6E /* Kingfisher */; };
 		C25FC45D2B5BE0DF000D8F6E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C25FC45C2B5BE0DF000D8F6E /* .gitignore */; };
+		C25FC45F2B5BE120000D8F6E /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25FC45E2B5BE120000D8F6E /* APIKey.swift */; };
 		C2F9EFCE2B59378B00D0BBA1 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F9EFCD2B59378B00D0BBA1 /* OnboardingViewController.swift */; };
 		C2F9EFD12B59392400D0BBA1 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F9EFD02B59392400D0BBA1 /* UIViewControllerExtension.swift */; };
 		C2F9EFD32B59486500D0BBA1 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F9EFD22B59486500D0BBA1 /* NicknameViewController.swift */; };
@@ -46,6 +47,7 @@
 		C25FC44F2B5BD8F3000D8F6E /* ResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCollectionViewCell.swift; sourceTree = "<group>"; };
 		C25FC4502B5BD8F3000D8F6E /* ResultCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultCollectionViewCell.xib; sourceTree = "<group>"; };
 		C25FC45C2B5BE0DF000D8F6E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		C25FC45E2B5BE120000D8F6E /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		C2F9EFCD2B59378B00D0BBA1 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		C2F9EFD02B59392400D0BBA1 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		C2F9EFD22B59486500D0BBA1 /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 		C20F83902B591CF4006B2463 = {
 			isa = PBXGroup;
 			children = (
+				C25FC45E2B5BE120000D8F6E /* APIKey.swift */,
 				C25FC45C2B5BE0DF000D8F6E /* .gitignore */,
 				C20F839B2B591CF4006B2463 /* SeSAC_Recap */,
 				C20F839A2B591CF4006B2463 /* Products */,
@@ -264,6 +267,7 @@
 				C20F839F2B591CF4006B2463 /* SceneDelegate.swift in Sources */,
 				C25FC44E2B5BD39B000D8F6E /* Keyword.swift in Sources */,
 				C2F9EFDF2B5A43DF00D0BBA1 /* UIButton.swift in Sources */,
+				C25FC45F2B5BE120000D8F6E /* APIKey.swift in Sources */,
 				C2F9EFD32B59486500D0BBA1 /* NicknameViewController.swift in Sources */,
 				C2F9EFCE2B59378B00D0BBA1 /* OnboardingViewController.swift in Sources */,
 				C2F9EFE32B5AB25F00D0BBA1 /* MainViewController.swift in Sources */,

@@ -17,22 +17,28 @@ class ResultCollectionViewCell: UICollectionViewCell {
     @IBOutlet var lprice: UILabel!
     
 
+    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        
         image.contentMode = .scaleAspectFill
+        image.layer.cornerRadius = 20
+        mallName.font = Fonts.font13
+        mallName.textColor = Colors.textColor
+        title.font = Fonts.font14
+        lprice.font = Fonts.font15
+        
+
         
         
         
-        
-    }
-    
-    func configureCell(_ data: Welcome) {
-        image.kf.setImage(with: URL(string: data.items[0].image))
         likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
-        mallName.text = data.items[0].mallName
-        title.text = data.items[0].title
-        lprice.text = data.items[0].lprice
+        likeButton.tintColor = .black
+        
+        
     }
+
 
 }
