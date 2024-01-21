@@ -12,6 +12,8 @@ class SettingProfileViewController: UIViewController {
     @IBOutlet var profileImg: UIImageView!
     @IBOutlet var profileListView: UICollectionView!
     
+    let randomNum = Int.random(in: 1...14)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,7 +28,8 @@ class SettingProfileViewController: UIViewController {
 extension SettingProfileViewController {
     func configureUI() {
         navigationItem.title = "프로필 설정"
-        
+
+        profileImg.image = UIImage(named: "profile\(randomNum)")
         profileImg.contentMode = .scaleAspectFill
         profileImg.layer.masksToBounds = false
         profileImg.layer.cornerRadius = profileImg.frame.height / 2
@@ -43,11 +46,6 @@ extension SettingProfileViewController {
         
         let xib = UINib(nibName: ProfileImgCollectionViewCell.identifier, bundle: nil)
         profileListView.register(xib, forCellWithReuseIdentifier: ProfileImgCollectionViewCell.identifier)
-        
-        if let newImg = UserDefaults.standard.string(forKey: "profileIndex") {
-            profileImg.image = UIImage(named: "profile\(newImg)")
-        }
-        
     }
     
     func setLayout() {
@@ -75,14 +73,7 @@ extension SettingProfileViewController: UICollectionViewDataSource, UICollection
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileImgCollectionViewCell.identifier, for: indexPath) as! ProfileImgCollectionViewCell
         
         cell.profileImg.image = UIImage(named: "profile\(indexPath.row+1)")
-        
-        if indexPath.row == profileImg.image.hashValue {
-            profileImg.layer.borderWidth = 3
-            profileImg.layer.borderColor = Colors.pointColor.cgColor
-        } else {
-            
-        }
-        
+
         return cell
     }
     
@@ -90,6 +81,28 @@ extension SettingProfileViewController: UICollectionViewDataSource, UICollection
         
         profileImg.image = UIImage(named: "profile\(indexPath.row+1)")
         
+        if let cell = collectionView.cellForItem(at: indexPath) as? UICollectionViewCell {
+            cell.layer.borderColor = Colors.pointColor.cgColor
+            cell.layer.borderWidth = 5
+
+            cell.contentMode = .scaleAspectFill
+            cell.layer.masksToBounds = false
+            cell.layer.cornerRadius = cell.frame.height / 2
+            cell.clipsToBounds = true
+        }
+
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        
+        if let cell = collectionView.cellForItem(at: indexPath) as? UICollectionViewCell {
+            cell.layer.borderColor = UIColor.clear.cgColor
+            cell.layer.borderWidth = 0
+            cell.contentMode = .scaleAspectFill
+            cell.layer.masksToBounds = false
+            cell.layer.cornerRadius = cell.frame.height / 2
+            cell.clipsToBounds = true
+        }
     }
     
 }

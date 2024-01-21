@@ -20,6 +20,7 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         profileImg.image = UIImage(named: "profile\(randomNum)")
         
         configureUI()
@@ -28,6 +29,8 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         nicknameTextField.smartDashesType = .no
         
         doneButton.addTarget(self, action: #selector(doneButtonClicked), for: .touchUpInside)
+        
+        configureView()
         
     }
     
@@ -42,8 +45,8 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         let vc = storyboard?.instantiateViewController(identifier: SettingProfileViewController.identifier) as! SettingProfileViewController
         navigationController?.pushViewController(vc, animated: true)
         
-        print(randomNum)
-        UserDefaults.standard.set(randomNum, forKey: "profileIndex")
+//        UserDefaults.standard.set(randomNum, forKey: "profileIndex")
+        
         
     }
     
@@ -78,4 +81,11 @@ extension NicknameViewController {
         
     }
     
-}
+    func configureView() {
+//        if let newImg = UserDefaults.standard.string(forKey: "profileIndex") {
+//            profileImg.image = UIImage(named: "profile\(newImg)")
+        }
+//        self.view.relo
+    }
+    
+
