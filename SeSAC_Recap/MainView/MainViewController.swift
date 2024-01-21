@@ -6,22 +6,59 @@
 //
 
 import UIKit
+import Alamofire
 
 class MainViewController: UIViewController {
-
+    
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var keyword: UILabel!
     @IBOutlet var deleteButton: UIButton!
+    @IBOutlet var keywordView: UITableView!
+    
+    var list: Welcome = Welcome(items: [])
+    var keywordList: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
-
-
-
+        searchBar.delegate = self
+        keywordView.delegate = self
+        keywordView.dataSource = self
+        let xib = UINib(nibName: KeywordResultsTableViewCell.identifier, bundle: nil)
+        keywordView.register(xib, forCellReuseIdentifier: KeywordResultsTableViewCell.identifier)
+        
+        let xib2 = UINib(nibName: NoKeywordTableViewCell.identifier, bundle: nil)
+        keywordView.register(xib2, forCellReuseIdentifier: NoKeywordTableViewCell.identifier)
+        
     }
-
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+    }
+    
+    func callRequest(text: String) {
+        
+        let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let url = "https://openapi.naver.com/v1/search/shop?query=\(query)"
+        let headers: HTTPHeaders = [
+            "X-Naver-Client-Id": APIKey.clientID,
+            "X-Naver-Client-Secret": APIKey.clientSecret
+        ]
+        
+        AF
+            .request(url, method: .get, headers: headers)
+            .responseDecodable(of: Welcome.self) { response in
+                switch response.result {
+                case .success(let success):
+                    self.list = success
+                    print(success)
+                    
+                case .failure(let failure):
+                    print(failure)
+                }
+            }
+    }
 }
 
 extension MainViewController {
@@ -34,13 +71,33 @@ extension MainViewController {
         deleteButton.setTitle("모두 지우기", for: .normal)
         deleteButton.titleLabel?.font = Fonts.font13
         deleteButton.setTitleColor(Colors.pointColor, for: .normal)
-//        mainImg.image = .empty
-//        emptyLabel.text = "최근 검색어가 없어요"
-//        emptyLabel.textAlignment = .center
-//        navigationController?.navigationBar.isHidden = true
-//        MainViewController.separator
         
+    }
+}
 
+extension MainViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
+        keywordList.append(searchBar.text!)
+        keywordView.reloadData()
+        searchBar.text = ""
+    }
+}
+
+
+extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return keywordList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: KeywordResultsTableViewCell.identifier, for: indexPath) as! KeywordResultsTableViewCell
+        cell.keyword.text = keywordList[indexPath.row]
+        cell.deleteButton.tag = indexPath.row
+        tableView.separatorStyle = .none
+        
+        return cell
     }
 }

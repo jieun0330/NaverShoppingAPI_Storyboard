@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Alamofire
+//import Alamofire
 
 class KeywordResultViewController: UIViewController {
     
@@ -25,7 +25,7 @@ class KeywordResultViewController: UIViewController {
         
 //        print(list.items)
         
-        callRequest(text: "캠핑카")
+//        callRequest(text: "캠핑카")
 //        print(list.items[0].mallName)
 
         configureUI()
@@ -70,34 +70,33 @@ class KeywordResultViewController: UIViewController {
         sender.layer.cornerRadius = 10
     }
 
-    func callRequest(text: String) {
-        
-        let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        
-        let url = "https://openapi.naver.com/v1/search/shop?query=%EC%BA%A0%ED%95%91%EC%B9%B4"
-        
-        let headers: HTTPHeaders = [
-            "X-Naver-Client-Id": APIKey.clientID,
-            "X-Naver-Client-Secret": APIKey.clientSecret
-        ]
-        
-        AF
-            .request(url, method: .get, headers: headers)
-            .responseDecodable(of: Welcome.self) { response in
-                switch response.result {
-                case .success(let success):
-//                    print("success")
-                    self.list = success
-                    
-                    self.resultView.reloadData()
-                    
-                    
-                case .failure(let failure):
-                    print(failure)
-                }
-            }
-        
-    }
+//    func callRequest(text: String) {
+//        
+//        let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+//        
+//        let url = "https://openapi.naver.com/v1/search/shop?query=\(query)"
+//        
+//        let headers: HTTPHeaders = [
+//            "X-Naver-Client-Id": APIKey.clientID,
+//            "X-Naver-Client-Secret": APIKey.clientSecret
+//        ]
+//        
+//        AF
+//            .request(url, method: .get, headers: headers)
+//            .responseDecodable(of: Welcome.self) { response in
+//                switch response.result {
+//                case .success(let success):
+//                    self.list = success
+//                    
+//                    self.resultView.reloadData()
+//                    
+//                    
+//                case .failure(let failure):
+//                    print(failure)
+//                }
+//            }
+//        
+//    }
     
     
 
