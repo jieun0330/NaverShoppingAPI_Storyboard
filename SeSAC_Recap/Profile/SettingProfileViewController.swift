@@ -8,12 +8,9 @@
 import UIKit
 
 class SettingProfileViewController: UIViewController {
-
     
-
     @IBOutlet var profileImg: UIImageView!
     @IBOutlet var profileListView: UICollectionView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +18,8 @@ class SettingProfileViewController: UIViewController {
         configureUI()
         configureView()
         setLayout()
-
-
         
     }
-
     
 }
 
@@ -39,7 +33,7 @@ extension SettingProfileViewController {
         profileImg.clipsToBounds = true
         profileImg.layer.borderWidth = 5
         profileImg.layer.borderColor = Colors.pointColor.cgColor
-            
+        
     }
     
     func configureView() {
@@ -49,8 +43,13 @@ extension SettingProfileViewController {
         
         let xib = UINib(nibName: ProfileImgCollectionViewCell.identifier, bundle: nil)
         profileListView.register(xib, forCellWithReuseIdentifier: ProfileImgCollectionViewCell.identifier)
+        
+        if let newImg = UserDefaults.standard.string(forKey: "profileIndex") {
+            profileImg.image = UIImage(named: "profile\(newImg)")
+        }
+        
     }
-   
+    
     func setLayout() {
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
@@ -62,9 +61,8 @@ extension SettingProfileViewController {
         layout.minimumInteritemSpacing = spacing
         profileListView.collectionViewLayout = layout
     }
-
+    
 }
-
 
 extension SettingProfileViewController: UICollectionViewDataSource, UICollectionViewDelegate  {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -73,26 +71,25 @@ extension SettingProfileViewController: UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileImgCollectionViewCell.identifier, for: indexPath) as! ProfileImgCollectionViewCell
-    
-        
-        
         
         cell.profileImg.image = UIImage(named: "profile\(indexPath.row+1)")
+        
+        if indexPath.row == profileImg.image.hashValue {
+            profileImg.layer.borderWidth = 3
+            profileImg.layer.borderColor = Colors.pointColor.cgColor
+        } else {
+            
+        }
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileImgCollectionViewCell.identifier, for: indexPath) as! ProfileImgCollectionViewCell
         profileImg.image = UIImage(named: "profile\(indexPath.row+1)")
-//        profileListView[indexPath.row]
         
-
-        
-//        print(indexPath.row)
-
     }
     
 }

@@ -16,9 +16,11 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var doneButton: UIButton!
     
     let nickname = UserDefaults.standard.string(forKey: "Nickname")
+    let randomNum = Int.random(in: 1...14)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        profileImg.image = UIImage(named: "profile\(randomNum)")
         
         configureUI()
         
@@ -28,9 +30,6 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         doneButton.addTarget(self, action: #selector(doneButtonClicked), for: .touchUpInside)
         
     }
-
-    
-    
     
     @objc func doneButtonClicked() {
         let vc = storyboard?.instantiateViewController(identifier: MainViewController.identifier) as! MainViewController
@@ -42,6 +41,10 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
     @IBAction func imageClicked(_ sender: UITapGestureRecognizer) {
         let vc = storyboard?.instantiateViewController(identifier: SettingProfileViewController.identifier) as! SettingProfileViewController
         navigationController?.pushViewController(vc, animated: true)
+        
+        print(randomNum)
+        UserDefaults.standard.set(randomNum, forKey: "profileIndex")
+        
     }
     
     @IBAction func keyboardDismiss(_ sender: UITapGestureRecognizer) {
@@ -54,8 +57,6 @@ extension NicknameViewController {
     func configureUI() {
         navigationItem.title = "프로필 설정"
         
-        let randomNum = Int.random(in: 1...14)
-        profileImg.image = UIImage(named: "profile\(randomNum)")
         profileImg.contentMode = .scaleAspectFill
         profileImg.layer.masksToBounds = false
         profileImg.layer.cornerRadius = profileImg.frame.height / 2
@@ -74,8 +75,7 @@ extension NicknameViewController {
         doneButton.configurePrimaryStyle(title: "완료")
         
         navigationItem.backButtonTitle = ""
-
-
+        
     }
     
 }

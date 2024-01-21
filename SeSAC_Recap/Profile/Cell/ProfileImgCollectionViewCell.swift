@@ -9,14 +9,15 @@ import UIKit
 
 class ProfileImgCollectionViewCell: UICollectionViewCell {
     
-    
     @IBOutlet var profileImg: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         configureUI()
+
     }
+    
 }
 
 extension ProfileImgCollectionViewCell {
@@ -26,5 +27,6 @@ extension ProfileImgCollectionViewCell {
         profileImg.layer.masksToBounds = false
         profileImg.layer.cornerRadius = profileImg.frame.height / 4.7
         profileImg.clipsToBounds = true
+    
     }
 }

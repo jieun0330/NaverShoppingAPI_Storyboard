@@ -18,10 +18,10 @@ class KeywordResultsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         configureCell()
-//        
-//        deleteButton
-        
+
     }
+    
+
 
     
 }

@@ -30,12 +30,10 @@ class MainViewController: UIViewController {
         
         let xib2 = UINib(nibName: NoKeywordTableViewCell.identifier, bundle: nil)
         keywordView.register(xib2, forCellReuseIdentifier: NoKeywordTableViewCell.identifier)
-        
+
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-    }
+
     
     func callRequest(text: String) {
         
@@ -59,6 +57,14 @@ class MainViewController: UIViewController {
                 }
             }
     }
+//    
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            keywordList.remove(at: indexPath.row)
+//            keywordView.reloadData()
+//        }
+//    }
+    
 }
 
 extension MainViewController {
@@ -80,6 +86,8 @@ extension MainViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         keywordList.append(searchBar.text!)
+//        self.keywordView.endUpdates()
+//        keywordView.endUpdates()
         keywordView.reloadData()
         searchBar.text = ""
     }
@@ -95,8 +103,8 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: KeywordResultsTableViewCell.identifier, for: indexPath) as! KeywordResultsTableViewCell
         cell.keyword.text = keywordList[indexPath.row]
-        cell.deleteButton.tag = indexPath.row
-        tableView.separatorStyle = .none
+        
+        cell.selectionStyle = .none
         
         return cell
     }
