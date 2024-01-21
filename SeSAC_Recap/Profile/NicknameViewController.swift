@@ -20,7 +20,7 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         profileImg.image = UIImage(named: "profile\(randomNum)")
         
         configureUI()
@@ -30,8 +30,13 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         
         doneButton.addTarget(self, action: #selector(doneButtonClicked), for: .touchUpInside)
         
-        configureView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         
+        if let num = Int(UserDefaults.standard.string(forKey: "clickImg")!) {
+            profileImg.image = UIImage(named: "profile\(num+1)")
+        }
     }
     
     @objc func doneButtonClicked() {
@@ -44,10 +49,6 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
     @IBAction func imageClicked(_ sender: UITapGestureRecognizer) {
         let vc = storyboard?.instantiateViewController(identifier: SettingProfileViewController.identifier) as! SettingProfileViewController
         navigationController?.pushViewController(vc, animated: true)
-        
-//        UserDefaults.standard.set(randomNum, forKey: "profileIndex")
-        
-        
     }
     
     @IBAction func keyboardDismiss(_ sender: UITapGestureRecognizer) {
@@ -80,12 +81,5 @@ extension NicknameViewController {
         navigationItem.backButtonTitle = ""
         
     }
-    
-    func configureView() {
-//        if let newImg = UserDefaults.standard.string(forKey: "profileIndex") {
-//            profileImg.image = UIImage(named: "profile\(newImg)")
-        }
-//        self.view.relo
-    }
-    
+}
 

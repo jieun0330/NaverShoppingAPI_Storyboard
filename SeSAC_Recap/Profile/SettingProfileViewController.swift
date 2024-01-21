@@ -13,7 +13,7 @@ class SettingProfileViewController: UIViewController {
     @IBOutlet var profileListView: UICollectionView!
     
     let randomNum = Int.random(in: 1...14)
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,7 +28,7 @@ class SettingProfileViewController: UIViewController {
 extension SettingProfileViewController {
     func configureUI() {
         navigationItem.title = "프로필 설정"
-
+        
         profileImg.image = UIImage(named: "profile\(randomNum)")
         profileImg.contentMode = .scaleAspectFill
         profileImg.layer.masksToBounds = false
@@ -73,7 +73,7 @@ extension SettingProfileViewController: UICollectionViewDataSource, UICollection
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileImgCollectionViewCell.identifier, for: indexPath) as! ProfileImgCollectionViewCell
         
         cell.profileImg.image = UIImage(named: "profile\(indexPath.row+1)")
-
+        
         return cell
     }
     
@@ -84,13 +84,14 @@ extension SettingProfileViewController: UICollectionViewDataSource, UICollection
         if let cell = collectionView.cellForItem(at: indexPath) as? UICollectionViewCell {
             cell.layer.borderColor = Colors.pointColor.cgColor
             cell.layer.borderWidth = 5
-
+            
             cell.contentMode = .scaleAspectFill
             cell.layer.masksToBounds = false
             cell.layer.cornerRadius = cell.frame.height / 2
             cell.clipsToBounds = true
+            
+            UserDefaults.standard.set(indexPath.row, forKey: "clickImg")
         }
-
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
