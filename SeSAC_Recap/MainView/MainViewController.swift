@@ -69,8 +69,12 @@ class MainViewController: UIViewController {
 
 extension MainViewController {
     
+    
     func configureUI() {
-        navigationItem.title = "님의 새싹쇼핑"
+        
+        let name = UserDefaults.standard.string(forKey: "Nickname")
+
+        navigationItem.title = "\(name ?? "")님의 새싹쇼핑"
         searchBar.placeholder = "브랜드, 상품, 프로필 태그 등"
         keyword.text = "최근 검색어"
         keyword.font = Fonts.font13
@@ -101,11 +105,24 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: KeywordResultsTableViewCell.identifier, for: indexPath) as! KeywordResultsTableViewCell
-        cell.keyword.text = keywordList[indexPath.row]
         
-        cell.selectionStyle = .none
+        if keywordList.count == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: NoKeywordTableViewCell.identifier, for: indexPath) as! NoKeywordTableViewCell
+            
+            return cell
+
+        } else {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: KeywordResultsTableViewCell.identifier, for: indexPath) as! KeywordResultsTableViewCell
+            cell.keyword.text = keywordList[indexPath.row]
+            
+            cell.selectionStyle = .none
+
+            
+            return cell
+        }
         
-        return cell
+        
+
     }
 }

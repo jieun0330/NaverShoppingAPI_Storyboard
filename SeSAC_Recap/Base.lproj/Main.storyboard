@@ -62,7 +62,7 @@
             </objects>
             <point key="canvasLocation" x="1246.5648854961833" y="2.8169014084507045"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Item-->
         <scene sceneID="iDX-VT-gJ4">
             <objects>
                 <viewController storyboardIdentifier="MainViewController" id="3uq-Ol-7nC" customClass="MainViewController" customModule="SeSAC_Recap" customModuleProvider="target" sceneMemberID="viewController">
@@ -71,7 +71,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="6Ci-JC-Oe6">
-                                <rect key="frame" x="0.0" y="103" width="393" height="55"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="1v0-wp-qbT"/>
                                 </constraints>
@@ -81,7 +81,7 @@
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="DAG-p5-nxB">
-                                <rect key="frame" x="0.0" y="202" width="393" height="616"/>
+                                <rect key="frame" x="0.0" y="202" width="393" height="567"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <view contentMode="scaleToFill" id="8vm-SP-WLp">
@@ -123,6 +123,7 @@
                             <constraint firstItem="DAG-p5-nxB" firstAttribute="trailing" secondItem="trL-Qo-sdo" secondAttribute="trailing" id="xQG-Y6-ZGQ"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="cYD-7M-LLK"/>
                     <navigationItem key="navigationItem" id="30k-DK-fic"/>
                     <connections>
                         <outlet property="deleteButton" destination="TIt-JX-Mbe" id="Nun-ho-QaN"/>
@@ -133,7 +134,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yMW-cs-ady" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6034.3511450381675" y="2.8169014084507045"/>
+            <point key="canvasLocation" x="5108" y="23"/>
         </scene>
         <!--Nickname View Controller-->
         <scene sceneID="Gvo-ix-yKL">
@@ -549,7 +550,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vhz-gH-1Ek" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7385.4961832061063" y="-138.02816901408451"/>
+            <point key="canvasLocation" x="8312.2137404580153" y="-138.02816901408451"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Jtw-6c-C9A">
@@ -569,28 +570,25 @@
             </objects>
             <point key="canvasLocation" x="4182" y="744"/>
         </scene>
-        <!--검색-->
-        <scene sceneID="aNl-Rw-yKN">
+        <!--Tab Bar Controller-->
+        <scene sceneID="mA3-p0-Bxg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WzM-MH-H5I" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="검색" image="magnifyingglass" catalog="system" id="m8g-OG-42q"/>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ge2-ey-sh3" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RTS-7E-M4Z">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="unv-AY-ypn">
                         <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
                     <connections>
-                        <segue destination="3uq-Ol-7nC" kind="relationship" relationship="rootViewController" id="YcB-1o-1it"/>
+                        <segue destination="3uq-Ol-7nC" kind="relationship" relationship="viewControllers" id="Yhj-1S-26N"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oNb-Rd-QyH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EDF-Qq-tmo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5109.160305343511" y="2.8169014084507045"/>
+            <point key="canvasLocation" x="4181" y="-311"/>
         </scene>
     </scenes>
     <resources>
-        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -29,6 +29,7 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         nicknameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         
         doneButton.addTarget(self, action: #selector(doneButtonClicked), for: .touchUpInside)
+        doneButton.isEnabled = false
         
     }
     
@@ -43,18 +44,17 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         
         let num = CharacterSet(charactersIn: "0123456789")
         let char = CharacterSet(charactersIn: "#@$%")
+        let whitespace = nicknameTextField.text?.trimmingCharacters(in: .whitespaces)
         
-        if nicknameTextField.text!.count < 2 || nicknameTextField.text!.count >= 10 {
+        if nicknameTextField.text!.count < 2 || nicknameTextField.text!.count >= 10 || whitespace?.isEmpty != nil {
             nicknameCondition.text = "2글자 이상 10글자 미만으로 설정해주세요"
             nicknameCondition.textColor = .red
             doneButton.isEnabled = false
         } else if ((nicknameTextField.text?.rangeOfCharacter(from: num)) != nil) {
             nicknameCondition.text = "닉네임에 숫자는 포함할 수 없어요."
-            
         } else if ((nicknameTextField.text?.rangeOfCharacter(from: char)) != nil) {
             nicknameCondition.text = "닉네임에 @,#,$,%는 포함할 수 없어요."
-        }
-        else {
+        } else {
             nicknameCondition.text = ""
             doneButton.isEnabled = true
         }
