@@ -30,10 +30,15 @@ class MainViewController: UIViewController {
         
         let xib2 = UINib(nibName: NoKeywordTableViewCell.identifier, bundle: nil)
         keywordView.register(xib2, forCellReuseIdentifier: NoKeywordTableViewCell.identifier)
-
+        
+        deleteButton.addTarget(self, action: #selector(deleteButtonClicked), for: .touchUpInside)
+        
     }
     
-
+    @objc func deleteButtonClicked() {
+        keywordList.removeAll()
+        keywordView.reloadData()
+    }
     
     func callRequest(text: String) {
         
@@ -51,78 +56,80 @@ class MainViewController: UIViewController {
                 case .success(let success):
                     self.list = success
                     print(success)
-                    
                 case .failure(let failure):
                     print(failure)
                 }
             }
     }
-//    
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            keywordList.remove(at: indexPath.row)
-//            keywordView.reloadData()
-//        }
-//    }
-    
 }
 
 extension MainViewController {
     
-    
     func configureUI() {
         
         let name = UserDefaults.standard.string(forKey: "Nickname")
-
+        
         navigationItem.title = "\(name ?? "")님의 새싹쇼핑"
         searchBar.placeholder = "브랜드, 상품, 프로필 태그 등"
-        keyword.text = "최근 검색어"
-        keyword.font = Fonts.font13
-        deleteButton.setTitle("모두 지우기", for: .normal)
-        deleteButton.titleLabel?.font = Fonts.font13
-        deleteButton.setTitleColor(Colors.pointColor, for: .normal)
+        keyword.text = ""
         
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if keywordList.count == 0 {
+            return UIScreen.main.bounds.height
+        } else {
+            return 52
+        }
+    }
+    
 }
 
 extension MainViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        keywordList.append(searchBar.text!)
-//        self.keywordView.endUpdates()
-//        keywordView.endUpdates()
+        keywordList.insert(searchBar.text!, at: 0)
         keywordView.reloadData()
         searchBar.text = ""
     }
 }
 
-
 extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return keywordList.count
+        
+        if keywordList.count == 0 {
+            return 1
+        } else {
+            return keywordList.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        tableView.separatorStyle = .none
         
         if keywordList.count == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: NoKeywordTableViewCell.identifier, for: indexPath) as! NoKeywordTableViewCell
             
+            cell.selectionStyle = .none
             return cell
-
+            
         } else {
+            
+            keyword.text = "최근 검색"
+            keyword.font = Fonts.font13
+            deleteButton.setTitle("모두 지우기", for: .normal)
+            deleteButton.titleLabel?.font = Fonts.font13
+            deleteButton.setTitleColor(Colors.pointColor, for: .normal)
             
             let cell = tableView.dequeueReusableCell(withIdentifier: KeywordResultsTableViewCell.identifier, for: indexPath) as! KeywordResultsTableViewCell
             cell.keyword.text = keywordList[indexPath.row]
             
             cell.selectionStyle = .none
-
             
             return cell
         }
-        
-        
-
     }
 }

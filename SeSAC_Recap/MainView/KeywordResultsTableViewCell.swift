@@ -14,13 +14,15 @@ class KeywordResultsTableViewCell: UITableViewCell {
     @IBOutlet var deleteButton: UIButton!
     
     
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         configureCell()
 
+
     }
-    
 
 
     

@@ -7,7 +7,9 @@
 
 import UIKit
 
+
 class NoKeywordTableViewCell: UITableViewCell {
+    
 
     @IBOutlet var noKeywordImg: UIImageView!
     @IBOutlet var noKeywordLabel: UILabel!
