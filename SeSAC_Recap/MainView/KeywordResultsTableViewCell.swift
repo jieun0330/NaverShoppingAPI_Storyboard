@@ -19,10 +19,9 @@ class KeywordResultsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         configureCell()
-                
+        
     }
     
-
 }
 
 extension KeywordResultsTableViewCell {

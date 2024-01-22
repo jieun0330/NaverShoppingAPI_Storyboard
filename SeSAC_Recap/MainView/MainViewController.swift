@@ -49,6 +49,7 @@ class MainViewController: UIViewController {
                 case .success(let success):
                     self.list = success
                     print(success)
+                    
                 case .failure(let failure):
                     print(failure)
                 }
@@ -65,6 +66,7 @@ extension MainViewController {
         navigationItem.title = "\(name ?? "")님의 새싹쇼핑"
         searchBar.placeholder = "브랜드, 상품, 프로필 태그 등"
         keyword.text = ""
+        navigationItem.backButtonTitle = ""
         
     }
     
@@ -76,6 +78,20 @@ extension MainViewController {
             return 52
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: KeywordResultsTableViewCell.identifier, for: indexPath) as! KeywordResultsTableViewCell
+        
+        UserDefaults.standard.set(keywordList, forKey: "키워드")
+        keywordView.reloadData()
+        
+        let vc = storyboard?.instantiateViewController(identifier: KeywordResultViewController.identifier) as! KeywordResultViewController
+        vc.index = indexPath.row
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
 }
 
 extension MainViewController: UISearchBarDelegate {
@@ -83,10 +99,14 @@ extension MainViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         keywordList.insert(searchBar.text!, at: 0)
+        UserDefaults.standard.set(keywordList, forKey: "키워드")
         keywordView.reloadData()
         searchBar.text = ""
         
-        UserDefaults.standard.set(keywordList, forKey: "키워드")
+        callRequest(text: searchBar.text!)
+        
+        let vc = storyboard?.instantiateViewController(identifier: KeywordResultViewController.identifier) as! KeywordResultViewController
+        navigationController?.pushViewController(vc, animated: true)
         
     }
 }
