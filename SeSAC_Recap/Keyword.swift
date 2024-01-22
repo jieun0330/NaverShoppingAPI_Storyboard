@@ -10,7 +10,7 @@ import Foundation
 // MARK: - Welcome
 struct Welcome: Codable {
     let total: Int
-    let items: [Item]
+    var items: [Item]
 }
 
 // MARK: - Item

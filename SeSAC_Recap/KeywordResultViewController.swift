@@ -21,6 +21,8 @@ class KeywordResultViewController: UIViewController {
     
     let item = MainViewController().keywordList
     var index: Int = 0
+    var display = 30
+    var sort = "sim"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,42 +35,47 @@ class KeywordResultViewController: UIViewController {
         
         resultView.delegate = self
         resultView.dataSource = self
+        resultView.prefetchDataSource = self
+        
         resultView.register(UINib(nibName: ResultCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: ResultCollectionViewCell.identifier)
         
         setLayout()
         
-        let title = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
-        navigationItem.title = title[index]
+        let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
+        navigationItem.title = searchedKeywordList[index]
         
-        callRequest(text: title[index])
+        callRequest(text: searchedKeywordList[index])
         
     }
     
     func callRequest(text: String) {
         
         let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        let url = "https://openapi.naver.com/v1/search/shop?query=\(query)"
+        let url = "https://openapi.naver.com/v1/search/shop?query=\(query)&display=\(display)&sort=\(sort)"
         let headers: HTTPHeaders = [
             "X-Naver-Client-Id": APIKey.clientID,
             "X-Naver-Client-Secret": APIKey.clientSecret
         ]
-        print(url)
         
         AF
             .request(url, method: .get, headers: headers)
             .responseDecodable(of: Welcome.self) { response in
                 switch response.result {
                 case .success(let success):
-                    self.list = success
-                    dump(success)
-                    self.resultView.reloadData()
-//                    print(list.total)
-//                    numberOfKeywords.text = "\(list.total)개의 검색 결과"
-                    let numberFormatter: NumberFormatter = NumberFormatter()
-                    numberFormatter.numberStyle = .decimal
-                    let result: String = numberFormatter.string(for: self.list.total)!
                     
-                    self.numberOfKeywords.text = "\(result)개의 검색 결과"
+                    if self.display == 30 {
+                        self.list = success
+                        
+                        let numberFormatter: NumberFormatter = NumberFormatter()
+                        numberFormatter.numberStyle = .decimal
+                        let result: String = numberFormatter.string(for: self.list.total)!
+                        self.numberOfKeywords.text = "\(result)개의 검색 결과"
+                        
+                    } else {
+                        self.list.items.append(contentsOf: success.items)
+                    }
+                    
+                    self.resultView.reloadData()
                     
                 case .failure(let failure):
                     print(failure)
@@ -81,7 +88,7 @@ class KeywordResultViewController: UIViewController {
         let spacing: CGFloat = 5
         let cellWidth = UIScreen.main.bounds.width - (spacing * 3)
         
-        layout.itemSize = CGSize(width: cellWidth / 2.4, height: cellWidth / 1.5)
+        layout.itemSize = CGSize(width: cellWidth / 2, height: cellWidth / 1.5)
         layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
@@ -98,15 +105,31 @@ class KeywordResultViewController: UIViewController {
     }
     
 }
+
+extension KeywordResultViewController:  UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        print("prefetch \(indexPaths)")
+        
+        for item in indexPaths {
+            if list.items.count - 3 == item.row {
+                
+                guard let searchKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] else { return }
+                
+                display += 30
+                callRequest(text: searchKeywordList[index])
+                
+            }
+        }
+        
+    }
+    
+}
+
 extension KeywordResultViewController {
     func configureUI() {
-
+        
         numberOfKeywords.textColor = Colors.pointColor
         numberOfKeywords.font = Fonts.font13
-        
-
-        
-        
         
     }
     
@@ -134,7 +157,7 @@ extension KeywordResultViewController: UICollectionViewDataSource, UICollectionV
         cell.lprice.text = result
         
         return cell
-    }    
+    }
 }
 
 

@@ -500,7 +500,7 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JsO-RR-zL6">
-                                <rect key="frame" x="20" y="165" width="353" height="633"/>
+                                <rect key="frame" x="0.0" y="165" width="393" height="633"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qAt-ib-xgA">
                                     <size key="itemSize" width="128" height="128"/>
@@ -515,11 +515,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="tnn-QE-fzV" firstAttribute="leading" secondItem="Xcu-JI-Eep" secondAttribute="leading" constant="20" id="80f-GE-NXZ"/>
-                            <constraint firstItem="JsO-RR-zL6" firstAttribute="leading" secondItem="Xcu-JI-Eep" secondAttribute="leading" constant="20" id="8F5-F0-bLF"/>
+                            <constraint firstItem="JsO-RR-zL6" firstAttribute="leading" secondItem="Xcu-JI-Eep" secondAttribute="leading" id="8F5-F0-bLF"/>
                             <constraint firstItem="NdM-ui-ABP" firstAttribute="leading" secondItem="8hM-wJ-Fmk" secondAttribute="trailing" constant="10" id="8gw-jP-Fi9"/>
                             <constraint firstItem="tnn-QE-fzV" firstAttribute="top" secondItem="Xcu-JI-Eep" secondAttribute="top" constant="20" id="Cf2-Q7-ue5"/>
                             <constraint firstItem="8hM-wJ-Fmk" firstAttribute="leading" secondItem="bQU-ad-Cbl" secondAttribute="trailing" constant="10" id="JOp-nm-gwb"/>
-                            <constraint firstItem="Xcu-JI-Eep" firstAttribute="trailing" secondItem="JsO-RR-zL6" secondAttribute="trailing" constant="20" id="N8V-iH-yjD"/>
+                            <constraint firstItem="Xcu-JI-Eep" firstAttribute="trailing" secondItem="JsO-RR-zL6" secondAttribute="trailing" id="N8V-iH-yjD"/>
                             <constraint firstItem="NdM-ui-ABP" firstAttribute="top" secondItem="8hM-wJ-Fmk" secondAttribute="top" id="Tla-fY-5Mh"/>
                             <constraint firstItem="JsO-RR-zL6" firstAttribute="top" secondItem="cFC-J0-M5m" secondAttribute="bottom" constant="20" id="UPr-Xs-wSC"/>
                             <constraint firstItem="cFC-J0-M5m" firstAttribute="leading" secondItem="Xcu-JI-Eep" secondAttribute="leading" constant="20" id="WPo-3p-YwE"/>
