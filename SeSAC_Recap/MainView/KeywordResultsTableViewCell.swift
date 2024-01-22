@@ -8,24 +8,21 @@
 import UIKit
 
 class KeywordResultsTableViewCell: UITableViewCell {
-
+    
     @IBOutlet var searchIcon: UIButton!
     @IBOutlet var keyword: UILabel!
     @IBOutlet var deleteButton: UIButton!
     
-    
-    
+    var keywordList = MainViewController().keywordList
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         configureCell()
-
-
+                
     }
-
-
     
+
 }
 
 extension KeywordResultsTableViewCell {

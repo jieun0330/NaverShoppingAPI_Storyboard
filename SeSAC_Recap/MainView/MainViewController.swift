@@ -31,13 +31,6 @@ class MainViewController: UIViewController {
         let xib2 = UINib(nibName: NoKeywordTableViewCell.identifier, bundle: nil)
         keywordView.register(xib2, forCellReuseIdentifier: NoKeywordTableViewCell.identifier)
         
-        deleteButton.addTarget(self, action: #selector(deleteButtonClicked), for: .touchUpInside)
-        
-    }
-    
-    @objc func deleteButtonClicked() {
-        keywordList.removeAll()
-        keywordView.reloadData()
     }
     
     func callRequest(text: String) {
@@ -83,7 +76,6 @@ extension MainViewController {
             return 52
         }
     }
-    
 }
 
 extension MainViewController: UISearchBarDelegate {
@@ -93,6 +85,9 @@ extension MainViewController: UISearchBarDelegate {
         keywordList.insert(searchBar.text!, at: 0)
         keywordView.reloadData()
         searchBar.text = ""
+        
+        UserDefaults.standard.set(keywordList, forKey: "키워드")
+        
     }
 }
 
@@ -129,7 +124,18 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
             
             cell.selectionStyle = .none
             
+            cell.deleteButton.tag = indexPath.row
+            cell.deleteButton.addTarget(self, action: #selector(deleteButtonClicked(sender:)), for: .touchUpInside)
+            
             return cell
         }
+        
     }
+    
+    @objc func deleteButtonClicked(sender: UIButton) {
+        keywordList.remove(at: sender.tag)
+        keywordView.reloadData()
+        UserDefaults.standard.removeObject(forKey: "키워드")
+    }
+    
 }
