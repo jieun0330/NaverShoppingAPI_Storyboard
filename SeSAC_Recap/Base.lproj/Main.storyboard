@@ -113,6 +113,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="trL-Qo-sdo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="DAG-p5-nxB" firstAttribute="top" secondItem="8vm-SP-WLp" secondAttribute="bottom" id="95b-Fk-DrG"/>
                             <constraint firstItem="trL-Qo-sdo" firstAttribute="bottom" secondItem="DAG-p5-nxB" secondAttribute="bottom" id="VXL-eA-ZDk"/>

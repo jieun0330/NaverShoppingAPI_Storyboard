@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Welcome
 struct Welcome: Codable {
-//    let total: Int
+    let total: Int
     let items: [Item]
 }
 

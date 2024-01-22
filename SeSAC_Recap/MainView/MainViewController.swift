@@ -14,7 +14,7 @@ class MainViewController: UIViewController {
     @IBOutlet var deleteAll: UIButton!
     @IBOutlet var keywordView: UITableView!
     
-    var list: Welcome = Welcome(items: [])
+    var list: Welcome = Welcome(total: 0, items: [])
     var keywordList: [String] = []
     
     override func viewDidLoad() {
@@ -38,6 +38,8 @@ class MainViewController: UIViewController {
         keywordList.removeAll()
         keywordView.reloadData()
     }
+    
+
 }
 
 extension MainViewController {

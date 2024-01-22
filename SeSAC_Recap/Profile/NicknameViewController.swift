@@ -20,9 +20,11 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // 1. clickImg에 넣어준다
         UserDefaults.standard.setValue(randomNum, forKey: "clickImg")
+        print("초기", randomNum)
         profileImg.image = UIImage(named: "profile\(UserDefaults.standard.integer(forKey: "clickImg"))")
+        
         configureUI()
         
         nicknameTextField.delegate = self
@@ -36,8 +38,8 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         let num = UserDefaults.standard.integer(forKey: "clickImg")
-        
         profileImg.image = UIImage(named: "profile\(num+1)")
+        
         
     }
     
@@ -45,7 +47,6 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         
         let num = CharacterSet(charactersIn: "0123456789")
         let char = CharacterSet(charactersIn: "#@$%")
-//        let whitespace = nicknameTextField.text?.trimmingCharacters(in: .whitespaces)
         
         if nicknameTextField.text!.count < 2 || nicknameTextField.text!.count >= 10 {
             nicknameCondition.text = "2글자 이상 10글자 미만으로 설정해주세요"
@@ -70,7 +71,9 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func imageClicked(_ sender: UITapGestureRecognizer) {
         let vc = storyboard?.instantiateViewController(identifier: SettingProfileViewController.identifier) as! SettingProfileViewController
+        
         navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     @IBAction func keyboardDismiss(_ sender: UITapGestureRecognizer) {

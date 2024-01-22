@@ -10,7 +10,7 @@ import Alamofire
 
 class KeywordResultViewController: UIViewController {
     
-    var list: Welcome = Welcome(items: [])
+    var list: Welcome = Welcome(total: 0, items: [])
     
     @IBOutlet var numberOfKeywords: UILabel!
     @IBOutlet var accuracy: UIButton!
@@ -62,6 +62,13 @@ class KeywordResultViewController: UIViewController {
                     self.list = success
                     dump(success)
                     self.resultView.reloadData()
+//                    print(list.total)
+//                    numberOfKeywords.text = "\(list.total)개의 검색 결과"
+                    let numberFormatter: NumberFormatter = NumberFormatter()
+                    numberFormatter.numberStyle = .decimal
+                    let result: String = numberFormatter.string(for: self.list.total)!
+                    
+                    self.numberOfKeywords.text = "\(result)개의 검색 결과"
                     
                 case .failure(let failure):
                     print(failure)
@@ -93,10 +100,13 @@ class KeywordResultViewController: UIViewController {
 }
 extension KeywordResultViewController {
     func configureUI() {
-        
-        numberOfKeywords.text = "00개의 검색 결과"
+
         numberOfKeywords.textColor = Colors.pointColor
         numberOfKeywords.font = Fonts.font13
+        
+
+        
+        
         
     }
     
@@ -116,7 +126,12 @@ extension KeywordResultViewController: UICollectionViewDataSource, UICollectionV
         cell.mallName.text = list.items[indexPath.row].mallName
         cell.image.kf.setImage(with: URL(string: list.items[indexPath.row].image))
         cell.title.text = list.items[indexPath.row].title
-        cell.lprice.text = list.items[indexPath.row].lprice
+        
+        let numberFormatter: NumberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        let result: String = numberFormatter.string(from: NSNumber(value: Double(list.items[indexPath.row].lprice)!))!
+        
+        cell.lprice.text = result
         
         return cell
     }    

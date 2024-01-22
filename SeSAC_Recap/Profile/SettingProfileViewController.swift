@@ -20,7 +20,7 @@ class SettingProfileViewController: UIViewController {
         configureUI()
         configureView()
         setLayout()
-        
+
     }
     
 }
@@ -29,7 +29,9 @@ extension SettingProfileViewController {
     func configureUI() {
         navigationItem.title = "프로필 설정"
         
-        profileImg.image = UIImage(named: "profile\(randomNum)")
+        // 2. clickimg에 있는걸 보여준다
+        let newImg = UserDefaults.standard.integer(forKey: "clickImg")
+        profileImg.image = UIImage(named: "profile\(newImg+1)")
         profileImg.contentMode = .scaleAspectFill
         profileImg.layer.masksToBounds = false
         profileImg.layer.cornerRadius = profileImg.frame.height / 2
@@ -46,6 +48,7 @@ extension SettingProfileViewController {
         
         let xib = UINib(nibName: ProfileImgCollectionViewCell.identifier, bundle: nil)
         profileListView.register(xib, forCellWithReuseIdentifier: ProfileImgCollectionViewCell.identifier)
+        
     }
     
     func setLayout() {
@@ -72,26 +75,42 @@ extension SettingProfileViewController: UICollectionViewDataSource, UICollection
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileImgCollectionViewCell.identifier, for: indexPath) as! ProfileImgCollectionViewCell
         
+        // 3. clickimg에 있는 저장된 숫자랑 index row랑 같으면 border 처리
+        // 4. 원래 선택되어있던 친구 border 해제 왜 안돼?
+        // 5. 결론: 모름
+        let newImg = UserDefaults.standard.integer(forKey: "clickImg")
+        if indexPath.row == newImg {
+            cell.layer.borderColor = Colors.pointColor.cgColor
+            cell.layer.borderWidth = 5
+            cell.contentMode = .scaleAspectFill
+            cell.layer.masksToBounds = false
+            cell.layer.cornerRadius = cell.frame.height / 2
+            cell.clipsToBounds = true
+        }
+        
         cell.profileImg.image = UIImage(named: "profile\(indexPath.row+1)")
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+            
         profileImg.image = UIImage(named: "profile\(indexPath.row+1)")
         
         if let cell = collectionView.cellForItem(at: indexPath) as? UICollectionViewCell {
+            
+            let newImg = UserDefaults.standard.integer(forKey: "clickImg")
+            
             cell.layer.borderColor = Colors.pointColor.cgColor
             cell.layer.borderWidth = 5
-            
             cell.contentMode = .scaleAspectFill
             cell.layer.masksToBounds = false
             cell.layer.cornerRadius = cell.frame.height / 2
             cell.clipsToBounds = true
-            
             UserDefaults.standard.set(indexPath.row, forKey: "clickImg")
+            
         }
+            
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
