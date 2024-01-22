@@ -6,13 +6,12 @@
 //
 
 import UIKit
-import Alamofire
 
 class MainViewController: UIViewController {
     
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var keyword: UILabel!
-    @IBOutlet var deleteButton: UIButton!
+    @IBOutlet var deleteAll: UIButton!
     @IBOutlet var keywordView: UITableView!
     
     var list: Welcome = Welcome(items: [])
@@ -31,29 +30,13 @@ class MainViewController: UIViewController {
         let xib2 = UINib(nibName: NoKeywordTableViewCell.identifier, bundle: nil)
         keywordView.register(xib2, forCellReuseIdentifier: NoKeywordTableViewCell.identifier)
         
+        deleteAll.addTarget(self, action: #selector(deleteAllClicked), for: .touchUpInside)
+        
     }
     
-    func callRequest(text: String) {
-        
-        let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        let url = "https://openapi.naver.com/v1/search/shop?query=\(query)"
-        let headers: HTTPHeaders = [
-            "X-Naver-Client-Id": APIKey.clientID,
-            "X-Naver-Client-Secret": APIKey.clientSecret
-        ]
-        
-        AF
-            .request(url, method: .get, headers: headers)
-            .responseDecodable(of: Welcome.self) { response in
-                switch response.result {
-                case .success(let success):
-                    self.list = success
-                    print(success)
-                    
-                case .failure(let failure):
-                    print(failure)
-                }
-            }
+    @objc func deleteAllClicked() {
+        keywordList.removeAll()
+        keywordView.reloadData()
     }
 }
 
@@ -101,11 +84,9 @@ extension MainViewController: UISearchBarDelegate {
         keywordList.insert(searchBar.text!, at: 0)
         UserDefaults.standard.set(keywordList, forKey: "키워드")
         keywordView.reloadData()
-        searchBar.text = ""
-        
-        callRequest(text: searchBar.text!)
         
         let vc = storyboard?.instantiateViewController(identifier: KeywordResultViewController.identifier) as! KeywordResultViewController
+        
         navigationController?.pushViewController(vc, animated: true)
         
     }
@@ -135,9 +116,9 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
             
             keyword.text = "최근 검색"
             keyword.font = Fonts.font13
-            deleteButton.setTitle("모두 지우기", for: .normal)
-            deleteButton.titleLabel?.font = Fonts.font13
-            deleteButton.setTitleColor(Colors.pointColor, for: .normal)
+            deleteAll.setTitle("모두 지우기", for: .normal)
+            deleteAll.titleLabel?.font = Fonts.font13
+            deleteAll.setTitleColor(Colors.pointColor, for: .normal)
             
             let cell = tableView.dequeueReusableCell(withIdentifier: KeywordResultsTableViewCell.identifier, for: indexPath) as! KeywordResultsTableViewCell
             cell.keyword.text = keywordList[indexPath.row]
@@ -153,9 +134,9 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
     }
     
     @objc func deleteButtonClicked(sender: UIButton) {
+        UserDefaults.standard.removeObject(forKey: "키워드")
         keywordList.remove(at: sender.tag)
         keywordView.reloadData()
-        UserDefaults.standard.removeObject(forKey: "키워드")
     }
     
 }

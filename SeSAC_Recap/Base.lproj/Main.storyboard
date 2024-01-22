@@ -126,7 +126,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="cYD-7M-LLK"/>
                     <navigationItem key="navigationItem" id="30k-DK-fic"/>
                     <connections>
-                        <outlet property="deleteButton" destination="TIt-JX-Mbe" id="Nun-ho-QaN"/>
+                        <outlet property="deleteAll" destination="TIt-JX-Mbe" id="Nun-ho-QaN"/>
                         <outlet property="keyword" destination="IsZ-dW-ISx" id="icx-97-sOw"/>
                         <outlet property="keywordView" destination="DAG-p5-nxB" id="0sN-LH-IO3"/>
                         <outlet property="searchBar" destination="6Ci-JC-Oe6" id="e3M-45-cLN"/>
@@ -507,16 +507,7 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ResultCollectionViewCell" id="TGl-dG-teF" customClass="ResultCollectionViewCell" customModule="SeSAC_Recap" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="h7P-FK-Ifz">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Xcu-JI-Eep"/>
@@ -576,6 +567,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ge2-ey-sh3" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="unv-AY-ypn">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

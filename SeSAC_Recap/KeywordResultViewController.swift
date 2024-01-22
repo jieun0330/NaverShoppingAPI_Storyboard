@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class KeywordResultViewController: UIViewController {
     
@@ -35,6 +36,37 @@ class KeywordResultViewController: UIViewController {
         resultView.register(UINib(nibName: ResultCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: ResultCollectionViewCell.identifier)
         
         setLayout()
+        
+        let title = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
+        navigationItem.title = title[index]
+        
+        callRequest(text: title[index])
+        
+    }
+    
+    func callRequest(text: String) {
+        
+        let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let url = "https://openapi.naver.com/v1/search/shop?query=\(query)"
+        let headers: HTTPHeaders = [
+            "X-Naver-Client-Id": APIKey.clientID,
+            "X-Naver-Client-Secret": APIKey.clientSecret
+        ]
+        print(url)
+        
+        AF
+            .request(url, method: .get, headers: headers)
+            .responseDecodable(of: Welcome.self) { response in
+                switch response.result {
+                case .success(let success):
+                    self.list = success
+                    dump(success)
+                    self.resultView.reloadData()
+                    
+                case .failure(let failure):
+                    print(failure)
+                }
+            }
     }
     
     func setLayout() {
@@ -62,8 +94,6 @@ class KeywordResultViewController: UIViewController {
 extension KeywordResultViewController {
     func configureUI() {
         
-        let title = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
-        navigationItem.title = title[index]
         numberOfKeywords.text = "00개의 검색 결과"
         numberOfKeywords.textColor = Colors.pointColor
         numberOfKeywords.font = Fonts.font13
@@ -75,6 +105,7 @@ extension KeywordResultViewController {
 extension KeywordResultViewController: UICollectionViewDataSource, UICollectionViewDelegate  {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
+        print(list.items.count)
         return list.items.count
     }
     

@@ -21,7 +21,8 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        profileImg.image = UIImage(named: "profile\(randomNum)")
+        UserDefaults.standard.setValue(randomNum, forKey: "clickImg")
+        profileImg.image = UIImage(named: "profile\(UserDefaults.standard.integer(forKey: "clickImg"))")
         configureUI()
         
         nicknameTextField.delegate = self
@@ -34,10 +35,10 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        let num = UserDefaults.standard.integer(forKey: "clickImg")
         
-        if let num = Int(UserDefaults.standard.string(forKey: "clickImg")!) {
-            profileImg.image = UIImage(named: "profile\(num+1)")
-        }
+        profileImg.image = UIImage(named: "profile\(num+1)")
+        
     }
     
     @objc func textFieldDidChange() {
