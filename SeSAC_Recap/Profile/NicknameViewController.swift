@@ -44,9 +44,9 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         
         let num = CharacterSet(charactersIn: "0123456789")
         let char = CharacterSet(charactersIn: "#@$%")
-        let whitespace = nicknameTextField.text?.trimmingCharacters(in: .whitespaces)
+//        let whitespace = nicknameTextField.text?.trimmingCharacters(in: .whitespaces)
         
-        if nicknameTextField.text!.count < 2 || nicknameTextField.text!.count >= 10 || whitespace?.isEmpty != nil {
+        if nicknameTextField.text!.count < 2 || nicknameTextField.text!.count >= 10 {
             nicknameCondition.text = "2글자 이상 10글자 미만으로 설정해주세요"
             nicknameCondition.textColor = .red
             doneButton.isEnabled = false
