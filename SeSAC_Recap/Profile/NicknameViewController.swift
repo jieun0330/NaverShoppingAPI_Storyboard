@@ -15,7 +15,7 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var nicknameCondition: UILabel!
     @IBOutlet var doneButton: UIButton!
     
-    let nickname = UserDefaults.standard.string(forKey: "Nickname")
+//    let nickname = UserDefaults.standard.string(forKey: "Nickname")
     let randomNum = Int.random(in: 1...14)
     
     override func viewDidLoad() {
@@ -33,6 +33,10 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         
         doneButton.addTarget(self, action: #selector(doneButtonClicked), for: .touchUpInside)
         doneButton.isEnabled = false
+        
+//        UserDefaults.standard.set(nicknameTextField.text, forKey: "Nickname")
+        nicknameTextField.text = UserDefaults.standard.string(forKey: "Nickname")
+
         
     }
     
@@ -78,7 +82,7 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func keyboardDismiss(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
-        UserDefaults.standard.set(nicknameTextField.text, forKey: "Nickname")
+//        UserDefaults.standard.set(nicknameTextField.text, forKey: "Nickname")
     }
 }
 

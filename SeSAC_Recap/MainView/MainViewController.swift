@@ -32,11 +32,18 @@ class MainViewController: UIViewController {
         
         deleteAll.addTarget(self, action: #selector(deleteAllClicked), for: .touchUpInside)
         
+        
     }
     
     @objc func deleteAllClicked() {
         keywordList.removeAll()
         keywordView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        searchBar.text = ""
     }
     
 
@@ -52,6 +59,7 @@ extension MainViewController {
         searchBar.placeholder = "브랜드, 상품, 프로필 태그 등"
         keyword.text = ""
         navigationItem.backButtonTitle = ""
+        navigationItem.setHidesBackButton(true, animated: true)
         
     }
     

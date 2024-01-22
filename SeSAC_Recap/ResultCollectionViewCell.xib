@@ -23,7 +23,7 @@
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdg-cc-nBP">
-                        <rect key="frame" x="335" y="275.33333333333331" width="24" height="14"/>
+                        <rect key="frame" x="340" y="280.33333333333331" width="24" height="14"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" title=""/>
                     </button>
@@ -66,9 +66,9 @@
                 <constraint firstItem="RUl-oS-P4w" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="g02-4J-ZWW"/>
                 <constraint firstItem="Vi1-ix-xoP" firstAttribute="trailing" secondItem="RUl-oS-P4w" secondAttribute="trailing" id="kxa-gE-D2Z"/>
                 <constraint firstAttribute="trailing" secondItem="RUl-oS-P4w" secondAttribute="trailing" constant="10" id="ky9-9Q-BAP"/>
-                <constraint firstItem="fdg-cc-nBP" firstAttribute="trailing" secondItem="RUl-oS-P4w" secondAttribute="trailing" constant="-10" id="onP-u5-1KY"/>
+                <constraint firstItem="fdg-cc-nBP" firstAttribute="trailing" secondItem="RUl-oS-P4w" secondAttribute="trailing" constant="-5" id="onP-u5-1KY"/>
                 <constraint firstItem="Vi1-ix-xoP" firstAttribute="top" secondItem="eFx-Db-ftg" secondAttribute="bottom" constant="10" id="pNz-XM-fhG"/>
-                <constraint firstItem="fdg-cc-nBP" firstAttribute="bottom" secondItem="RUl-oS-P4w" secondAttribute="bottom" constant="-10" id="rie-ZW-PGa"/>
+                <constraint firstItem="fdg-cc-nBP" firstAttribute="bottom" secondItem="RUl-oS-P4w" secondAttribute="bottom" constant="-5" id="rie-ZW-PGa"/>
                 <constraint firstItem="Vi1-ix-xoP" firstAttribute="leading" secondItem="eFx-Db-ftg" secondAttribute="leading" id="zB5-We-wcH"/>
             </constraints>
             <size key="customSize" width="379" height="505"/>

@@ -62,7 +62,7 @@
             </objects>
             <point key="canvasLocation" x="1246.5648854961833" y="2.8169014084507045"/>
         </scene>
-        <!--Item-->
+        <!--검색-->
         <scene sceneID="iDX-VT-gJ4">
             <objects>
                 <viewController storyboardIdentifier="MainViewController" id="3uq-Ol-7nC" customClass="MainViewController" customModule="SeSAC_Recap" customModuleProvider="target" sceneMemberID="viewController">
@@ -124,7 +124,7 @@
                             <constraint firstItem="DAG-p5-nxB" firstAttribute="trailing" secondItem="trL-Qo-sdo" secondAttribute="trailing" id="xQG-Y6-ZGQ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="cYD-7M-LLK"/>
+                    <tabBarItem key="tabBarItem" title="검색" image="magnifyingglass" catalog="system" id="cYD-7M-LLK"/>
                     <navigationItem key="navigationItem" id="30k-DK-fic"/>
                     <connections>
                         <outlet property="deleteAll" destination="TIt-JX-Mbe" id="Nun-ho-QaN"/>
@@ -135,7 +135,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yMW-cs-ady" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5108" y="23"/>
+            <point key="canvasLocation" x="5108" y="-455"/>
         </scene>
         <!--Nickname View Controller-->
         <scene sceneID="Gvo-ix-yKL">
@@ -483,21 +483,33 @@
                                 <rect key="frame" x="20" y="110" width="75" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="accurayClicked:" destination="nGk-GG-Nft" eventType="touchUpInside" id="I2d-ui-I36"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQU-ad-Cbl">
                                 <rect key="frame" x="105" y="110" width="75" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="dateClicked:" destination="nGk-GG-Nft" eventType="touchUpInside" id="Mjm-C9-wMc"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hM-wJ-Fmk">
                                 <rect key="frame" x="190" y="110" width="75" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="highPriceClicked:" destination="nGk-GG-Nft" eventType="touchUpInside" id="YX1-hK-luy"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NdM-ui-ABP">
                                 <rect key="frame" x="275" y="110" width="75" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="lowPriceClicked:" destination="nGk-GG-Nft" eventType="touchUpInside" id="VqJ-Lr-lt4"/>
+                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JsO-RR-zL6">
                                 <rect key="frame" x="0.0" y="165" width="393" height="633"/>
@@ -544,6 +556,41 @@
             </objects>
             <point key="canvasLocation" x="8312.2137404580153" y="-138.02816901408451"/>
         </scene>
+        <!--Web View Controller-->
+        <scene sceneID="WoR-pL-mXD">
+            <objects>
+                <viewController storyboardIdentifier="WebViewController" id="XEZ-EC-dkc" customClass="WebViewController" customModule="SeSAC_Recap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qp0-PJ-LJ9">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7f1-18-sjg">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5XG-xn-7WU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7f1-18-sjg" firstAttribute="top" secondItem="5XG-xn-7WU" secondAttribute="top" id="4Qf-ec-oqe"/>
+                            <constraint firstItem="5XG-xn-7WU" firstAttribute="trailing" secondItem="7f1-18-sjg" secondAttribute="trailing" id="4rU-vK-Gn0"/>
+                            <constraint firstItem="5XG-xn-7WU" firstAttribute="bottom" secondItem="7f1-18-sjg" secondAttribute="bottom" id="8CF-oq-MHk"/>
+                            <constraint firstItem="7f1-18-sjg" firstAttribute="leading" secondItem="5XG-xn-7WU" secondAttribute="leading" id="EaR-G6-8JL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="WCM-gS-0fL"/>
+                    <connections>
+                        <outlet property="webView" destination="7f1-18-sjg" id="h3d-5M-dCH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FeJ-8d-wqV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="10046.564885496184" y="509.85915492957747"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Jtw-6c-C9A">
             <objects>
@@ -580,8 +627,27 @@
             </objects>
             <point key="canvasLocation" x="4181" y="-311"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ETh-mg-RW2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DsO-Ui-35s" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2UY-6a-YGd">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="XEZ-EC-dkc" kind="relationship" relationship="rootViewController" id="ma8-lC-fzB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lg2-D2-IPJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9119.8473282442737" y="509.85915492957747"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -44,11 +44,34 @@ class KeywordResultViewController: UIViewController {
         let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
         navigationItem.title = searchedKeywordList[index]
         
-        callRequest(text: searchedKeywordList[index])
+        callRequest(text: searchedKeywordList[index], sort: "sim")
+        
+        navigationItem.backButtonTitle = ""
         
     }
     
-    func callRequest(text: String) {
+    @IBAction func accurayClicked(_ sender: UIButton) {
+        let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
+        callRequest(text: searchedKeywordList[index], sort: "sim")
+    }
+    
+    @IBAction func dateClicked(_ sender: UIButton) {
+        let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
+        callRequest(text: searchedKeywordList[index], sort: "date")
+    }
+    
+    @IBAction func highPriceClicked(_ sender: UIButton) {
+        let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
+        callRequest(text: searchedKeywordList[index], sort: "dsc")
+    }
+    
+    @IBAction func lowPriceClicked(_ sender: UIButton) {
+        let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
+        callRequest(text: searchedKeywordList[index], sort: "asc")
+    }
+    
+    
+    func callRequest(text: String, sort: String) {
         
         let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let url = "https://openapi.naver.com/v1/search/shop?query=\(query)&display=\(display)&sort=\(sort)"
@@ -71,10 +94,10 @@ class KeywordResultViewController: UIViewController {
                         let result: String = numberFormatter.string(for: self.list.total)!
                         self.numberOfKeywords.text = "\(result)개의 검색 결과"
                         
+                        
                     } else {
                         self.list.items.append(contentsOf: success.items)
                     }
-                    
                     self.resultView.reloadData()
                     
                 case .failure(let failure):
@@ -116,8 +139,6 @@ extension KeywordResultViewController:  UICollectionViewDataSourcePrefetching {
                 guard let searchKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] else { return }
                 
                 display += 30
-                callRequest(text: searchKeywordList[index])
-                
             }
         }
         
@@ -136,6 +157,16 @@ extension KeywordResultViewController {
 }
 
 extension KeywordResultViewController: UICollectionViewDataSource, UICollectionViewDelegate  {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(identifier: WebViewController.identifier) as! WebViewController
+        
+        vc.productID = list.items[indexPath.row].productID
+        
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         print(list.items.count)

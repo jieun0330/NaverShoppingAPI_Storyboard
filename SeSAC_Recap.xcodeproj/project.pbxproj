@@ -21,6 +21,7 @@
 		C25FC4552B5BDE68000D8F6E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C25FC4542B5BDE68000D8F6E /* Kingfisher */; };
 		C25FC45D2B5BE0DF000D8F6E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C25FC45C2B5BE0DF000D8F6E /* .gitignore */; };
 		C25FC45F2B5BE120000D8F6E /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25FC45E2B5BE120000D8F6E /* APIKey.swift */; };
+		C2A971DB2B5E964600754A22 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A971DA2B5E964600754A22 /* WebViewController.swift */; };
 		C2B0035C2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0035A2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.swift */; };
 		C2B0035D2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2B0035B2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.xib */; };
 		C2B003602B5CEE8500AA52F3 /* NoKeywordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0035E2B5CEE8500AA52F3 /* NoKeywordTableViewCell.swift */; };
@@ -52,6 +53,7 @@
 		C25FC4502B5BD8F3000D8F6E /* ResultCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultCollectionViewCell.xib; sourceTree = "<group>"; };
 		C25FC45C2B5BE0DF000D8F6E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		C25FC45E2B5BE120000D8F6E /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		C2A971DA2B5E964600754A22 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		C2B0035A2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordResultsTableViewCell.swift; sourceTree = "<group>"; };
 		C2B0035B2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeywordResultsTableViewCell.xib; sourceTree = "<group>"; };
 		C2B0035E2B5CEE8500AA52F3 /* NoKeywordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoKeywordTableViewCell.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				C25FC44D2B5BD39B000D8F6E /* Keyword.swift */,
 				C25FC44F2B5BD8F3000D8F6E /* ResultCollectionViewCell.swift */,
 				C25FC4502B5BD8F3000D8F6E /* ResultCollectionViewCell.xib */,
+				C2A971DA2B5E964600754A22 /* WebViewController.swift */,
 			);
 			path = SeSAC_Recap;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2A971DB2B5E964600754A22 /* WebViewController.swift in Sources */,
 				C2F9EFE12B5A4BA100D0BBA1 /* SettingProfileViewController.swift in Sources */,
 				C2B0035C2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.swift in Sources */,
 				C25FC4492B5BCC69000D8F6E /* KeywordResultViewController.swift in Sources */,

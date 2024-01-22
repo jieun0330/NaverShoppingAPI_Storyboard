@@ -30,6 +30,11 @@ class ResultCollectionViewCell: UICollectionViewCell {
         title.font = Fonts.font14
         lprice.font = Fonts.font15
         
+//        likeButtonCircle.layer.masksToBounds = false
+//        likeButtonCircle.layer.cornerRadius = likeButtonCircle.frame.height / 2
+//        likeButtonCircle.clipsToBounds = true
+//        likeButtonCircle.layer.borderWidth = 3
+//        likeButtonCircle.backgroundColor = Colors.textColor
 
         
         
