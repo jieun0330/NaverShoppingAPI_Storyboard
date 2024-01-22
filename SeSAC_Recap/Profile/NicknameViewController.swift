@@ -22,11 +22,11 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         profileImg.image = UIImage(named: "profile\(randomNum)")
-        
         configureUI()
         
         nicknameTextField.delegate = self
         nicknameTextField.smartDashesType = .no
+        nicknameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         
         doneButton.addTarget(self, action: #selector(doneButtonClicked), for: .touchUpInside)
         
@@ -36,6 +36,27 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         
         if let num = Int(UserDefaults.standard.string(forKey: "clickImg")!) {
             profileImg.image = UIImage(named: "profile\(num+1)")
+        }
+    }
+    
+    @objc func textFieldDidChange() {
+        
+        let num = CharacterSet(charactersIn: "0123456789")
+        let char = CharacterSet(charactersIn: "#@$%")
+        
+        if nicknameTextField.text!.count < 2 || nicknameTextField.text!.count >= 10 {
+            nicknameCondition.text = "2글자 이상 10글자 미만으로 설정해주세요"
+            nicknameCondition.textColor = .red
+            doneButton.isEnabled = false
+        } else if ((nicknameTextField.text?.rangeOfCharacter(from: num)) != nil) {
+            nicknameCondition.text = "닉네임에 숫자는 포함할 수 없어요."
+            
+        } else if ((nicknameTextField.text?.rangeOfCharacter(from: char)) != nil) {
+            nicknameCondition.text = "닉네임에 @,#,$,%는 포함할 수 없어요."
+        }
+        else {
+            nicknameCondition.text = ""
+            doneButton.isEnabled = true
         }
     }
     
@@ -75,6 +96,7 @@ extension NicknameViewController {
         
         nicknameCondition.textColor = Colors.pointColor
         nicknameCondition.font = Fonts.font13
+        nicknameCondition.text = ""
         
         doneButton.configurePrimaryStyle(title: "완료")
         

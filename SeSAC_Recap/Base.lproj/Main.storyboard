@@ -163,9 +163,6 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="nickNameTextFieldTapped:" destination="PBg-fr-2M3" eventType="editingDidEnd" id="c2Y-on-paW"/>
-                                    <action selector="textFieldChanged:" destination="bcy-DC-pkE" eventType="editingDidEnd" id="3SS-hg-lwG"/>
-                                    <action selector="textFieldChanged:" destination="bcy-DC-pkE" eventType="editingChanged" id="5WN-qK-KUN"/>
-                                    <action selector="textFieldChanged:" destination="bcy-DC-pkE" eventType="editingDidBegin" id="bon-eh-8yA"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vpa-x4-wNM">
@@ -192,6 +189,13 @@
                                     <constraint firstAttribute="height" constant="35" id="oL4-Kb-BNL"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ce1-J9-lWy">
+                                <rect key="frame" x="20" y="288" width="353" height="1"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="qmk-RQ-h5w"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cEA-xW-VBD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -199,6 +203,8 @@
                         <constraints>
                             <constraint firstItem="Gph-2x-98L" firstAttribute="trailing" secondItem="aHO-iH-kA4" secondAttribute="trailing" constant="5" id="2kz-pm-kOC"/>
                             <constraint firstItem="6aH-J2-zX7" firstAttribute="top" secondItem="aHO-iH-kA4" secondAttribute="bottom" constant="40" id="Chq-Ju-tNR"/>
+                            <constraint firstItem="ce1-J9-lWy" firstAttribute="top" secondItem="6aH-J2-zX7" secondAttribute="bottom" id="HVL-aD-bc1"/>
+                            <constraint firstItem="ce1-J9-lWy" firstAttribute="leading" secondItem="6aH-J2-zX7" secondAttribute="leading" id="INF-d0-0Z6"/>
                             <constraint firstItem="9m9-NY-jdS" firstAttribute="leading" secondItem="cEA-xW-VBD" secondAttribute="leading" constant="20" id="JRI-Uf-P8j"/>
                             <constraint firstItem="6aH-J2-zX7" firstAttribute="leading" secondItem="cEA-xW-VBD" secondAttribute="leading" constant="20" id="Koj-eX-p2o"/>
                             <constraint firstItem="cEA-xW-VBD" firstAttribute="trailing" secondItem="6aH-J2-zX7" secondAttribute="trailing" constant="20" id="NPi-ue-nZ6"/>
@@ -209,6 +215,7 @@
                             <constraint firstItem="Vpa-x4-wNM" firstAttribute="top" secondItem="6aH-J2-zX7" secondAttribute="bottom" constant="20" id="fGN-Gu-vpm"/>
                             <constraint firstItem="aHO-iH-kA4" firstAttribute="top" secondItem="cEA-xW-VBD" secondAttribute="top" constant="20" id="iiB-Xb-t6z"/>
                             <constraint firstItem="aHO-iH-kA4" firstAttribute="centerX" secondItem="Yvj-ju-mzY" secondAttribute="centerX" id="pzF-WG-P19"/>
+                            <constraint firstItem="ce1-J9-lWy" firstAttribute="trailing" secondItem="6aH-J2-zX7" secondAttribute="trailing" id="x6l-Oe-uBA"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="uwp-wA-mfq" appends="YES" id="Gf0-xk-Jcp"/>
@@ -236,7 +243,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1247" y="665"/>
+            <point key="canvasLocation" x="1246.5648854961833" y="664.78873239436621"/>
         </scene>
         <!--Setting Profile View Controller-->
         <scene sceneID="LRe-p4-Vsi">
