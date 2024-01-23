@@ -86,8 +86,12 @@ extension SettingProfileViewController: UICollectionViewDataSource, UICollection
             cell.layer.masksToBounds = false
             cell.layer.cornerRadius = cell.frame.height / 2
             cell.clipsToBounds = true
+            
         }
         
+        // 옆옆자리 분이 주신 코드 (전 화면에서 선택된 이미지가 다음 화면에서 다른 이미지 클릭 시 해제)
+        collectionView.selectItem(at: [0, newImg], animated: false, scrollPosition: .init())
+
         cell.profileImg.image = UIImage(named: "profile\(indexPath.row+1)")
         
         return cell
@@ -114,6 +118,8 @@ extension SettingProfileViewController: UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        
+        print(#function)
         
         if let cell = collectionView.cellForItem(at: indexPath) as? UICollectionViewCell {
             cell.layer.borderColor = UIColor.clear.cgColor

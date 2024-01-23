@@ -135,7 +135,6 @@ class KeywordResultViewController: UIViewController {
 
 extension KeywordResultViewController:  UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        print("prefetch \(indexPaths)")
         
         for item in indexPaths {
             if list.items.count - 3 == item.row {

@@ -7,7 +7,6 @@
 
 import UIKit
 
-// 여기까지 온것도 나 자 신 대 단  하지만 이어붙이지 못함
 class SettingViewController: UIViewController {
 
     @IBOutlet var profileImg: UIImageView!
@@ -27,7 +26,10 @@ extension SettingViewController {
     func configureUI() {
         navigationItem.title = "설정"
         
-        profileImg.image = .profile1
+//        profileImg.image = .profile1
+//        UserDefaults.standard.string(forKey: "Nickname")
+        guard let profile = UserDefaults.standard.string(forKey: "Nickname") else { return }
+        profileImg.image = UIImage(named: profile)
         profileImg.contentMode = .scaleAspectFill
         profileImg.layer.masksToBounds = false
         profileImg.layer.cornerRadius = profileImg.frame.height / 2

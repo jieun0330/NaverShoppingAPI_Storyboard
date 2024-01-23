@@ -62,7 +62,7 @@
             </objects>
             <point key="canvasLocation" x="1246.5648854961833" y="2.8169014084507045"/>
         </scene>
-        <!--검색-->
+        <!--Main View Controller-->
         <scene sceneID="iDX-VT-gJ4">
             <objects>
                 <viewController storyboardIdentifier="MainViewController" id="3uq-Ol-7nC" customClass="MainViewController" customModule="SeSAC_Recap" customModuleProvider="target" sceneMemberID="viewController">
@@ -71,7 +71,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="6Ci-JC-Oe6">
-                                <rect key="frame" x="0.0" y="59" width="393" height="55"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="1v0-wp-qbT"/>
                                 </constraints>
@@ -124,7 +124,6 @@
                             <constraint firstItem="DAG-p5-nxB" firstAttribute="trailing" secondItem="trL-Qo-sdo" secondAttribute="trailing" id="xQG-Y6-ZGQ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="검색" image="magnifyingglass" catalog="system" id="cYD-7M-LLK"/>
                     <navigationItem key="navigationItem" id="30k-DK-fic"/>
                     <connections>
                         <outlet property="deleteAll" destination="TIt-JX-Mbe" id="Nun-ho-QaN"/>
@@ -135,7 +134,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yMW-cs-ady" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5108" y="-455"/>
+            <point key="canvasLocation" x="6034.3511450381675" y="-455.63380281690144"/>
         </scene>
         <!--Nickname View Controller-->
         <scene sceneID="Gvo-ix-yKL">
@@ -463,7 +462,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WrW-Ei-YCu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5109" y="724"/>
+            <point key="canvasLocation" x="6034" y="268"/>
         </scene>
         <!--Keyword Result View Controller-->
         <scene sceneID="ssO-bj-H2B">
@@ -554,7 +553,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vhz-gH-1Ek" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8312.2137404580153" y="-138.02816901408451"/>
+            <point key="canvasLocation" x="9238.9312977099235" y="-138.02816901408451"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="WoR-pL-mXD">
@@ -591,10 +590,11 @@
             </objects>
             <point key="canvasLocation" x="10046.564885496184" y="509.85915492957747"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--설정-->
         <scene sceneID="Jtw-6c-C9A">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vlF-Vl-8U0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="설정" image="person" catalog="system" id="EKp-DM-aXa"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5SW-k9-dE1">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -607,12 +607,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rsW-aY-giw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4182" y="744"/>
+            <point key="canvasLocation" x="5108" y="268"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="mA3-p0-Bxg">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ge2-ey-sh3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="mainTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="ge2-ey-sh3" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="unv-AY-ypn">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -620,12 +620,13 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="3uq-Ol-7nC" kind="relationship" relationship="viewControllers" id="Yhj-1S-26N"/>
+                        <segue destination="bjC-GQ-0AL" kind="relationship" relationship="viewControllers" id="Yhj-1S-26N"/>
+                        <segue destination="vlF-Vl-8U0" kind="relationship" relationship="viewControllers" id="eLL-39-wXf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EDF-Qq-tmo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4181" y="-311"/>
+            <point key="canvasLocation" x="4137" y="-226"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ETh-mg-RW2">
@@ -645,9 +646,29 @@
             </objects>
             <point key="canvasLocation" x="9119.8473282442737" y="509.85915492957747"/>
         </scene>
+        <!--검색-->
+        <scene sceneID="kb9-Ti-lMe">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bjC-GQ-0AL" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="검색" image="magnifyingglass" catalog="system" id="cYD-7M-LLK"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hz5-Pl-7zn">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3uq-Ol-7nC" kind="relationship" relationship="rootViewController" id="qez-Mt-8QP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nnh-FW-Efg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5107.6335877862593" y="-455.63380281690144"/>
+        </scene>
     </scenes>
     <resources>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="person" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

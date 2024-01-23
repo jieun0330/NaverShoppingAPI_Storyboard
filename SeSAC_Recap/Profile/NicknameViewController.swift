@@ -69,6 +69,7 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         navigationController?.pushViewController(vc, animated: true)
         
         UserDefaults.standard.set(nicknameTextField.text, forKey: "Nickname")
+        UserDefaults.standard.setValue(true, forKey: "UserState")
     }
     
     @IBAction func imageClicked(_ sender: UITapGestureRecognizer) {
