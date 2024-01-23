@@ -156,6 +156,7 @@ extension KeywordResultViewController {
         numberOfKeywords.textColor = Colors.pointColor
         numberOfKeywords.font = Fonts.font13
         
+        
     }
     
 }

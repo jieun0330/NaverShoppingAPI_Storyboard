@@ -64,12 +64,22 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // 닉네임 완료 버튼을 눌렀을 때
     @objc func doneButtonClicked() {
-        let vc = storyboard?.instantiateViewController(identifier: MainViewController.identifier) as! MainViewController
-        navigationController?.pushViewController(vc, animated: true)
-        
+        // 닉네임 저장하고
         UserDefaults.standard.set(nicknameTextField.text, forKey: "Nickname")
+        // true를 저장해서 앱 껐다 켰을 때 메인 화면으로 이동
         UserDefaults.standard.setValue(true, forKey: "UserState")
+        
+        // mainTabBarController 보여주기
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        let sceneDelegate = windowScene?.delegate as? SceneDelegate
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "mainTabBarController") as! UITabBarController
+        
+        sceneDelegate?.window?.rootViewController = vc
+        sceneDelegate?.window?.makeKeyAndVisible()
     }
     
     @IBAction func imageClicked(_ sender: UITapGestureRecognizer) {

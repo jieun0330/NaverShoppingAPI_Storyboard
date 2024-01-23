@@ -649,6 +649,7 @@
         <!--검색-->
         <scene sceneID="kb9-Ti-lMe">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nnh-FW-Efg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bjC-GQ-0AL" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="검색" image="magnifyingglass" catalog="system" id="cYD-7M-LLK"/>
                     <toolbarItems/>
@@ -661,7 +662,6 @@
                         <segue destination="3uq-Ol-7nC" kind="relationship" relationship="rootViewController" id="qez-Mt-8QP"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Nnh-FW-Efg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5107.6335877862593" y="-455.63380281690144"/>
         </scene>
