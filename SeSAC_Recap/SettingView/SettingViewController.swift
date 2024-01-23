@@ -7,23 +7,20 @@
 
 import UIKit
 
+// 여기까지 온것도 나 자 신 대 단  하지만 이어붙이지 못함
 class SettingViewController: UIViewController {
 
     @IBOutlet var profileImg: UIImageView!
     @IBOutlet var id: UILabel!
     @IBOutlet var numberOfProduct: UILabel!
     @IBOutlet var likeLabel: UILabel!
-    
-    
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         configureUI()
     }
     
-
 }
 
 extension SettingViewController {
@@ -45,10 +42,6 @@ extension SettingViewController {
         numberOfProduct.textColor = Colors.pointColor
         
         likeLabel.text = "을 좋아하고 있어요!"
-        
-        
-//        likeLabel.text = ""
-        
-        
+ 
     }
 }

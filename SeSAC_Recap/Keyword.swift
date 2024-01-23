@@ -32,22 +32,3 @@ struct Item: Codable {
 //        case productType, brand, maker, category1, category2, category3, category4
     }
 }
-
-//enum Brand: String, Codable {
-//    case empty = ""
-//    case 스타모빌 = "스타모빌"
-//    case 쌍용 = "쌍용"
-//}
-//
-//enum Category1: String, Codable {
-//    case 스포츠레저 = "스포츠/레저"
-//}
-//
-//enum Category2: String, Codable {
-//    case 캠핑 = "캠핑"
-//}
-//
-//enum Category3: String, Codable {
-//    case 기타캠핑용품 = "기타캠핑용품"
-//}
-//

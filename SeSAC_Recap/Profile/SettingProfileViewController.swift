@@ -29,7 +29,6 @@ extension SettingProfileViewController {
     func configureUI() {
         navigationItem.title = "프로필 설정"
         
-        // 2. clickimg에 있는걸 보여준다
         let newImg = UserDefaults.standard.integer(forKey: "clickImg")
         profileImg.image = UIImage(named: "profile\(newImg+1)")
         profileImg.contentMode = .scaleAspectFill
@@ -38,7 +37,6 @@ extension SettingProfileViewController {
         profileImg.clipsToBounds = true
         profileImg.layer.borderWidth = 5
         profileImg.layer.borderColor = Colors.pointColor.cgColor
-        
     }
     
     func configureView() {
@@ -56,6 +54,8 @@ extension SettingProfileViewController {
         let spacing: CGFloat = 10
         let cellWidth = UIScreen.main.bounds.width - (spacing * 5)
         
+        // 이 아이템 사이즈나 spacing이나 이런것들을 계속 숫자를 바꾸고 빌드해보고 하는 시간이 아깝다고 생각이 들었다
+        // 한번 개념을 정리하든 해야겠다
         layout.itemSize = CGSize(width: cellWidth / 4, height: cellWidth / 4)
         layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
         layout.minimumLineSpacing = spacing

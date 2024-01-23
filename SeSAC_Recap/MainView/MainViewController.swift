@@ -17,13 +17,18 @@ class MainViewController: UIViewController {
     var list: Welcome = Welcome(total: 0, items: [])
     var keywordList: [String] = []
     
+    // 아래 탭바 구현을 Window 뭐 해야하는데 진짜 절대 못함 절대 모름
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
+        
+        // delegate는 viewDidLoad에 있어야되는건가? 아님 extension쪽으로 빼도 되는건가?
+        // searchBar 위아래 라인 지워야함
         searchBar.delegate = self
         keywordView.delegate = self
         keywordView.dataSource = self
+        
         let xib = UINib(nibName: KeywordResultsTableViewCell.identifier, bundle: nil)
         keywordView.register(xib, forCellReuseIdentifier: KeywordResultsTableViewCell.identifier)
         
@@ -31,7 +36,6 @@ class MainViewController: UIViewController {
         keywordView.register(xib2, forCellReuseIdentifier: NoKeywordTableViewCell.identifier)
         
         deleteAll.addTarget(self, action: #selector(deleteAllClicked), for: .touchUpInside)
-        
         
     }
     
@@ -45,7 +49,6 @@ class MainViewController: UIViewController {
         
         searchBar.text = ""
     }
-    
 
 }
 
@@ -66,6 +69,7 @@ extension MainViewController {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if keywordList.count == 0 {
+            // height를 이렇게 주면 안될것같긴 하지만(?), 이미지는 잘 보이는데 이 화면에선 스크롤이 없었으면 좋겠음
             return UIScreen.main.bounds.height
         } else {
             return 52
@@ -136,6 +140,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
             cell.selectionStyle = .none
             
             cell.deleteButton.tag = indexPath.row
+            // sender:를 쓰는건 모아나가 알려줘서 썼는데, 다시 로직 흐름을 이해해야겠다
             cell.deleteButton.addTarget(self, action: #selector(deleteButtonClicked(sender:)), for: .touchUpInside)
             
             return cell
@@ -145,6 +150,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
     
     @objc func deleteButtonClicked(sender: UIButton) {
         UserDefaults.standard.removeObject(forKey: "키워드")
+        // at: 다음에 뭘 써야 할지 몰라서 위에 sender:
         keywordList.remove(at: sender.tag)
         keywordView.reloadData()
     }

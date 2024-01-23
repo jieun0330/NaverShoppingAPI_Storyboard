@@ -7,15 +7,14 @@
 
 import UIKit
 
-//Mark: - struct와 Extension 구분해서 정리하고, 개념도 정리하기
-
-//Mark: - Color Extension 개념 정리하기
+// struct와 Extension 구분해서 정리하고 개념도 정리하기
 struct Colors {
     static let pointColor = UIColor.init(red: 73, green: 200, blue: 146)
     static let backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 1)
     static let textColor = UIColor.init(red: 255, green: 255, blue: 255, alpha: 1)
 }
 
+// guideline에 있어서 정리한건데 이렇게 할 필요가 없었던걸까 ?.?
 struct Fonts {
     static let font13 = UIFont.systemFont(ofSize: 13)
     static let font14 = UIFont.systemFont(ofSize: 14)

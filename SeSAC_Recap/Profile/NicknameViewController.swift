@@ -15,14 +15,12 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var nicknameCondition: UILabel!
     @IBOutlet var doneButton: UIButton!
     
-//    let nickname = UserDefaults.standard.string(forKey: "Nickname")
     let randomNum = Int.random(in: 1...14)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 1. clickImg에 넣어준다
         UserDefaults.standard.setValue(randomNum, forKey: "clickImg")
-        print("초기", randomNum)
+        // 14가 불러질 때 프로필이미지가 안뜨는것같은데 미확인
         profileImg.image = UIImage(named: "profile\(UserDefaults.standard.integer(forKey: "clickImg"))")
         
         configureUI()
@@ -34,9 +32,8 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         doneButton.addTarget(self, action: #selector(doneButtonClicked), for: .touchUpInside)
         doneButton.isEnabled = false
         
-//        UserDefaults.standard.set(nicknameTextField.text, forKey: "Nickname")
+        // 앱 껐다가 키면 닉네임은 있는데, 완료 버튼이 비활성화 되어있음
         nicknameTextField.text = UserDefaults.standard.string(forKey: "Nickname")
-
         
     }
     
@@ -44,13 +41,14 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         let num = UserDefaults.standard.integer(forKey: "clickImg")
         profileImg.image = UIImage(named: "profile\(num+1)")
         
-        
     }
     
     @objc func textFieldDidChange() {
         
         let num = CharacterSet(charactersIn: "0123456789")
         let char = CharacterSet(charactersIn: "#@$%")
+        // whitespace 작업 미완성
+//        let whitespace = nicknameTextField.text?.trimmingCharacters(in: .whitespaces)
         
         if nicknameTextField.text!.count < 2 || nicknameTextField.text!.count >= 10 {
             nicknameCondition.text = "2글자 이상 10글자 미만으로 설정해주세요"
@@ -82,7 +80,6 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func keyboardDismiss(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
-//        UserDefaults.standard.set(nicknameTextField.text, forKey: "Nickname")
     }
 }
 

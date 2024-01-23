@@ -7,6 +7,7 @@
 
 import UIKit
 
+// 컬러, 버튼, 폰트 이런걸 다 따로 놔야하나? ? ? ? 
 extension UIButton {
     func configurePrimaryStyle(title: String) {
         self.setTitle(title, for: .normal)

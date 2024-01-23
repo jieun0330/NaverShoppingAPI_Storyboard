@@ -28,6 +28,8 @@ class KeywordResultViewController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
+        // 버튼 클릭 효과 구현 못함
+        // 상품 하트 구현 못함
         buttonType(accuracy, title: "정확도")
         buttonType(dateButton, title: "날짜순")
         buttonType(highPrice, title: "가격높은순")
@@ -42,6 +44,7 @@ class KeywordResultViewController: UIViewController {
         setLayout()
         
         let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
+        // [index]가 아닌 다른 방법이 있는지 찾아보고싶다
         navigationItem.title = searchedKeywordList[index]
         
         callRequest(text: searchedKeywordList[index], sort: "sim")
@@ -107,6 +110,7 @@ class KeywordResultViewController: UIViewController {
     }
     
     func setLayout() {
+        // 아직 UICollectionViewFlowLayout이 무슨 역할을 하는지 모름
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 5
         let cellWidth = UIScreen.main.bounds.width - (spacing * 3)
@@ -136,6 +140,7 @@ extension KeywordResultViewController:  UICollectionViewDataSourcePrefetching {
         for item in indexPaths {
             if list.items.count - 3 == item.row {
                 
+                // as!와 as?의 역할을 잘 모름
                 guard let searchKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] else { return }
                 
                 display += 30
@@ -163,13 +168,13 @@ extension KeywordResultViewController: UICollectionViewDataSource, UICollectionV
         
         vc.productID = list.items[indexPath.row].productID
         
+        // push와 present와 pop을 구분해서 알아둬야 할 것 지은아
         navigationController?.pushViewController(vc, animated: true)
         
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        print(list.items.count)
         return list.items.count
     }
     
@@ -179,6 +184,8 @@ extension KeywordResultViewController: UICollectionViewDataSource, UICollectionV
         
         cell.mallName.text = list.items[indexPath.row].mallName
         cell.image.kf.setImage(with: URL(string: list.items[indexPath.row].image))
+        // 두줄 구현 못함
+        // 상품명에 <b> 삭제 못함
         cell.title.text = list.items[indexPath.row].title
         
         let numberFormatter: NumberFormatter = NumberFormatter()
