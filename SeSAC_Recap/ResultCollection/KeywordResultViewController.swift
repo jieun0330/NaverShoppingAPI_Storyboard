@@ -23,6 +23,8 @@ class KeywordResultViewController: UIViewController {
     var index: Int = 0
     var display = 30
     var sort = "sim"
+    var likeNum = 0
+    var start = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,39 +47,53 @@ class KeywordResultViewController: UIViewController {
         
         let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
         // [index]가 아닌 다른 방법이 있는지 찾아보고싶다
-        navigationItem.title = "여기 자꾸 터지네"
+        navigationItem.title = searchedKeywordList[index]
         
-//        callRequest(text: searchedKeywordList[index], sort: "sim")
+        callRequest(text: searchedKeywordList[index], sort: "sim")
         
         navigationItem.backButtonTitle = ""
+        navigationController?.navigationBar.tintColor = .white
         
     }
     
     @IBAction func accurayClicked(_ sender: UIButton) {
         let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
         callRequest(text: searchedKeywordList[index], sort: "sim")
+        
+        sender.backgroundColor = .white
+        sender.setTitleColor(.black, for: .normal)
     }
     
     @IBAction func dateClicked(_ sender: UIButton) {
         let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
         callRequest(text: searchedKeywordList[index], sort: "date")
+        
+        sender.backgroundColor = .white
+        sender.setTitleColor(.black, for: .normal)
     }
     
     @IBAction func highPriceClicked(_ sender: UIButton) {
         let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
         callRequest(text: searchedKeywordList[index], sort: "dsc")
+        
+        sender.backgroundColor = .white
+        sender.setTitleColor(.black, for: .normal)
     }
     
     @IBAction func lowPriceClicked(_ sender: UIButton) {
         let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
         callRequest(text: searchedKeywordList[index], sort: "asc")
+        
+        sender.backgroundColor = .white
+        sender.setTitleColor(.black, for: .normal)
     }
     
     
     func callRequest(text: String, sort: String) {
         
+        print("1", start)
         let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        let url = "https://openapi.naver.com/v1/search/shop?query=\(query)&display=\(display)&sort=\(sort)"
+        let url = "https://openapi.naver.com/v1/search/shop?query=\(query)&display=\(display)&sort=\(sort)&start=\(start)"
         let headers: HTTPHeaders = [
             "X-Naver-Client-Id": APIKey.clientID,
             "X-Naver-Client-Secret": APIKey.clientSecret
@@ -89,7 +105,7 @@ class KeywordResultViewController: UIViewController {
                 switch response.result {
                 case .success(let success):
                     
-                    if self.display == 30 {
+                    if self.start == 1 {
                         self.list = success
                         
                         let numberFormatter: NumberFormatter = NumberFormatter()
@@ -97,10 +113,11 @@ class KeywordResultViewController: UIViewController {
                         let result: String = numberFormatter.string(for: self.list.total)!
                         self.numberOfKeywords.text = "\(result)개의 검색 결과"
                         
-                        
                     } else {
                         self.list.items.append(contentsOf: success.items)
+                        
                     }
+                    
                     self.resultView.reloadData()
                     
                 case .failure(let failure):
@@ -141,13 +158,13 @@ extension KeywordResultViewController:  UICollectionViewDataSourcePrefetching {
                 
                 // as!와 as?의 역할을 잘 모름
                 guard let searchKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] else { return }
-                
-                display += 30
+
+                start += 30
+                callRequest(text: searchKeywordList[index], sort: "sim")
+            
             }
         }
-        
     }
-    
 }
 
 extension KeywordResultViewController {
@@ -155,22 +172,17 @@ extension KeywordResultViewController {
         
         numberOfKeywords.textColor = Colors.pointColor
         numberOfKeywords.font = Fonts.font13
-        
-        
     }
-    
 }
 
 extension KeywordResultViewController: UICollectionViewDataSource, UICollectionViewDelegate  {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(identifier: WebViewController.identifier) as! WebViewController
-        
         vc.productID = list.items[indexPath.row].productID
         
         // push와 present와 pop을 구분해서 알아둬야 할 것 지은아
         navigationController?.pushViewController(vc, animated: true)
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -194,7 +206,15 @@ extension KeywordResultViewController: UICollectionViewDataSource, UICollectionV
         
         cell.lprice.text = result
         
+        cell.likeButton.addTarget(self, action: #selector(likeButtonClicked(sender:)), for: .touchUpInside)
+        
         return cell
+    }
+    
+    @objc func likeButtonClicked(sender: UIButton) {
+        sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        UserDefaultManager.shared.likeNum.append(list.items[sender.tag].productID)
+        resultView.reloadData()
     }
 }
 

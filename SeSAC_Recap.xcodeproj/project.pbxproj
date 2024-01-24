@@ -25,6 +25,7 @@
 		C29E8B392B60E42700894D23 /* NicknameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C29E8B372B60E42700894D23 /* NicknameTableViewCell.xib */; };
 		C29E8B3C2B60E44500894D23 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E8B3A2B60E44500894D23 /* SettingTableViewCell.swift */; };
 		C29E8B3D2B60E44500894D23 /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C29E8B3B2B60E44500894D23 /* SettingTableViewCell.xib */; };
+		C29E8B3F2B6100EE00894D23 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E8B3E2B6100EE00894D23 /* UserDefaultManager.swift */; };
 		C2A971DB2B5E964600754A22 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A971DA2B5E964600754A22 /* WebViewController.swift */; };
 		C2B0035C2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0035A2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.swift */; };
 		C2B0035D2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2B0035B2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.xib */; };
@@ -61,6 +62,7 @@
 		C29E8B372B60E42700894D23 /* NicknameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NicknameTableViewCell.xib; sourceTree = "<group>"; };
 		C29E8B3A2B60E44500894D23 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		C29E8B3B2B60E44500894D23 /* SettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
+		C29E8B3E2B6100EE00894D23 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		C2A971DA2B5E964600754A22 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		C2B0035A2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordResultsTableViewCell.swift; sourceTree = "<group>"; };
 		C2B0035B2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeywordResultsTableViewCell.xib; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				C20F83A52B591CF5006B2463 /* Assets.xcassets */,
 				C20F83A72B591CF5006B2463 /* LaunchScreen.storyboard */,
 				C20F83AA2B591CF5006B2463 /* Info.plist */,
+				C29E8B3E2B6100EE00894D23 /* UserDefaultManager.swift */,
 			);
 			path = SeSAC_Recap;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				C2F9EFD32B59486500D0BBA1 /* NicknameViewController.swift in Sources */,
 				C2F9EFCE2B59378B00D0BBA1 /* OnboardingViewController.swift in Sources */,
 				C2F9EFE32B5AB25F00D0BBA1 /* MainViewController.swift in Sources */,
+				C29E8B3F2B6100EE00894D23 /* UserDefaultManager.swift in Sources */,
 				C2F9EFEA2B5ABD7300D0BBA1 /* ProfileImgCollectionViewCell.swift in Sources */,
 				C2F9EFF32B5ACD6800D0BBA1 /* SettingViewController.swift in Sources */,
 				C29E8B382B60E42700894D23 /* NicknameTableViewCell.swift in Sources */,
