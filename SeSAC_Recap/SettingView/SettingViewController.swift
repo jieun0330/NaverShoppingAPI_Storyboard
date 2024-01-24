@@ -7,43 +7,81 @@
 
 import UIKit
 
-class SettingViewController: UIViewController {
+enum Setting: CaseIterable {
+    case setting
+    
+    var title: [String] {
+        switch self {
+        case .setting:
+            return ["공지사항", "자주 묻는 질문", "1:1 문의", "알림 설정", "처음부터 시작하기"]
+        }
+    }
+}
 
-    @IBOutlet var profileImg: UIImageView!
-    @IBOutlet var id: UILabel!
-    @IBOutlet var numberOfProduct: UILabel!
-    @IBOutlet var likeLabel: UILabel!
-        
+class SettingViewController: UIViewController {
+    
+    @IBOutlet var settingView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
+        configureView()
+        settingView.delegate = self
+        settingView.dataSource = self
+        
     }
-    
 }
 
 extension SettingViewController {
     func configureUI() {
         navigationItem.title = "설정"
-        
-//        profileImg.image = .profile1
-//        UserDefaults.standard.string(forKey: "Nickname")
-        guard let profile = UserDefaults.standard.string(forKey: "Nickname") else { return }
-        profileImg.image = UIImage(named: profile)
-        profileImg.contentMode = .scaleAspectFill
-        profileImg.layer.masksToBounds = false
-        profileImg.layer.cornerRadius = profileImg.frame.height / 2
-        profileImg.clipsToBounds = true
-        profileImg.layer.borderWidth = 3
-        profileImg.layer.borderColor = Colors.pointColor.cgColor
-        
-        id.text = "아이디"
-        id.font = Fonts.font13
-        
-        numberOfProduct.text = "00개의 상품"
-        numberOfProduct.textColor = Colors.pointColor
-        
-        likeLabel.text = "을 좋아하고 있어요!"
- 
     }
+    
+    func configureView() {
+        let xib = UINib(nibName: NicknameTableViewCell.identifier, bundle: nil)
+        settingView.register(xib, forCellReuseIdentifier: NicknameTableViewCell.identifier)
+        
+        let xib2 = UINib(nibName: SettingTableViewCell.identifier, bundle: nil)
+        settingView.register(xib2, forCellReuseIdentifier: SettingTableViewCell.identifier)
+    }
+}
+
+
+extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
+        } else {
+            return 5
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: NicknameTableViewCell.identifier, for: indexPath) as! NicknameTableViewCell
+            
+            return cell
+        } else {
+            let cell2 = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier, for: indexPath) as! SettingTableViewCell
+            
+            cell2.setting.text = Setting.setting.title[indexPath.row]
+            
+            return cell2
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 80
+        } else {
+            return 50
+        }
+    }
+    
 }

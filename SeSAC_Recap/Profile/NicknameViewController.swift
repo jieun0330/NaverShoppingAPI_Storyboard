@@ -20,6 +20,7 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         UserDefaults.standard.setValue(randomNum, forKey: "clickImg")
+        print(randomNum)
         // 14가 불러질 때 프로필이미지가 안뜨는것같은데 미확인
         profileImg.image = UIImage(named: "profile\(UserDefaults.standard.integer(forKey: "clickImg"))")
         

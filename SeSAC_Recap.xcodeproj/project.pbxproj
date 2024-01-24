@@ -21,6 +21,10 @@
 		C25FC4552B5BDE68000D8F6E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C25FC4542B5BDE68000D8F6E /* Kingfisher */; };
 		C25FC45D2B5BE0DF000D8F6E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C25FC45C2B5BE0DF000D8F6E /* .gitignore */; };
 		C25FC45F2B5BE120000D8F6E /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25FC45E2B5BE120000D8F6E /* APIKey.swift */; };
+		C29E8B382B60E42700894D23 /* NicknameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E8B362B60E42700894D23 /* NicknameTableViewCell.swift */; };
+		C29E8B392B60E42700894D23 /* NicknameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C29E8B372B60E42700894D23 /* NicknameTableViewCell.xib */; };
+		C29E8B3C2B60E44500894D23 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E8B3A2B60E44500894D23 /* SettingTableViewCell.swift */; };
+		C29E8B3D2B60E44500894D23 /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C29E8B3B2B60E44500894D23 /* SettingTableViewCell.xib */; };
 		C2A971DB2B5E964600754A22 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A971DA2B5E964600754A22 /* WebViewController.swift */; };
 		C2B0035C2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0035A2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.swift */; };
 		C2B0035D2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2B0035B2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.xib */; };
@@ -53,6 +57,10 @@
 		C25FC4502B5BD8F3000D8F6E /* ResultCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultCollectionViewCell.xib; sourceTree = "<group>"; };
 		C25FC45C2B5BE0DF000D8F6E /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		C25FC45E2B5BE120000D8F6E /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		C29E8B362B60E42700894D23 /* NicknameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameTableViewCell.swift; sourceTree = "<group>"; };
+		C29E8B372B60E42700894D23 /* NicknameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NicknameTableViewCell.xib; sourceTree = "<group>"; };
+		C29E8B3A2B60E44500894D23 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		C29E8B3B2B60E44500894D23 /* SettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
 		C2A971DA2B5E964600754A22 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		C2B0035A2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordResultsTableViewCell.swift; sourceTree = "<group>"; };
 		C2B0035B2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeywordResultsTableViewCell.xib; sourceTree = "<group>"; };
@@ -218,6 +226,10 @@
 			isa = PBXGroup;
 			children = (
 				C2F9EFF22B5ACD6800D0BBA1 /* SettingViewController.swift */,
+				C29E8B362B60E42700894D23 /* NicknameTableViewCell.swift */,
+				C29E8B372B60E42700894D23 /* NicknameTableViewCell.xib */,
+				C29E8B3A2B60E44500894D23 /* SettingTableViewCell.swift */,
+				C29E8B3B2B60E44500894D23 /* SettingTableViewCell.xib */,
 			);
 			path = SettingView;
 			sourceTree = "<group>";
@@ -288,6 +300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C29E8B392B60E42700894D23 /* NicknameTableViewCell.xib in Resources */,
 				C2B003612B5CEE8500AA52F3 /* NoKeywordTableViewCell.xib in Resources */,
 				C2F9EFEB2B5ABD7300D0BBA1 /* ProfileImgCollectionViewCell.xib in Resources */,
 				C20F83A92B591CF5006B2463 /* LaunchScreen.storyboard in Resources */,
@@ -295,6 +308,7 @@
 				C2B0035D2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.xib in Resources */,
 				C20F83A62B591CF5006B2463 /* Assets.xcassets in Resources */,
 				C25FC45D2B5BE0DF000D8F6E /* .gitignore in Resources */,
+				C29E8B3D2B60E44500894D23 /* SettingTableViewCell.xib in Resources */,
 				C20F83A42B591CF4006B2463 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -315,6 +329,7 @@
 				C25FC4512B5BD8F3000D8F6E /* ResultCollectionViewCell.swift in Sources */,
 				C2F9EFD12B59392400D0BBA1 /* UIViewControllerExtension.swift in Sources */,
 				C2F9EFDA2B5A325200D0BBA1 /* Protocol.swift in Sources */,
+				C29E8B3C2B60E44500894D23 /* SettingTableViewCell.swift in Sources */,
 				C20F839F2B591CF4006B2463 /* SceneDelegate.swift in Sources */,
 				C25FC44E2B5BD39B000D8F6E /* Keyword.swift in Sources */,
 				C2B003602B5CEE8500AA52F3 /* NoKeywordTableViewCell.swift in Sources */,
@@ -325,6 +340,7 @@
 				C2F9EFE32B5AB25F00D0BBA1 /* MainViewController.swift in Sources */,
 				C2F9EFEA2B5ABD7300D0BBA1 /* ProfileImgCollectionViewCell.swift in Sources */,
 				C2F9EFF32B5ACD6800D0BBA1 /* SettingViewController.swift in Sources */,
+				C29E8B382B60E42700894D23 /* NicknameTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

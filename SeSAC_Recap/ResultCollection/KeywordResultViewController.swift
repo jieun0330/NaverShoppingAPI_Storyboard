@@ -45,9 +45,9 @@ class KeywordResultViewController: UIViewController {
         
         let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
         // [index]가 아닌 다른 방법이 있는지 찾아보고싶다
-        navigationItem.title = searchedKeywordList[index]
+        navigationItem.title = "여기 자꾸 터지네"
         
-        callRequest(text: searchedKeywordList[index], sort: "sim")
+//        callRequest(text: searchedKeywordList[index], sort: "sim")
         
         navigationItem.backButtonTitle = ""
         

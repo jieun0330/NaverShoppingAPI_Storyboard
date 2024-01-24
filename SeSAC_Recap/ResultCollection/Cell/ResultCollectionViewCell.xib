@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -54,6 +55,10 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OTH-Sy-Hj7">
+                        <rect key="frame" x="340" y="280.33333333333331" width="24" height="14"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -61,8 +66,11 @@
                 <constraint firstItem="lY4-5z-MVC" firstAttribute="leading" secondItem="Vi1-ix-xoP" secondAttribute="leading" id="3yy-J2-LQz"/>
                 <constraint firstItem="eFx-Db-ftg" firstAttribute="leading" secondItem="RUl-oS-P4w" secondAttribute="leading" id="8Kq-J1-hYq"/>
                 <constraint firstItem="lY4-5z-MVC" firstAttribute="top" secondItem="Vi1-ix-xoP" secondAttribute="bottom" constant="10" id="NE5-5K-RBz"/>
+                <constraint firstItem="OTH-Sy-Hj7" firstAttribute="leading" secondItem="fdg-cc-nBP" secondAttribute="leading" id="P2A-HZ-dYI"/>
                 <constraint firstItem="RUl-oS-P4w" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="Rcg-Vp-HSG"/>
+                <constraint firstItem="OTH-Sy-Hj7" firstAttribute="bottom" secondItem="fdg-cc-nBP" secondAttribute="bottom" id="T3I-o9-R4H"/>
                 <constraint firstItem="eFx-Db-ftg" firstAttribute="top" secondItem="RUl-oS-P4w" secondAttribute="bottom" constant="10" id="cDZ-nP-ktH"/>
+                <constraint firstItem="OTH-Sy-Hj7" firstAttribute="top" secondItem="fdg-cc-nBP" secondAttribute="top" id="cjh-th-Frh"/>
                 <constraint firstItem="RUl-oS-P4w" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="g02-4J-ZWW"/>
                 <constraint firstItem="Vi1-ix-xoP" firstAttribute="trailing" secondItem="RUl-oS-P4w" secondAttribute="trailing" id="kxa-gE-D2Z"/>
                 <constraint firstAttribute="trailing" secondItem="RUl-oS-P4w" secondAttribute="trailing" constant="10" id="ky9-9Q-BAP"/>
@@ -70,6 +78,7 @@
                 <constraint firstItem="Vi1-ix-xoP" firstAttribute="top" secondItem="eFx-Db-ftg" secondAttribute="bottom" constant="10" id="pNz-XM-fhG"/>
                 <constraint firstItem="fdg-cc-nBP" firstAttribute="bottom" secondItem="RUl-oS-P4w" secondAttribute="bottom" constant="-5" id="rie-ZW-PGa"/>
                 <constraint firstItem="Vi1-ix-xoP" firstAttribute="leading" secondItem="eFx-Db-ftg" secondAttribute="leading" id="zB5-We-wcH"/>
+                <constraint firstItem="OTH-Sy-Hj7" firstAttribute="trailing" secondItem="fdg-cc-nBP" secondAttribute="trailing" id="zPd-9V-dNs"/>
             </constraints>
             <size key="customSize" width="379" height="505"/>
             <connections>
@@ -82,4 +91,9 @@
             <point key="canvasLocation" x="390.07633587786256" y="179.92957746478874"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
