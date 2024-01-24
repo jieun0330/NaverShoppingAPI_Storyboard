@@ -15,9 +15,7 @@ class MainViewController: UIViewController {
     @IBOutlet var keywordView: UITableView!
     
     var list: Welcome = Welcome(total: 0, items: [])
-    var keywordList: [String] = []
     
-    // 아래 탭바 구현을 Window 뭐 해야하는데 진짜 절대 못함 절대 모름
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,7 +38,7 @@ class MainViewController: UIViewController {
     }
     
     @objc func deleteAllClicked() {
-        keywordList.removeAll()
+        UserDefaultManager.shared.keywords.removeAll()
         keywordView.reloadData()
     }
     
@@ -49,7 +47,7 @@ class MainViewController: UIViewController {
         
         searchBar.text = ""
     }
-
+    
 }
 
 extension MainViewController {
@@ -68,9 +66,9 @@ extension MainViewController {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if keywordList.count == 0 {
-            // height를 이렇게 주면 안될것같긴 하지만(?), 이미지는 잘 보이는데 이 화면에선 스크롤이 없었으면 좋겠음
-            return UIScreen.main.bounds.height
+        if UserDefaultManager.shared.keywords.count == 0 {
+            // 스크롤이 없애기
+            return 300
         } else {
             return 52
         }
@@ -80,7 +78,7 @@ extension MainViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: KeywordResultsTableViewCell.identifier, for: indexPath) as! KeywordResultsTableViewCell
         
-        UserDefaults.standard.set(keywordList, forKey: "키워드")
+        UserDefaults.standard.set(UserDefaultManager.shared.keywords, forKey: "키워드")
         keywordView.reloadData()
         
         let vc = storyboard?.instantiateViewController(identifier: KeywordResultViewController.identifier) as! KeywordResultViewController
@@ -88,15 +86,14 @@ extension MainViewController {
         navigationController?.pushViewController(vc, animated: true)
         
     }
-    
 }
 
 extension MainViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        keywordList.insert(searchBar.text!, at: 0)
-        UserDefaults.standard.set(keywordList, forKey: "키워드")
+        UserDefaultManager.shared.keywords.insert(searchBar.text!, at: 0)
+        UserDefaults.standard.set(UserDefaultManager.shared.keywords, forKey: "키워드")
         keywordView.reloadData()
         
         let vc = storyboard?.instantiateViewController(identifier: KeywordResultViewController.identifier) as! KeywordResultViewController
@@ -108,11 +105,12 @@ extension MainViewController: UISearchBarDelegate {
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(UserDefaultManager.shared.keywords.count)
         
-        if keywordList.count == 0 {
+        if UserDefaultManager.shared.keywords.count == 0 {
             return 1
         } else {
-            return keywordList.count
+            return UserDefaultManager.shared.keywords.count
         }
     }
     
@@ -120,7 +118,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
         
         tableView.separatorStyle = .none
         
-        if keywordList.count == 0 {
+        if UserDefaultManager.shared.keywords.count == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: NoKeywordTableViewCell.identifier, for: indexPath) as! NoKeywordTableViewCell
             
             cell.selectionStyle = .none
@@ -135,7 +133,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
             deleteAll.setTitleColor(Colors.pointColor, for: .normal)
             
             let cell = tableView.dequeueReusableCell(withIdentifier: KeywordResultsTableViewCell.identifier, for: indexPath) as! KeywordResultsTableViewCell
-            cell.keyword.text = keywordList[indexPath.row]
+            cell.keyword.text = UserDefaultManager.shared.keywords[indexPath.row]
             
             cell.selectionStyle = .none
             
@@ -151,7 +149,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
     @objc func deleteButtonClicked(sender: UIButton) {
         UserDefaults.standard.removeObject(forKey: "키워드")
         // at: 다음에 뭘 써야 할지 몰라서 위에 sender:
-        keywordList.remove(at: sender.tag)
+        UserDefaultManager.shared.keywords.remove(at: sender.tag)
         keywordView.reloadData()
     }
     

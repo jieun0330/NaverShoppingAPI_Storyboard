@@ -13,16 +13,12 @@ class KeywordResultsTableViewCell: UITableViewCell {
     @IBOutlet var keyword: UILabel!
     @IBOutlet var deleteButton: UIButton!
     
-    // ~(). 이렇게 부르는게 안좋은거같은데
-    var keywordList = MainViewController().keywordList
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         configureCell()
         
     }
-    
 }
 
 extension KeywordResultsTableViewCell {

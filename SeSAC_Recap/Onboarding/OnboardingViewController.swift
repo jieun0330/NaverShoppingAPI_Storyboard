@@ -21,7 +21,7 @@ class OnboardingViewController: UIViewController {
         configureUI()
         
     }
-
+    
     @objc func startButtonClicked() {
         let vc = storyboard?.instantiateViewController(identifier: NicknameViewController.identifier) as! NicknameViewController
         navigationController?.pushViewController(vc, animated: true)
@@ -34,9 +34,9 @@ extension OnboardingViewController {
         sesacShopping.image = .sesacShopping
         mainImg.image = .onboarding
         startButton.configurePrimaryStyle(title: "시작하기")
-
+        
         navigationItem.backButtonTitle = ""
         navigationController?.navigationBar.tintColor = .white
-
+        
     }
 }

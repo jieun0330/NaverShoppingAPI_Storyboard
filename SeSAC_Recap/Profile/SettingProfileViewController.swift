@@ -20,7 +20,7 @@ class SettingProfileViewController: UIViewController {
         configureUI()
         configureView()
         setLayout()
-
+        
     }
     
 }
@@ -91,14 +91,14 @@ extension SettingProfileViewController: UICollectionViewDataSource, UICollection
         
         // 옆옆자리 분이 주신 코드 (전 화면에서 선택된 이미지가 다음 화면에서 다른 이미지 클릭 시 해제)
         collectionView.selectItem(at: [0, newImg], animated: false, scrollPosition: .init())
-
+        
         cell.profileImg.image = UIImage(named: "profile\(indexPath.row+1)")
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            
+        
         profileImg.image = UIImage(named: "profile\(indexPath.row+1)")
         
         if let cell = collectionView.cellForItem(at: indexPath) as? UICollectionViewCell {
@@ -114,7 +114,7 @@ extension SettingProfileViewController: UICollectionViewDataSource, UICollection
             UserDefaults.standard.set(indexPath.row, forKey: "clickImg")
             
         }
-            
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

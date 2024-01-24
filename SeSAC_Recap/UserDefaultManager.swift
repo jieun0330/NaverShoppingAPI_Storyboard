@@ -14,34 +14,28 @@ class UserDefaultManager {
     static let shared = UserDefaultManager()
     
     enum UDKey: String {
-        case likeNum
-//        case target
+        case likes
+        case keywords
     }
     
     let ud = UserDefaults.standard
     
-    var likeNum: String {
-        // 값 가지고 오기
+    // 좋아요 누른 상품들 다 넣어놓기
+    var likes: [String] {
         get {
-            ud.string(forKey: UDKey.likeNum.rawValue) ?? ""
+            ud.stringArray(forKey: UDKey.likes.rawValue) ?? []
         }
-        // 값 저장
         set {
-            ud.set(newValue, forKey: UDKey.likeNum.rawValue)
+            ud.set(newValue, forKey: UDKey.likes.rawValue)
         }
     }
-//
-//    
-//    
-//    var target: String {
-//        // 값 가지고 오기
-//        get {
-//            ud.string(forKey: UDKey.target.rawValue) ?? "ko"
-//        }
-//        // 값 저장
-//        set {
-//            ud.set(newValue, forKey: UDKey.target.rawValue)
-//        }
-//    }
-//    
+    
+    var keywords: [String] {
+        get {
+            ud.stringArray(forKey: UDKey.keywords.rawValue) ?? []
+        }
+        set {
+            ud.set(newValue, forKey: UDKey.keywords.rawValue)
+        }
+    }
 }

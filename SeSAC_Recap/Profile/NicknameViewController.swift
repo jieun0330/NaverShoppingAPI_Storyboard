@@ -49,8 +49,7 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         let num = CharacterSet(charactersIn: "0123456789")
         let char = CharacterSet(charactersIn: "#@$%")
         // whitespace 작업 미완성
-//        let whitespace = nicknameTextField.text?.trimmingCharacters(in: .whitespaces)
-        
+        //        let whitespace = nicknameTextField.text?.trimmingCharacters(in: .whitespaces)
         if nicknameTextField.text!.count < 2 || nicknameTextField.text!.count >= 10 {
             nicknameCondition.text = "2글자 이상 10글자 미만으로 설정해주세요"
             nicknameCondition.textColor = .red
@@ -65,14 +64,10 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    // 닉네임 완료 버튼을 눌렀을 때
     @objc func doneButtonClicked() {
-        // 닉네임 저장하고
         UserDefaults.standard.set(nicknameTextField.text, forKey: "Nickname")
-        // true를 저장해서 앱 껐다 켰을 때 메인 화면으로 이동
         UserDefaults.standard.setValue(true, forKey: "UserState")
         
-        // mainTabBarController 보여주기
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
         let sceneDelegate = windowScene?.delegate as? SceneDelegate
         

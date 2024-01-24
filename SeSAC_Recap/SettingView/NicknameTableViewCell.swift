@@ -18,7 +18,6 @@ class NicknameTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         profileImg.image = UIImage(named: "profile\(UserDefaults.standard.integer(forKey: "clickImg"))")
-        
         profileImg.contentMode = .scaleAspectFill
         profileImg.layer.masksToBounds = false
         profileImg.layer.cornerRadius = profileImg.frame.height / 2.7
@@ -28,13 +27,6 @@ class NicknameTableViewCell: UITableViewCell {
         
         nickname.text = UserDefaults.standard.string(forKey: "Nickname")
         nickname.font = Fonts.font15
-        
-//        UserDefaults.standard.set(likeNum += 1, forKey: "likeNum")
-//        let likeNum = UserDefaults.standard.integer(forKey: "likeNum")
-//        print("likeNum")
-//        UserDefaultManager.shared.likeNum.append(list.items[sender.tag].productID)
-        var likeNum = UserDefaultManager.shared.likeNum.count
-        numberOfProducts.text = "\(likeNum)개의 상품"
         
         numberOfProducts.textColor = Colors.pointColor
         numberOfProducts.font = Fonts.font13

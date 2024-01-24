@@ -17,7 +17,6 @@ class ProfileImgCollectionViewCell: UICollectionViewCell {
         configureUI()
 
     }
-    
 }
 
 extension ProfileImgCollectionViewCell {

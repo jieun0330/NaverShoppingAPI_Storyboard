@@ -29,7 +29,5 @@ class WebViewController: UIViewController {
         // as? 뒤에도 그리드가 알려줬는데 그리드가 안알려줬으면 한 일주일동안 붙잡고있었을듯
         let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
         navigationItem.title = searchedKeywordList[index]
-        
     }
-    
 }

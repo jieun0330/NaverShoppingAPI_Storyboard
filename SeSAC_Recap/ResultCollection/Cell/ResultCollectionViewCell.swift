@@ -16,7 +16,7 @@ class ResultCollectionViewCell: UICollectionViewCell {
     @IBOutlet var mallName: UILabel!
     @IBOutlet var title: UILabel!
     @IBOutlet var lprice: UILabel!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -28,11 +28,10 @@ class ResultCollectionViewCell: UICollectionViewCell {
         lprice.font = Fonts.font15
         
         likebuttonBackground.layer.masksToBounds = false
-        likebuttonBackground.layer.cornerRadius = likebuttonBackground.frame.height / 0.8
+        likebuttonBackground.layer.cornerRadius = likebuttonBackground.frame.height / 1.8
         likebuttonBackground.clipsToBounds = true
         likebuttonBackground.backgroundColor = .white
         
-        likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
         likeButton.tintColor = .black
         
     }

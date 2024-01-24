@@ -17,18 +17,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="379" height="505"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OTH-Sy-Hj7">
-                        <rect key="frame" x="340" y="270.33333333333331" width="24" height="24"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="OTH-Sy-Hj7" secondAttribute="height" multiplier="1:1" id="JJP-c1-sdk"/>
-                        </constraints>
-                    </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdg-cc-nBP">
-                        <rect key="frame" x="340" y="270.33333333333331" width="24" height="24"/>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" title=""/>
-                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFx-Db-ftg">
                         <rect key="frame" x="10" y="309.33333333333331" width="42" height="13"/>
                         <constraints>
@@ -64,6 +52,20 @@
                             <constraint firstAttribute="width" secondItem="RUl-oS-P4w" secondAttribute="height" multiplier="1.2:1" id="4tw-dz-fOr"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OTH-Sy-Hj7">
+                        <rect key="frame" x="324" y="254.33333333333337" width="40" height="40"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="9VP-hK-oBx"/>
+                            <constraint firstAttribute="height" constant="40" id="CPD-Pl-PPp"/>
+                            <constraint firstAttribute="width" secondItem="OTH-Sy-Hj7" secondAttribute="height" multiplier="1:1" id="JJP-c1-sdk"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdg-cc-nBP">
+                        <rect key="frame" x="326" y="256.33333333333331" width="36" height="36"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title=""/>
+                    </button>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -73,15 +75,15 @@
                 <constraint firstItem="RUl-oS-P4w" firstAttribute="bottom" secondItem="OTH-Sy-Hj7" secondAttribute="bottom" constant="5" id="AOE-9G-r6U"/>
                 <constraint firstItem="RUl-oS-P4w" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="IL9-ZD-WWY"/>
                 <constraint firstItem="eFx-Db-ftg" firstAttribute="top" secondItem="RUl-oS-P4w" secondAttribute="bottom" constant="10" id="IuH-Xs-gWl"/>
-                <constraint firstItem="fdg-cc-nBP" firstAttribute="bottom" secondItem="OTH-Sy-Hj7" secondAttribute="bottom" id="Mkv-kU-XWC"/>
+                <constraint firstItem="fdg-cc-nBP" firstAttribute="bottom" secondItem="OTH-Sy-Hj7" secondAttribute="bottom" constant="-2" id="Mkv-kU-XWC"/>
                 <constraint firstItem="Vi1-ix-xoP" firstAttribute="top" secondItem="eFx-Db-ftg" secondAttribute="bottom" constant="10" id="Od5-VQ-rqm"/>
                 <constraint firstItem="lY4-5z-MVC" firstAttribute="top" secondItem="Vi1-ix-xoP" secondAttribute="bottom" constant="10" id="STM-NO-Kf6"/>
                 <constraint firstAttribute="trailing" secondItem="RUl-oS-P4w" secondAttribute="trailing" constant="10" id="T1z-re-rsv"/>
                 <constraint firstItem="eFx-Db-ftg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="WHb-f9-NzF"/>
-                <constraint firstItem="fdg-cc-nBP" firstAttribute="trailing" secondItem="OTH-Sy-Hj7" secondAttribute="trailing" id="cEC-yT-5CN"/>
-                <constraint firstItem="fdg-cc-nBP" firstAttribute="leading" secondItem="OTH-Sy-Hj7" secondAttribute="leading" id="eNx-KN-kFN"/>
+                <constraint firstItem="fdg-cc-nBP" firstAttribute="trailing" secondItem="OTH-Sy-Hj7" secondAttribute="trailing" constant="-2" id="cEC-yT-5CN"/>
+                <constraint firstItem="fdg-cc-nBP" firstAttribute="leading" secondItem="OTH-Sy-Hj7" secondAttribute="leading" constant="2" id="eNx-KN-kFN"/>
                 <constraint firstItem="eFx-Db-ftg" firstAttribute="top" secondItem="RUl-oS-P4w" secondAttribute="bottom" constant="10" id="fKh-1Q-4UN"/>
-                <constraint firstItem="fdg-cc-nBP" firstAttribute="top" secondItem="OTH-Sy-Hj7" secondAttribute="top" id="giN-0o-doH"/>
+                <constraint firstItem="fdg-cc-nBP" firstAttribute="top" secondItem="OTH-Sy-Hj7" secondAttribute="top" constant="2" id="giN-0o-doH"/>
                 <constraint firstItem="RUl-oS-P4w" firstAttribute="trailing" secondItem="OTH-Sy-Hj7" secondAttribute="trailing" constant="5" id="lTT-ki-VHt"/>
                 <constraint firstItem="RUl-oS-P4w" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="pLw-7R-UPB"/>
             </constraints>

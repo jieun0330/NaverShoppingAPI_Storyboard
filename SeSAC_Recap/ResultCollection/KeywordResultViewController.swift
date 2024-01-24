@@ -19,79 +19,85 @@ class KeywordResultViewController: UIViewController {
     @IBOutlet var lowPrice: UIButton!
     @IBOutlet var resultView: UICollectionView!
     
-    let item = MainViewController().keywordList
     var index: Int = 0
     var display = 30
-    var sort = "sim"
-    var likeNum = 0
     var start = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
-        // 버튼 클릭 효과 구현 못함
-        // 상품 하트 구현 못함
-        buttonType(accuracy, title: "정확도")
-        buttonType(dateButton, title: "날짜순")
-        buttonType(highPrice, title: "가격높은순")
-        buttonType(lowPrice, title: "가격낮은순")
         
         resultView.delegate = self
         resultView.dataSource = self
         resultView.prefetchDataSource = self
-        
         resultView.register(UINib(nibName: ResultCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: ResultCollectionViewCell.identifier)
         
         setLayout()
         
         let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
-        // [index]가 아닌 다른 방법이 있는지 찾아보고싶다
+        // [index]가 아닌 다른 방법이 있는지 찾아보자
         navigationItem.title = searchedKeywordList[index]
         
-        callRequest(text: searchedKeywordList[index], sort: "sim")
+        accurayClicked(accuracy)
         
         navigationItem.backButtonTitle = ""
         navigationController?.navigationBar.tintColor = .white
         
     }
     
+    func setButtonOff(sender: UIButton) {
+        sender.backgroundColor = .black
+        sender.setTitleColor(.white, for: .normal)
+    }
+    
+    func setButtonOn(sender: UIButton) {
+        sender.backgroundColor = .white
+        sender.setTitleColor(.black, for: .normal)
+    }
+    
+    func buttonClicked() {
+        setButtonOff(sender: accuracy)
+        setButtonOff(sender: dateButton)
+        setButtonOff(sender: lowPrice)
+        setButtonOff(sender: highPrice)
+    }
+    
     @IBAction func accurayClicked(_ sender: UIButton) {
         let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
         callRequest(text: searchedKeywordList[index], sort: "sim")
         
-        sender.backgroundColor = .white
-        sender.setTitleColor(.black, for: .normal)
+        buttonClicked()
+        setButtonOn(sender: sender)
     }
     
     @IBAction func dateClicked(_ sender: UIButton) {
         let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
         callRequest(text: searchedKeywordList[index], sort: "date")
         
-        sender.backgroundColor = .white
-        sender.setTitleColor(.black, for: .normal)
+        buttonClicked()
+        setButtonOn(sender: sender)
     }
     
     @IBAction func highPriceClicked(_ sender: UIButton) {
         let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
         callRequest(text: searchedKeywordList[index], sort: "dsc")
         
-        sender.backgroundColor = .white
-        sender.setTitleColor(.black, for: .normal)
+        buttonClicked()
+        setButtonOn(sender: sender)
     }
     
     @IBAction func lowPriceClicked(_ sender: UIButton) {
         let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
         callRequest(text: searchedKeywordList[index], sort: "asc")
         
-        sender.backgroundColor = .white
-        sender.setTitleColor(.black, for: .normal)
+        buttonClicked()
+        setButtonOn(sender: sender)
     }
     
     
     func callRequest(text: String, sort: String) {
         
-        print("1", start)
         let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let url = "https://openapi.naver.com/v1/search/shop?query=\(query)&display=\(display)&sort=\(sort)&start=\(start)"
         let headers: HTTPHeaders = [
@@ -115,7 +121,6 @@ class KeywordResultViewController: UIViewController {
                         
                     } else {
                         self.list.items.append(contentsOf: success.items)
-                        
                     }
                     
                     self.resultView.reloadData()
@@ -158,10 +163,9 @@ extension KeywordResultViewController:  UICollectionViewDataSourcePrefetching {
                 
                 // as!와 as?의 역할을 잘 모름
                 guard let searchKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] else { return }
-
+                
                 start += 30
                 callRequest(text: searchKeywordList[index], sort: "sim")
-            
             }
         }
     }
@@ -193,27 +197,36 @@ extension KeywordResultViewController: UICollectionViewDataSource, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultCollectionViewCell.identifier, for: indexPath) as! ResultCollectionViewCell
+        let row = indexPath.row
+        let product = list.items[row]
         
-        cell.mallName.text = list.items[indexPath.row].mallName
-        cell.image.kf.setImage(with: URL(string: list.items[indexPath.row].image))
+        cell.mallName.text = product.mallName
+        cell.image.kf.setImage(with: URL(string: product.image))
         // 두줄 구현 못함
         // 상품명에 <b> 삭제 못함
-        cell.title.text = list.items[indexPath.row].title
+        cell.title.text = product.title
         
         let numberFormatter: NumberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
-        let result: String = numberFormatter.string(from: NSNumber(value: Double(list.items[indexPath.row].lprice)!))!
+        let result: String = numberFormatter.string(from: NSNumber(value: Double(product.lprice)!))!
         
         cell.lprice.text = result
-        
-        cell.likeButton.addTarget(self, action: #selector(likeButtonClicked(sender:)), for: .touchUpInside)
+        cell.likeButton.setImage(UIImage(systemName: UserDefaultManager.shared.likes.contains(product.productID) ? "heart.fill" : "heart"), for: .normal)
+        cell.likeButton.tag = row
+        cell.likeButton.addTarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
         
         return cell
     }
     
     @objc func likeButtonClicked(sender: UIButton) {
-        sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        UserDefaultManager.shared.likeNum.append(list.items[sender.tag].productID)
+        let product = list.items[sender.tag]
+        
+        if let index = UserDefaultManager.shared.likes.firstIndex(of: product.productID) {
+            UserDefaultManager.shared.likes.remove(at: index)
+        } else {
+            UserDefaultManager.shared.likes.append(product.productID)
+        }
+        
         resultView.reloadData()
     }
 }

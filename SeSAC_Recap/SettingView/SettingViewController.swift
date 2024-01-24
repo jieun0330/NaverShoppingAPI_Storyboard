@@ -31,7 +31,14 @@ class SettingViewController: UIViewController {
         settingView.dataSource = self
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        settingView.reloadData()
+    }
 }
+
 
 extension SettingViewController {
     func configureUI() {
@@ -47,7 +54,6 @@ extension SettingViewController {
     }
 }
 
-
 extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
@@ -61,6 +67,9 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
         
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: NicknameTableViewCell.identifier, for: indexPath) as! NicknameTableViewCell
+            
+            var likeNum = UserDefaultManager.shared.likes.count
+            cell.numberOfProducts.text = "\(likeNum)개의 상품"
             
             return cell
         } else {
@@ -83,5 +92,4 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             return 50
         }
     }
-    
 }
