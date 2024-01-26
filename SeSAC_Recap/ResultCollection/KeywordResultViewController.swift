@@ -39,10 +39,16 @@ class KeywordResultViewController: UIViewController {
         // [index]가 아닌 다른 방법이 있는지 찾아보자
         navigationItem.title = searchedKeywordList[index]
         
-        accurayClicked(accuracy)
+        accuracyClicked(accuracy)
         
         navigationItem.backButtonTitle = ""
         navigationController?.navigationBar.tintColor = .white
+ 
+        buttonType(accuracy, title: "정확도")
+        buttonType(dateButton, title: "날짜순")
+        buttonType(highPrice, title: "가격높은순")
+        buttonType(lowPrice, title: "가격낮은순")
+
         
     }
     
@@ -63,7 +69,7 @@ class KeywordResultViewController: UIViewController {
         setButtonOff(sender: highPrice)
     }
     
-    @IBAction func accurayClicked(_ sender: UIButton) {
+    @IBAction func accuracyClicked(_ sender: UIButton) {
         let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
         callRequest(text: searchedKeywordList[index], sort: "sim")
         

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C20314482B63C0880002FD47 /* KeywordHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20314472B63C0880002FD47 /* KeywordHistoryTableViewCell.swift */; };
 		C20F839D2B591CF4006B2463 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F839C2B591CF4006B2463 /* AppDelegate.swift */; };
 		C20F839F2B591CF4006B2463 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F839E2B591CF4006B2463 /* SceneDelegate.swift */; };
 		C20F83A12B591CF4006B2463 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20F83A02B591CF4006B2463 /* ViewController.swift */; };
@@ -26,6 +27,9 @@
 		C29E8B3C2B60E44500894D23 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E8B3A2B60E44500894D23 /* SettingTableViewCell.swift */; };
 		C29E8B3D2B60E44500894D23 /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C29E8B3B2B60E44500894D23 /* SettingTableViewCell.xib */; };
 		C29E8B3F2B6100EE00894D23 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E8B3E2B6100EE00894D23 /* UserDefaultManager.swift */; };
+		C2A75FF32B63B4E600541BE7 /* KeywordHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A75FF22B63B4E600541BE7 /* KeywordHistoryViewController.swift */; };
+		C2A75FF62B63B56E00541BE7 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C2A75FF52B63B56E00541BE7 /* SnapKit */; };
+		C2A75FF82B63B56E00541BE7 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C2A75FF72B63B56E00541BE7 /* SnapKit-Dynamic */; };
 		C2A971DB2B5E964600754A22 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A971DA2B5E964600754A22 /* WebViewController.swift */; };
 		C2B0035C2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B0035A2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.swift */; };
 		C2B0035D2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2B0035B2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.xib */; };
@@ -44,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C20314472B63C0880002FD47 /* KeywordHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		C20F83992B591CF4006B2463 /* SeSAC_Recap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC_Recap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C20F839C2B591CF4006B2463 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C20F839E2B591CF4006B2463 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +68,7 @@
 		C29E8B3A2B60E44500894D23 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		C29E8B3B2B60E44500894D23 /* SettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
 		C29E8B3E2B6100EE00894D23 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
+		C2A75FF22B63B4E600541BE7 /* KeywordHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordHistoryViewController.swift; sourceTree = "<group>"; };
 		C2A971DA2B5E964600754A22 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		C2B0035A2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordResultsTableViewCell.swift; sourceTree = "<group>"; };
 		C2B0035B2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeywordResultsTableViewCell.xib; sourceTree = "<group>"; };
@@ -85,8 +91,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2A75FF62B63B56E00541BE7 /* SnapKit in Frameworks */,
 				C25FC4552B5BDE68000D8F6E /* Kingfisher in Frameworks */,
 				C25FC44C2B5BD064000D8F6E /* Alamofire in Frameworks */,
+				C2A75FF82B63B56E00541BE7 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				C25FC44D2B5BD39B000D8F6E /* Keyword.swift */,
+				C2A75FF12B63B48C00541BE7 /* Codebase */,
 				C2F9EFEC2B5AC58200D0BBA1 /* Onboarding */,
 				C2F9EFED2B5AC59700D0BBA1 /* Profile */,
 				C2F9EFEF2B5AC5D300D0BBA1 /* MainView */,
@@ -133,6 +142,15 @@
 				C29E8B3E2B6100EE00894D23 /* UserDefaultManager.swift */,
 			);
 			path = SeSAC_Recap;
+			sourceTree = "<group>";
+		};
+		C2A75FF12B63B48C00541BE7 /* Codebase */ = {
+			isa = PBXGroup;
+			children = (
+				C2A75FF22B63B4E600541BE7 /* KeywordHistoryViewController.swift */,
+				C20314472B63C0880002FD47 /* KeywordHistoryTableViewCell.swift */,
+			);
+			path = Codebase;
 			sourceTree = "<group>";
 		};
 		C2A971DC2B5EA70500754A22 /* Cell */ = {
@@ -256,6 +274,8 @@
 			packageProductDependencies = (
 				C25FC44B2B5BD064000D8F6E /* Alamofire */,
 				C25FC4542B5BDE68000D8F6E /* Kingfisher */,
+				C2A75FF52B63B56E00541BE7 /* SnapKit */,
+				C2A75FF72B63B56E00541BE7 /* SnapKit-Dynamic */,
 			);
 			productName = SeSAC_Recap;
 			productReference = C20F83992B591CF4006B2463 /* SeSAC_Recap.app */;
@@ -288,6 +308,7 @@
 			packageReferences = (
 				C25FC44A2B5BD064000D8F6E /* XCRemoteSwiftPackageReference "Alamofire" */,
 				C25FC4532B5BDE68000D8F6E /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				C2A75FF42B63B56E00541BE7 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = C20F839A2B591CF4006B2463 /* Products */;
 			projectDirPath = "";
@@ -333,6 +354,8 @@
 				C2F9EFD12B59392400D0BBA1 /* UIViewControllerExtension.swift in Sources */,
 				C2F9EFDA2B5A325200D0BBA1 /* Protocol.swift in Sources */,
 				C29E8B3C2B60E44500894D23 /* SettingTableViewCell.swift in Sources */,
+				C20314482B63C0880002FD47 /* KeywordHistoryTableViewCell.swift in Sources */,
+				C2A75FF32B63B4E600541BE7 /* KeywordHistoryViewController.swift in Sources */,
 				C20F839F2B591CF4006B2463 /* SceneDelegate.swift in Sources */,
 				C25FC44E2B5BD39B000D8F6E /* Keyword.swift in Sources */,
 				C2B003602B5CEE8500AA52F3 /* NoKeywordTableViewCell.swift in Sources */,
@@ -587,6 +610,14 @@
 				minimumVersion = 7.10.2;
 			};
 		};
+		C2A75FF42B63B56E00541BE7 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -599,6 +630,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C25FC4532B5BDE68000D8F6E /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		C2A75FF52B63B56E00541BE7 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2A75FF42B63B56E00541BE7 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		C2A75FF72B63B56E00541BE7 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2A75FF42B63B56E00541BE7 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

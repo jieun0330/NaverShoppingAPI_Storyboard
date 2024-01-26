@@ -15,29 +15,38 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let value = UserDefaults.standard.bool(forKey: "UserState")
         print(value)
         
+        guard let scene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: scene)
+        
+        let navigationController = UINavigationController(rootViewController: KeywordHistoryViewController())
+        
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+        
+        
         // 사용자가 처음 들어온 것처럼 설정
-        if value == false {
-            guard let scene = (scene as? UIWindowScene) else { return }
-            
-            window = UIWindow(windowScene: scene)
-            
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: OnboardingViewController.identifier) as! OnboardingViewController
-            let nav = UINavigationController(rootViewController: vc)
-            
-            window?.rootViewController = nav
-            window?.makeKeyAndVisible()
-        } else {
-            guard let scene = (scene as? UIWindowScene) else { return }
-            
-            window = UIWindow(windowScene: scene)
-            
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "mainTabBarController") as! UITabBarController
-            
-            window?.rootViewController = vc
-            window?.makeKeyAndVisible()
-        }
+//        if value == false {
+//            guard let scene = (scene as? UIWindowScene) else { return }
+//            
+//            window = UIWindow(windowScene: scene)
+//            
+//            let sb = UIStoryboard(name: "Main", bundle: nil)
+//            let vc = sb.instantiateViewController(withIdentifier: OnboardingViewController.identifier) as! OnboardingViewController
+//            let nav = UINavigationController(rootViewController: vc)
+//            
+//            window?.rootViewController = nav
+//            window?.makeKeyAndVisible()
+//        } else {
+//            guard let scene = (scene as? UIWindowScene) else { return }
+//            
+//            window = UIWindow(windowScene: scene)
+//            
+//            let sb = UIStoryboard(name: "Main", bundle: nil)
+//            let vc = sb.instantiateViewController(withIdentifier: "mainTabBarController") as! UITabBarController
+//            
+//            window?.rootViewController = vc
+//            window?.makeKeyAndVisible()
+//        }
 
     }
 
