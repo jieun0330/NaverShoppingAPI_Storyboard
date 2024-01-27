@@ -155,11 +155,8 @@ extension KeywordHistoryViewController: UITableViewDelegate, UITableViewDataSour
     // 셀 등록을 하는데도 불구하고 캐스팅까지 해서 그 안에 있는 친구들을 쓸 수 있게 해야되는구나???? 🚨 맞나?
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: KeywordHistoryTableViewCell.identifier, for: indexPath) as! KeywordHistoryTableViewCell
-        
-        cell.searchIcon.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
-        cell.backgroundColor = .black
-        cell.product.text = UserDefaultManager.shared.keywords[indexPath.row]
-        cell.xmarkButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+
+        cell.productName.text = UserDefaultManager.shared.keywords[indexPath.row]
         // xmarkButton 클릭 시 -> 셀 하나씩 없애는 작업
         // 모아나가 tag를 쓰는 방법을 알려줬으니 다른 방법을 찾아보자
         // 1. 버튼에 태그 부여하는 방법
@@ -173,7 +170,7 @@ extension KeywordHistoryViewController: UITableViewDelegate, UITableViewDataSour
         // 여기서 그냥 self로 구현하게 되면 xmarkButtonAction이 ViewController를 보유하게 되어 무한싸이클이 돈다
         // 그래서 weak나 unowned를 써줘야 한다
         
-        // 몬소린지 하나도 모르겐네 망할래미
+        // 몬소린지 모르겠는데 구현은 되네 망할래미🚨🚨🚨🚨🚨
         cell.xmarkButtonAction = {[unowned self] in
             UserDefaultManager.shared.keywords.remove(at: indexPath.row)
             tableView.reloadData()

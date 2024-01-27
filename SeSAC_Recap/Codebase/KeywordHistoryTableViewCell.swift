@@ -10,9 +10,10 @@ import UIKit
 class KeywordHistoryTableViewCell: UITableViewCell {
     
     let searchIcon = UIButton()
-    let product = UILabel()
+    let productName = UILabel()
     let xmarkButton = UIButton()
     
+    // 3.1 Cell에 클로저 프로퍼티를 추가한다
     // ???????/왓
     var xmarkButtonAction: (() -> Void)?
     
@@ -21,15 +22,17 @@ class KeywordHistoryTableViewCell: UITableViewCell {
         
         // configureHierachy
         contentView.addSubview(searchIcon)
-        contentView.addSubview(product)
+        contentView.addSubview(productName)
         contentView.addSubview(xmarkButton)
         
         //configureView
         searchIcon.tintColor = .white
-        product.textColor = .white
+        searchIcon.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+        productName.textColor = Colors.textColor
         xmarkButton.tintColor = .white
         // 3.2 버튼에 추가해줄 action을 생성해준다
         xmarkButton.addTarget(self, action: #selector(xmarkButtonClicked), for: .touchUpInside)
+        xmarkButton.setImage(UIImage(systemName: "xmark"), for: .normal)
         
         //configureConstraints
         searchIcon.snp.makeConstraints { make in
@@ -37,7 +40,7 @@ class KeywordHistoryTableViewCell: UITableViewCell {
             make.leading.equalToSuperview().offset(20)
         }
         
-        product.snp.makeConstraints { make in
+        productName.snp.makeConstraints { make in
             make.leading.equalTo(searchIcon.snp.trailing).offset(20)
         }
         
@@ -50,6 +53,8 @@ class KeywordHistoryTableViewCell: UITableViewCell {
         xmarkButtonAction?()
     }
     
+    // 요건 또 무엇이고하니
+    // 이게 무슨 코드를 작성해서 만들어진 코드지? 🚨🚨🚨🚨🚨
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
