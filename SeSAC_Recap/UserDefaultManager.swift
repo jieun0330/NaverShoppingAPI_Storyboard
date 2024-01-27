@@ -10,17 +10,15 @@ import Foundation
 class UserDefaultManager {
     
     private init() { }
-    
     static let shared = UserDefaultManager()
     
     enum UDKey: String {
-        case likes
-        case keywords
+        case likes      // 좋아요 누른 상품 넣어놓기
+        case keywords   // 검색한 상품 넣어놓기
     }
     
     let ud = UserDefaults.standard
     
-    // 좋아요 누른 상품들 다 넣어놓기
     var likes: [String] {
         get {
             ud.stringArray(forKey: UDKey.likes.rawValue) ?? []

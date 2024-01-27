@@ -18,6 +18,7 @@ class KeywordHistoryTableViewCell: UITableViewCell {
         
         contentView.addSubview(searchIcon)
         contentView.addSubview(product)
+        contentView.addSubview(deleteButton)
         
         searchIcon.tintColor = .white
         
@@ -34,9 +35,9 @@ class KeywordHistoryTableViewCell: UITableViewCell {
             make.leading.equalTo(searchIcon.snp.trailing).offset(20)
         }
         
-//        deleteButton.snp.makeConstraints { make in
-//            make.trailing.equalToSuperview().offset(-20)
-//        }
+        deleteButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-20)
+        }
     }
     
     required init?(coder: NSCoder) {
