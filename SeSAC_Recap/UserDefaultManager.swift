@@ -9,6 +9,9 @@ import Foundation
 
 class UserDefaultManager {
     
+    // 싱글톤 패턴
+    // 유일하게 1개만 존재하는 객체
+    // 외부에서 또다른 새로운 객체 생성을 금지하고 싶은 경우에 private init 메서드를 작성한다
     private init() { }
     static let shared = UserDefaultManager()
     
@@ -17,23 +20,23 @@ class UserDefaultManager {
         case keywords   // 검색한 상품 넣어놓기
     }
     
-    let ud = UserDefaults.standard
+    let userDefaults = UserDefaults.standard
     
     var likes: [String] {
         get {
-            ud.stringArray(forKey: UDKey.likes.rawValue) ?? []
+            userDefaults.stringArray(forKey: UDKey.likes.rawValue) ?? []
         }
         set {
-            ud.set(newValue, forKey: UDKey.likes.rawValue)
+            userDefaults.set(newValue, forKey: UDKey.likes.rawValue)
         }
     }
     
     var keywords: [String] {
         get {
-            ud.stringArray(forKey: UDKey.keywords.rawValue) ?? []
+            userDefaults.stringArray(forKey: UDKey.keywords.rawValue) ?? []
         }
         set {
-            ud.set(newValue, forKey: UDKey.keywords.rawValue)
+            userDefaults.set(newValue, forKey: UDKey.keywords.rawValue)
         }
     }
 }

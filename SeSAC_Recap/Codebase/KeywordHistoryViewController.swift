@@ -12,7 +12,7 @@ class KeywordHistoryViewController: UIViewController {
     
     let searchBar = UISearchBar()
     let recentSearch = UILabel()
-    let deleteAll = UILabel()
+    let deleteAll = UIButton()
     let tableView = UITableView()
     
     // 클래스에서 가장 중요한 점은 상속
@@ -32,7 +32,6 @@ class KeywordHistoryViewController: UIViewController {
     // -> 노옵 노옵오노오봉노~~~~!!~!!~
     // 슈퍼클래스는 저 뷰컨이고 그냥 그 안에서 재정의할 수 있는 것들을 만드는것이여 지은아
     
-    
     // 슈퍼클래스라는게 뭔데
     // 슈퍼클래스가 viewDidLoad가 아니라 엥 ?
     // 아 viewDidLoad를 원하는대로 재정의해서 써라~ 요거구나?
@@ -47,8 +46,6 @@ class KeywordHistoryViewController: UIViewController {
         view.backgroundColor = .black
         navigationItem.title = "떠나고싶은 고래밥님의 새싹쇼핑"
         
-        searchBar.searchTextField.addTarget(self, action: #selector(searchButtonClicked), for: .editingDidEnd)
-        
         // 부르는 순서도 꼬이지 않아야함
         // addSubView -> 디자인 요소 -> Constraints 주기
         configureHierachy()
@@ -61,11 +58,7 @@ class KeywordHistoryViewController: UIViewController {
         // 벗뜨
         // 스냅킷 내부에서 이 작업을 해주기 때문에 코드 작성할 필요가 없다
         // 스냅킷 체고~
-//        searchBar.translatesAutoresizingMaskIntoConstraints = false
-    }
-    
-    @objc func searchButtonClicked() {
-        
+        //        searchBar.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func configureHierachy() {
@@ -76,13 +69,17 @@ class KeywordHistoryViewController: UIViewController {
     }
     
     func configureView() {
+        
+        // searchbar는 UI적으로 바꿀게 없으니까 delegate만 불러오는구나???
+        searchBar.delegate = self
         searchBar.placeholder = "브랜드, 상품, 프로필, 태그 등"
         
         recentSearch.text = "최근 검색"
         recentSearch.textColor = Colors.textColor
         
-        deleteAll.text = "모두 지우기"
-        deleteAll.textColor = Colors.pointColor
+        deleteAll.setTitle("모두 지우기", for: .normal)
+        deleteAll.setTitleColor(Colors.pointColor, for: .normal)
+        deleteAll.addTarget(self, action: #selector(deleteAllClicked), for: .touchUpInside)
         
         // dataSource: 데이터를 받아 뷰를 그려주는 역할
         // -> cellForRowAt: 여기 안에 cell view 그려주는 코드를 작성하잖아???
@@ -119,7 +116,6 @@ class KeywordHistoryViewController: UIViewController {
         searchBar.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(10)
             make.centerX.equalTo(view)
-//            make.width.equalTo(300)
             make.top.equalTo(view.safeAreaLayoutGuide)
         }
         
@@ -139,12 +135,17 @@ class KeywordHistoryViewController: UIViewController {
             make.bottom.equalToSuperview()
         }
     }
+    
+    @objc func deleteAllClicked() {
+        UserDefaultManager.shared.keywords.removeAll()
+        tableView.reloadData()
+    }
 }
 
 // 프로토콜 안에 들어가서 보면 쓸 수 있는 메소드들이 몽땅 있다요
 extension KeywordHistoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return UserDefaultManager.shared.keywords.count
     }
     
     // 타입 캐스팅
@@ -157,9 +158,26 @@ extension KeywordHistoryViewController: UITableViewDelegate, UITableViewDataSour
         
         cell.searchIcon.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         cell.backgroundColor = .black
-        cell.product.text = "맥북 거치대"
-        cell.deleteButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        cell.product.text = UserDefaultManager.shared.keywords[indexPath.row]
+        cell.xmarkButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        // xmarkButton 클릭 시 -> 셀 하나씩 없애는 작업
+        // 모아나가 tag를 쓰는 방법을 알려줬으니 다른 방법을 찾아보자
+        // 1. 버튼에 태그 부여하는 방법
+        // 2. delegate 패턴 사용 처리 -> 두번 정도 코드 작성하다가 포기
+        // 3. callBack함수 클로저 사용 -> 화면이 많아지면 delegate 패턴 네이밍이 힘들고 추적하기도 힘들다고 하니까 이걸로 다시 도전
         
+        // 3.1 Cell에 클로저 프로퍼티를 추가한다
+        // 3.4 기능 구현해준다
+        // unowned는 싸이클을 막기 위함이다
+        // 지금 구조는 ViewController -> TableView -> TableViewCell -> xmarkButtonAction 순서인데
+        // 여기서 그냥 self로 구현하게 되면 xmarkButtonAction이 ViewController를 보유하게 되어 무한싸이클이 돈다
+        // 그래서 weak나 unowned를 써줘야 한다
+        
+        // 몬소린지 하나도 모르겐네 망할래미
+        cell.xmarkButtonAction = {[unowned self] in
+            UserDefaultManager.shared.keywords.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
         return cell
     }
 }
@@ -175,8 +193,14 @@ extension KeywordHistoryViewController: UITableViewDelegate, UITableViewDataSour
 
 // extension은 새로운 기능을 추가할 수는 있지만, 기존 새로운 기능을 재정의할수는 없다
 // 재정의 -> override
-extension KeywordHistoryViewController {
+extension KeywordHistoryViewController: UISearchBarDelegate {
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        UserDefaultManager.shared.keywords.insert(searchBar.text!, at: 0)
+        searchBar.text?.removeAll()
+        tableView.reloadData()
+        
+    }
 }
 
 //#Preview {
