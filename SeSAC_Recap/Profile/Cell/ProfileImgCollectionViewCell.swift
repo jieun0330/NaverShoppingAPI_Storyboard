@@ -15,7 +15,6 @@ class ProfileImgCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         
         configureUI()
-
     }
 }
 
@@ -26,6 +25,5 @@ extension ProfileImgCollectionViewCell {
         profileImg.layer.masksToBounds = false
         profileImg.layer.cornerRadius = profileImg.frame.height / 4.7
         profileImg.clipsToBounds = true
-    
     }
 }

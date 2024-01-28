@@ -29,7 +29,6 @@ class SettingViewController: UIViewController {
         configureView()
         settingView.delegate = self
         settingView.dataSource = self
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

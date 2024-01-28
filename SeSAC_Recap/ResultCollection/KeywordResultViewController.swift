@@ -40,6 +40,8 @@ class KeywordResultViewController: UIViewController {
         navigationItem.title = searchedKeywordList[index]
         
         accuracyClicked(accuracy)
+        // 아 왜 검정글씨 안보여
+        accuracy.setTitleColor(.black, for: .normal)
         
         navigationItem.backButtonTitle = ""
         navigationController?.navigationBar.tintColor = .white
@@ -48,8 +50,6 @@ class KeywordResultViewController: UIViewController {
         buttonType(dateButton, title: "날짜순")
         buttonType(highPrice, title: "가격높은순")
         buttonType(lowPrice, title: "가격낮은순")
-
-        
     }
     
     func setButtonOff(sender: UIButton) {
@@ -75,6 +75,7 @@ class KeywordResultViewController: UIViewController {
         
         buttonClicked()
         setButtonOn(sender: sender)
+//        sender.setTitleColor(.black, for: .normal)
     }
     
     @IBAction func dateClicked(_ sender: UIButton) {
@@ -158,7 +159,6 @@ class KeywordResultViewController: UIViewController {
         sender.layer.borderWidth = 1
         sender.layer.cornerRadius = 10
     }
-    
 }
 
 extension KeywordResultViewController:  UICollectionViewDataSourcePrefetching {
@@ -167,9 +167,9 @@ extension KeywordResultViewController:  UICollectionViewDataSourcePrefetching {
         for item in indexPaths {
             if list.items.count - 3 == item.row {
                 
-                // as!와 as?의 역할을 잘 모름
                 guard let searchKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] else { return }
                 
+//                start += display
                 start += 30
                 callRequest(text: searchKeywordList[index], sort: "sim")
             }
@@ -182,6 +182,7 @@ extension KeywordResultViewController {
         
         numberOfKeywords.textColor = Colors.pointColor
         numberOfKeywords.font = Fonts.font13
+        
     }
 }
 

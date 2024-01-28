@@ -62,10 +62,11 @@ class KeywordHistoryViewController: UIViewController {
     }
     
     func configureHierachy() {
-        view.addSubview(searchBar)
-        view.addSubview(recentSearch)
-        view.addSubview(deleteAll)
-        view.addSubview(tableView)
+        
+        // 써먹기~2
+        [searchBar, recentSearch, deleteAll, tableView].forEach {
+            view.addSubview($0)
+        }
     }
     
     func configureView() {

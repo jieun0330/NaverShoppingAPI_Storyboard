@@ -35,7 +35,6 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         
         // 앱 껐다가 키면 닉네임은 있는데, 완료 버튼이 비활성화 되어있음
         nicknameTextField.text = UserDefaults.standard.string(forKey: "Nickname")
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -113,7 +112,6 @@ extension NicknameViewController {
         doneButton.configurePrimaryStyle(title: "완료")
         
         navigationItem.backButtonTitle = ""
-        
     }
 }
 

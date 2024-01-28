@@ -38,14 +38,17 @@ class KeywordHistoryTableViewCell: UITableViewCell {
         searchIcon.snp.makeConstraints { make in
             make.size.equalTo(20)
             make.leading.equalToSuperview().offset(20)
+            make.centerY.equalToSuperview()
         }
         
         productName.snp.makeConstraints { make in
             make.leading.equalTo(searchIcon.snp.trailing).offset(20)
+            make.centerY.equalToSuperview()
         }
         
         xmarkButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-20)
+            make.centerY.equalToSuperview()
         }
     }
     

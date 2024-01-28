@@ -33,6 +33,5 @@ class ResultCollectionViewCell: UICollectionViewCell {
         likebuttonBackground.backgroundColor = .white
         
         likeButton.tintColor = .black
-        
     }
 }

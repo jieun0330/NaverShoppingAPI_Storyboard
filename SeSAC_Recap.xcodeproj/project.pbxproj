@@ -17,6 +17,7 @@
 		C21607142B65AF2E001DD301 /* NickcnameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21607132B65AF2E001DD301 /* NickcnameSettingViewController.swift */; };
 		C21607162B65BC4C001DD301 /* ProfileImageSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21607152B65BC4C001DD301 /* ProfileImageSettingViewController.swift */; };
 		C21607182B65F1C0001DD301 /* ProfileImageSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C21607172B65F1C0001DD301 /* ProfileImageSettingCollectionViewCell.swift */; };
+		C216071C2B666B6C001DD301 /* OnboardingCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216071B2B666B6C001DD301 /* OnboardingCodeViewController.swift */; };
 		C25FC4492B5BCC69000D8F6E /* KeywordResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25FC4482B5BCC69000D8F6E /* KeywordResultViewController.swift */; };
 		C25FC44C2B5BD064000D8F6E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C25FC44B2B5BD064000D8F6E /* Alamofire */; };
 		C25FC44E2B5BD39B000D8F6E /* Keyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25FC44D2B5BD39B000D8F6E /* Keyword.swift */; };
@@ -63,6 +64,7 @@
 		C21607132B65AF2E001DD301 /* NickcnameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickcnameSettingViewController.swift; sourceTree = "<group>"; };
 		C21607152B65BC4C001DD301 /* ProfileImageSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageSettingViewController.swift; sourceTree = "<group>"; };
 		C21607172B65F1C0001DD301 /* ProfileImageSettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageSettingCollectionViewCell.swift; sourceTree = "<group>"; };
+		C216071B2B666B6C001DD301 /* OnboardingCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCodeViewController.swift; sourceTree = "<group>"; };
 		C25FC4482B5BCC69000D8F6E /* KeywordResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordResultViewController.swift; sourceTree = "<group>"; };
 		C25FC44D2B5BD39B000D8F6E /* Keyword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyword.swift; sourceTree = "<group>"; };
 		C25FC44F2B5BD8F3000D8F6E /* ResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 		C2A75FF12B63B48C00541BE7 /* Codebase */ = {
 			isa = PBXGroup;
 			children = (
+				C216071B2B666B6C001DD301 /* OnboardingCodeViewController.swift */,
 				C2A75FF22B63B4E600541BE7 /* KeywordHistoryViewController.swift */,
 				C20314472B63C0880002FD47 /* KeywordHistoryTableViewCell.swift */,
 				C21607132B65AF2E001DD301 /* NickcnameSettingViewController.swift */,
@@ -355,6 +358,7 @@
 			files = (
 				C2A971DB2B5E964600754A22 /* WebViewController.swift in Sources */,
 				C2F9EFE12B5A4BA100D0BBA1 /* SettingProfileViewController.swift in Sources */,
+				C216071C2B666B6C001DD301 /* OnboardingCodeViewController.swift in Sources */,
 				C2B0035C2B5CE76E00AA52F3 /* KeywordResultsTableViewCell.swift in Sources */,
 				C25FC4492B5BCC69000D8F6E /* KeywordResultViewController.swift in Sources */,
 				C20F83A12B591CF4006B2463 /* ViewController.swift in Sources */,

@@ -20,7 +20,5 @@ class NoKeywordTableViewCell: UITableViewCell {
         noKeywordLabel.font = Fonts.font13
         noKeywordLabel.textColor = Colors.textColor
         noKeywordLabel.textAlignment = .center
-        
     }
-    
 }

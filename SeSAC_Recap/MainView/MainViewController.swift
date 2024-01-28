@@ -34,7 +34,6 @@ class MainViewController: UIViewController {
         keywordView.register(xib2, forCellReuseIdentifier: NoKeywordTableViewCell.identifier)
         
         deleteAll.addTarget(self, action: #selector(deleteAllClicked), for: .touchUpInside)
-        
     }
     
     @objc func deleteAllClicked() {
@@ -47,7 +46,6 @@ class MainViewController: UIViewController {
         
         searchBar.text = ""
     }
-    
 }
 
 extension MainViewController {
@@ -61,13 +59,12 @@ extension MainViewController {
         keyword.text = ""
         navigationItem.backButtonTitle = ""
         navigationItem.setHidesBackButton(true, animated: true)
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if UserDefaultManager.shared.keywords.count == 0 {
-            // 스크롤이 없애기
+            // 스크롤 없애기
             return 300
         } else {
             return 52
@@ -84,7 +81,6 @@ extension MainViewController {
         let vc = storyboard?.instantiateViewController(identifier: KeywordResultViewController.identifier) as! KeywordResultViewController
         vc.index = indexPath.row
         navigationController?.pushViewController(vc, animated: true)
-        
     }
 }
 
@@ -99,7 +95,6 @@ extension MainViewController: UISearchBarDelegate {
         let vc = storyboard?.instantiateViewController(identifier: KeywordResultViewController.identifier) as! KeywordResultViewController
         
         navigationController?.pushViewController(vc, animated: true)
-        
     }
 }
 
@@ -143,7 +138,6 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
             
             return cell
         }
-        
     }
     
     @objc func deleteButtonClicked(sender: UIButton) {
@@ -152,5 +146,4 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
         UserDefaultManager.shared.keywords.remove(at: sender.tag)
         keywordView.reloadData()
     }
-    
 }

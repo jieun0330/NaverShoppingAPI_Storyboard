@@ -16,10 +16,8 @@ class OnboardingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Button.addTarget과 button IBAction의 차이는?
         startButton.addTarget(self, action: #selector(startButtonClicked), for: .touchUpInside)
         configureUI()
-        
     }
     
     @objc func startButtonClicked() {
@@ -37,6 +35,5 @@ extension OnboardingViewController {
         
         navigationItem.backButtonTitle = ""
         navigationController?.navigationBar.tintColor = .white
-        
     }
 }

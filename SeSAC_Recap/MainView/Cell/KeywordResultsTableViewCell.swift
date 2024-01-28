@@ -17,7 +17,6 @@ class KeywordResultsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         configureCell()
-        
     }
 }
 
@@ -27,6 +26,5 @@ extension KeywordResultsTableViewCell {
         searchIcon.tintColor = Colors.textColor
         deleteButton.setImage(UIImage(systemName: "xmark"), for: .normal)
         deleteButton.tintColor = Colors.textColor
-        
     }
 }

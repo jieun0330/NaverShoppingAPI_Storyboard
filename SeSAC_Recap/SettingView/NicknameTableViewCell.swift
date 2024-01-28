@@ -34,5 +34,4 @@ class NicknameTableViewCell: UITableViewCell {
         likeLabel.text = "을 좋아하고 있어요!"
         likeLabel.font = Fonts.font13
     }
-    
 }
