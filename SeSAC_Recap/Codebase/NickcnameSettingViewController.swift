@@ -43,7 +43,7 @@ class NickcnameSettingViewController: UIViewController {
         profileImg.image = .profile1
         profileImg.contentMode = .scaleAspectFill
         // 아래 size 35주면 반영이 안되나 ? ? ? 숫자로 줘야되나 ? ? ? ?🚨🚨🚨🚨🚨
-//        profileImg.layer.cornerRadius = profileImg.frame.height / 2
+        //        profileImg.layer.cornerRadius = profileImg.frame.height / 2
         profileImg.layer.cornerRadius = 40
         profileImg.clipsToBounds = true
         
