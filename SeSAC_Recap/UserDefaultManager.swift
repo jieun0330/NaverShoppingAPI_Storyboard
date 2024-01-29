@@ -16,7 +16,8 @@ class UserDefaultManager {
     static let shared = UserDefaultManager()
     
     enum UDKey: String {
-        case profileImg
+        case profileImg //프로필 이미지
+        case nickname   // 닉네임
         case likes      // 좋아요 누른 상품 넣어놓기
         case keywords   // 검색한 상품 넣어놓기
     }
@@ -49,6 +50,16 @@ class UserDefaultManager {
             userDefaults.set(newValue, forKey: UDKey.profileImg.rawValue)
         }
     }
+    
+    var nickname: String {
+        get {
+            userDefaults.string(forKey: UDKey.nickname.rawValue) ?? ""
+        }
+        set {
+            userDefaults.set(newValue, forKey: UDKey.nickname.rawValue)
+        }
+    }
+    
     
     var likes: [String] {
         get {
