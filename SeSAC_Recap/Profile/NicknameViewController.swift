@@ -30,36 +30,29 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
 
         UserDefaultManager.shared.profileImg = randomNum
         profileImg.image = UIImage(named: "profile\(UserDefaultManager.shared.profileImg)")
-        profileImg.contentMode = .scaleAspectFill
-        profileImg.layer.masksToBounds = false
-        profileImg.layer.cornerRadius = profileImg.frame.height / 2
-        profileImg.clipsToBounds = true
-        profileImg.layer.borderWidth = 5
-        profileImg.layer.borderColor = Colors.pointColor.cgColor
+        profileImage(profileImg)
         
         cameraImg.image = .camera
         
         nicknameTextField.placeholder = "닉네임을 입력해주세요 :)"
         nicknameTextField.font = Fonts.font13
         
-        nicknameCondition.textColor = Colors.pointColor
+        nicknameCondition.textColor = UIColor.pointColor
         nicknameCondition.font = Fonts.font13
         nicknameCondition.text = ""
-        
-        doneButton.configureButtonPrimaryStyle(title: "완료")
-        
-        navigationItem.backButtonTitle = ""
-        
-        
         nicknameTextField.delegate = self
         nicknameTextField.smartDashesType = .no
         nicknameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         
+        doneButton.configureButtonPrimaryStyle(title: "완료")
         doneButton.addTarget(self, action: #selector(doneButtonClicked), for: .touchUpInside)
         doneButton.isEnabled = false
         
-        // 앱 껐다가 키면 닉네임은 있는데, 완료 버튼이 비활성화 되어있음
-        nicknameTextField.text = UserDefaults.standard.string(forKey: "Nickname")
+        navigationItem.backButtonTitle = ""
+        
+        UserDefaultManager.shared.nickname = nicknameTextField.text!
+        
+//        nicknameTextField.text = UserDefaults.standard.string(forKey: "Nickname")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,7 +82,7 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func doneButtonClicked() {
-        UserDefaults.standard.set(nicknameTextField.text, forKey: "Nickname")
+//        UserDefaults.standard.set(nicknameTextField.text, forKey: "Nickname")
         UserDefaults.standard.setValue(true, forKey: "UserState")
         
         let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene

@@ -34,7 +34,7 @@ class SettingProfileViewController: UIViewController {
         profileImg.layer.cornerRadius = profileImg.frame.height / 2
         profileImg.clipsToBounds = true
         profileImg.layer.borderWidth = 5
-        profileImg.layer.borderColor = Colors.pointColor.cgColor
+        profileImg.layer.borderColor = UIColor.pointColor.cgColor
     }
 }
 
@@ -76,7 +76,7 @@ extension SettingProfileViewController: UICollectionViewDataSource, UICollection
 
         let newImg = UserDefaults.standard.integer(forKey: "clickImg")
         if indexPath.row == newImg {
-            cell.layer.borderColor = Colors.pointColor.cgColor
+            cell.layer.borderColor = UIColor.pointColor.cgColor
             cell.layer.borderWidth = 5
             cell.contentMode = .scaleAspectFill
             cell.layer.masksToBounds = false
@@ -100,7 +100,7 @@ extension SettingProfileViewController: UICollectionViewDataSource, UICollection
             
             let newImg = UserDefaults.standard.integer(forKey: "clickImg")
             
-            cell.layer.borderColor = Colors.pointColor.cgColor
+            cell.layer.borderColor = UIColor.pointColor.cgColor
             cell.layer.borderWidth = 5
             cell.contentMode = .scaleAspectFill
             cell.layer.masksToBounds = false

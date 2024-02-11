@@ -125,7 +125,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
             keyword.font = Fonts.font13
             deleteAll.setTitle("모두 지우기", for: .normal)
             deleteAll.titleLabel?.font = Fonts.font13
-            deleteAll.setTitleColor(Colors.pointColor, for: .normal)
+            deleteAll.setTitleColor(UIColor.pointColor, for: .normal)
             
             let cell = tableView.dequeueReusableCell(withIdentifier: KeywordResultsTableViewCell.identifier, for: indexPath) as! KeywordResultsTableViewCell
             cell.keyword.text = UserDefaultManager.shared.keywords[indexPath.row]

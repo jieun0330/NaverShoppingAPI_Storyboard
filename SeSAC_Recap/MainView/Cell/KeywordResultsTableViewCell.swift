@@ -23,8 +23,8 @@ class KeywordResultsTableViewCell: UITableViewCell {
 extension KeywordResultsTableViewCell {
     func configureCell() {
         searchIcon.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
-        searchIcon.tintColor = Colors.textColor
+        searchIcon.tintColor = UIColor.textColor
         deleteButton.setImage(UIImage(systemName: "xmark"), for: .normal)
-        deleteButton.tintColor = Colors.textColor
+        deleteButton.tintColor = UIColor.textColor
     }
 }

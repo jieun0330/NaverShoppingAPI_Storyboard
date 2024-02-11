@@ -154,8 +154,8 @@ class KeywordResultViewController: UIViewController {
     func buttonType(_ sender: UIButton, title: String) {
         sender.contentEdgeInsets = UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8)
         sender.setTitle(title, for: .normal)
-        sender.setTitleColor(Colors.textColor, for: .normal)
-        sender.layer.borderColor = Colors.textColor.cgColor
+        sender.setTitleColor(UIColor.textColor, for: .normal)
+        sender.layer.borderColor = UIColor.textColor.cgColor
         sender.layer.borderWidth = 1
         sender.layer.cornerRadius = 10
     }
@@ -180,7 +180,7 @@ extension KeywordResultViewController:  UICollectionViewDataSourcePrefetching {
 extension KeywordResultViewController {
     func configureUI() {
         
-        numberOfKeywords.textColor = Colors.pointColor
+        numberOfKeywords.textColor = UIColor.pointColor
         numberOfKeywords.font = Fonts.font13
         
     }

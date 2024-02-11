@@ -23,7 +23,7 @@ class ResultCollectionViewCell: UICollectionViewCell {
         image.contentMode = .scaleAspectFill
         image.layer.cornerRadius = 20
         mallName.font = Fonts.font13
-        mallName.textColor = Colors.textColor
+        mallName.textColor = UIColor.textColor
         title.font = Fonts.font14
         lprice.font = Fonts.font15
         

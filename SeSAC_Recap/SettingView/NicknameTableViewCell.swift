@@ -23,12 +23,12 @@ class NicknameTableViewCell: UITableViewCell {
         profileImg.layer.cornerRadius = profileImg.frame.height / 2.7
         profileImg.clipsToBounds = true
         profileImg.layer.borderWidth = 4
-        profileImg.layer.borderColor = Colors.pointColor.cgColor
+        profileImg.layer.borderColor = UIColor.pointColor.cgColor
         
         nickname.text = UserDefaults.standard.string(forKey: "Nickname")
         nickname.font = Fonts.font15
         
-        numberOfProducts.textColor = Colors.pointColor
+        numberOfProducts.textColor = UIColor.pointColor
         numberOfProducts.font = Fonts.font13
         
         likeLabel.text = "을 좋아하고 있어요!"

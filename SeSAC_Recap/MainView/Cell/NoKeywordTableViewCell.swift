@@ -18,7 +18,7 @@ class NoKeywordTableViewCell: UITableViewCell {
         noKeywordImg.image = .empty
         noKeywordLabel.text = "최근 검색어가 없어요"
         noKeywordLabel.font = Fonts.font13
-        noKeywordLabel.textColor = Colors.textColor
+        noKeywordLabel.textColor = UIColor.textColor
         noKeywordLabel.textAlignment = .center
     }
 }

@@ -10,9 +10,9 @@ import UIKit
 extension UIButton {
     func configureButtonPrimaryStyle(title: String) {
         self.setTitle(title, for: .normal)
-        self.backgroundColor = Colors.pointColor
+        self.backgroundColor = UIColor.pointColor
         self.layer.cornerRadius = 12
-        self.setTitleColor(Colors.textColor, for: .normal)
+        self.setTitleColor(UIColor.textColor, for: .normal)
         self.titleLabel?.font = Fonts.font13
     }
 }
