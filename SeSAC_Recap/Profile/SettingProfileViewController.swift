@@ -12,13 +12,10 @@ class SettingProfileViewController: UIViewController {
     @IBOutlet var profileImg: UIImageView!
     @IBOutlet var profileListView: UICollectionView!
     
-//    let randomNum = Int.random(in: 1...14)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
-        configureView()
         setLayout()
     }
     
@@ -27,18 +24,6 @@ class SettingProfileViewController: UIViewController {
         
         profileImg.image = UIImage(named: "profile\(UserDefaultManager.shared.profileImg)")
         configureProfileImage(profileImg)
-
-//        let newImg = UserDefaults.standard.integer(forKey: "clickImg")
-//        profileImg.image = UIImage(named: "profile\(newImg+1)")
-//        profileImg.contentMode = .scaleAspectFill
-//        profileImg.layer.masksToBounds = false
-//        profileImg.layer.cornerRadius = profileImg.frame.height / 2
-//        profileImg.clipsToBounds = true
-//        profileImg.layer.borderWidth = 5
-//        profileImg.layer.borderColor = UIColor.pointColor.cgColor
-    }
-    
-    func configureView() {
         
         profileListView.delegate = self
         profileListView.dataSource = self
@@ -69,8 +54,8 @@ extension SettingProfileViewController: UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileImgCollectionViewCell.identifier, for: indexPath) as! ProfileImgCollectionViewCell
-
-//        let newImg = UserDefaults.standard.integer(forKey: "clickImg")
+        
+        cell.profileImg.image = UIImage(named: "profile\(indexPath.row+1)")
         
         let selectedImg = UserDefaultManager.shared.profileImg - 1
         if indexPath.row == selectedImg {
@@ -85,17 +70,12 @@ extension SettingProfileViewController: UICollectionViewDataSource, UICollection
         // 전 화면에서 선택된 이미지가 다음 화면에서 다른 이미지 클릭 시 해제
         collectionView.selectItem(at: [0, selectedImg], animated: false, scrollPosition: .init())
         
-        cell.profileImg.image = UIImage(named: "profile\(indexPath.row+1)")
-        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        
         if let cell = collectionView.cellForItem(at: indexPath) as? UICollectionViewCell {
-            
-//            let newImg = UserDefaults.standard.integer(forKey: "clickImg")
             
             cell.layer.borderColor = UIColor.pointColor.cgColor
             cell.layer.borderWidth = 5
@@ -106,14 +86,11 @@ extension SettingProfileViewController: UICollectionViewDataSource, UICollection
             
             UserDefaultManager.shared.profileImg = indexPath.row + 1
             profileImg.image = UIImage(named: "profile\(UserDefaultManager.shared.profileImg)")
-
-            
-//            UserDefaults.standard.set(indexPath.row, forKey: "clickImg")
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-            
+        
         if let cell = collectionView.cellForItem(at: indexPath) as? UICollectionViewCell {
             cell.layer.borderColor = UIColor.clear.cgColor
             cell.layer.borderWidth = 0
