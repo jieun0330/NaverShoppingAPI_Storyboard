@@ -235,7 +235,7 @@
                 <exit id="PBg-fr-2M3" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="Jo4-jx-ra5">
                     <connections>
-                        <action selector="imageClicked:" destination="bcy-DC-pkE" id="Q9t-RA-bVq"/>
+                        <action selector="profileImageClicked:" destination="bcy-DC-pkE" id="Q9t-RA-bVq"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="uwp-wA-mfq">
