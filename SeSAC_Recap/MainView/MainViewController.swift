@@ -52,9 +52,10 @@ extension MainViewController {
     
     func configureUI() {
         
-        let name = UserDefaults.standard.string(forKey: "Nickname")
+        let name = UserDefaultManager.shared.nickname
         
-        navigationItem.title = "\(name ?? "")님의 새싹쇼핑"
+        
+        navigationItem.title = "\(name)님의 새싹쇼핑"
         searchBar.placeholder = "브랜드, 상품, 프로필 태그 등"
         keyword.text = ""
         navigationItem.backButtonTitle = ""

@@ -37,7 +37,7 @@ class KeywordResultViewController: UIViewController {
         
         let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
         // [index]가 아닌 다른 방법이 있는지 찾아보자
-        navigationItem.title = searchedKeywordList[index]
+//        navigationItem.title = searchedKeywordList[index]
         
         accuracyClicked(accuracy)
         // 아 왜 검정글씨 안보여
