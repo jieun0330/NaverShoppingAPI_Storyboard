@@ -21,14 +21,14 @@ class SettingProfileViewController: UIViewController {
         configureView()
         setLayout()
     }
-}
-
-extension SettingProfileViewController {
+    
     func configureUI() {
         navigationItem.title = "프로필 설정"
         
-        let newImg = UserDefaults.standard.integer(forKey: "clickImg")
-        profileImg.image = UIImage(named: "profile\(newImg+1)")
+        profileImg.image = UIImage(named: "profile\(UserDefaultManager.shared.profileImg)")
+        
+//        let newImg = UserDefaults.standard.integer(forKey: "clickImg")
+//        profileImg.image = UIImage(named: "profile\(newImg+1)")
         profileImg.contentMode = .scaleAspectFill
         profileImg.layer.masksToBounds = false
         profileImg.layer.cornerRadius = profileImg.frame.height / 2
@@ -36,6 +36,10 @@ extension SettingProfileViewController {
         profileImg.layer.borderWidth = 5
         profileImg.layer.borderColor = Colors.pointColor.cgColor
     }
+}
+
+extension SettingProfileViewController {
+
     
     func configureView() {
         

@@ -20,10 +20,6 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UserDefaultManager.shared.profileImg = randomNum
-        profileImg.image = UIImage(named: "profile\(UserDefaultManager.shared.profileImg)")
-        
-        
         configureUI()
         
         nicknameTextField.delegate = self
@@ -35,6 +31,33 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         
         // 앱 껐다가 키면 닉네임은 있는데, 완료 버튼이 비활성화 되어있음
         nicknameTextField.text = UserDefaults.standard.string(forKey: "Nickname")
+    }
+    
+    func configureUI() {
+        
+        navigationItem.title = "프로필 설정"
+
+        UserDefaultManager.shared.profileImg = randomNum
+        profileImg.image = UIImage(named: "profile\(UserDefaultManager.shared.profileImg)")
+        profileImg.contentMode = .scaleAspectFill
+        profileImg.layer.masksToBounds = false
+        profileImg.layer.cornerRadius = profileImg.frame.height / 2
+        profileImg.clipsToBounds = true
+        profileImg.layer.borderWidth = 5
+        profileImg.layer.borderColor = Colors.pointColor.cgColor
+        
+        cameraImg.image = .camera
+        
+        nicknameTextField.placeholder = "닉네임을 입력해주세요 :)"
+        nicknameTextField.font = Fonts.font13
+        
+        nicknameCondition.textColor = Colors.pointColor
+        nicknameCondition.font = Fonts.font13
+        nicknameCondition.text = ""
+        
+        doneButton.configureButtonPrimaryStyle(title: "완료")
+        
+        navigationItem.backButtonTitle = ""
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,30 +111,3 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
 }
-
-extension NicknameViewController {
-    func configureUI() {
-        navigationItem.title = "프로필 설정"
-        
-        profileImg.contentMode = .scaleAspectFill
-        profileImg.layer.masksToBounds = false
-        profileImg.layer.cornerRadius = profileImg.frame.height / 2
-        profileImg.clipsToBounds = true
-        profileImg.layer.borderWidth = 5
-        profileImg.layer.borderColor = Colors.pointColor.cgColor
-        
-        cameraImg.image = .camera
-        
-        nicknameTextField.placeholder = "닉네임을 입력해주세요 :)"
-        nicknameTextField.font = Fonts.font13
-        
-        nicknameCondition.textColor = Colors.pointColor
-        nicknameCondition.font = Fonts.font13
-        nicknameCondition.text = ""
-        
-        doneButton.configureButtonPrimaryStyle(title: "완료")
-        
-        navigationItem.backButtonTitle = ""
-    }
-}
-
