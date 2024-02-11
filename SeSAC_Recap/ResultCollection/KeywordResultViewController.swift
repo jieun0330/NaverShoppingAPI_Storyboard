@@ -40,6 +40,10 @@ class KeywordResultViewController: UIViewController {
         accuracyClicked(accuracyButton)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        resultView.reloadData()
+    }
+    
     func configureUI() {
         
         let searchedKeywordList = UserDefaultManager.shared.keywords
@@ -210,15 +214,20 @@ extension KeywordResultViewController: UICollectionViewDataSource, UICollectionV
         cell.likeButton.tag = indexPath.row
         cell.likeButton.addTarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
         
+        
         return cell
     }
     
     @objc func likeButtonClicked(sender: UIButton) {
         let product = list.items[sender.tag]
         
+        // 만약 product의 product가 likes의 포함되어있으면
         if let index = UserDefaultManager.shared.likes.firstIndex(of: product.productID) {
+            // 지우고
             UserDefaultManager.shared.likes.remove(at: index)
+            // 없으면
         } else {
+            // 추가해줘라
             UserDefaultManager.shared.likes.append(product.productID)
         }
         resultView.reloadData()

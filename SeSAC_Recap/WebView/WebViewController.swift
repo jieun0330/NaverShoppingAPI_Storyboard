@@ -20,13 +20,30 @@ class WebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureView()
+    }
+    
+    func configureView() {
+        let button = UIBarButtonItem(image: UIImage(systemName: UserDefaultManager.shared.likes.contains(productID) ? "heart.fill" : "heart"), style: .plain, target: self, action: #selector(rightBarButtonItemClicked))
+        
         navigationItem.title = productTitle
-
+        navigationItem.rightBarButtonItem = button
+        
         let urlString = "https://msearch.shopping.naver.com/product/\(productID)"
         if let url = URL(string: urlString) {
             let request = URLRequest(url: url)
             
             webView.load(request)
         }
+    }
+    
+    @objc func rightBarButtonItemClicked() {
+        
+        if let index = UserDefaultManager.shared.likes.firstIndex(of: productID) {
+            UserDefaultManager.shared.likes.remove(at: index)
+        } else {
+            UserDefaultManager.shared.likes.append(productID)
+        }
+        configureView()
     }
 }
