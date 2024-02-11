@@ -8,16 +8,25 @@
 import UIKit
 import Alamofire
 
+enum sortType: String {
+    case sim
+    case date
+    case dsc
+    case asc
+}
+
 class KeywordResultViewController: UIViewController {
     
     var list: Products = Products(total: 0, items: [])
     
     @IBOutlet var numberOfKeywords: UILabel!
-    @IBOutlet var accuracy: UIButton!
+    @IBOutlet var accuracyButton: UIButton!
     @IBOutlet var dateButton: UIButton!
-    @IBOutlet var highPrice: UIButton!
-    @IBOutlet var lowPrice: UIButton!
+    @IBOutlet var highPriceButton: UIButton!
+    @IBOutlet var lowPriceButton: UIButton!
     @IBOutlet var resultView: UICollectionView!
+    
+    let searchedKeywordList = UserDefaultManager.shared.keywords
     
     var index: Int = 0
     var display = 30
@@ -27,29 +36,32 @@ class KeywordResultViewController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
+        setLayout()
+        accuracyClicked(accuracyButton)
+    }
+    
+    func configureUI() {
+        
+        let searchedKeywordList = UserDefaultManager.shared.keywords
+        navigationItem.title = searchedKeywordList[index]
+        
+        navigationItem.backButtonTitle = ""
+        navigationController?.navigationBar.tintColor = .white
+        
+        numberOfKeywords.textColor = UIColor.pointColor
+        numberOfKeywords.font = Fonts.font13
         
         resultView.delegate = self
         resultView.dataSource = self
         resultView.prefetchDataSource = self
         resultView.register(UINib(nibName: ResultCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: ResultCollectionViewCell.identifier)
         
-        setLayout()
+        accuracyButton.setTitleColor(.black, for: .normal)
         
-//        let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
-        // [index]가 아닌 다른 방법이 있는지 찾아보자
-//        navigationItem.title = searchedKeywordList[index]
-        
-        accuracyClicked(accuracy)
-        // 아 왜 검정글씨 안보여
-        accuracy.setTitleColor(.black, for: .normal)
-        
-        navigationItem.backButtonTitle = ""
-        navigationController?.navigationBar.tintColor = .white
- 
-        buttonType(accuracy, title: "정확도")
+        buttonType(accuracyButton, title: "정확도")
         buttonType(dateButton, title: "날짜순")
-        buttonType(highPrice, title: "가격높은순")
-        buttonType(lowPrice, title: "가격낮은순")
+        buttonType(highPriceButton, title: "가격높은순")
+        buttonType(lowPriceButton, title: "가격낮은순")
     }
     
     func setButtonOff(sender: UIButton) {
@@ -63,46 +75,33 @@ class KeywordResultViewController: UIViewController {
     }
     
     func buttonClicked() {
-        setButtonOff(sender: accuracy)
+        setButtonOff(sender: accuracyButton)
         setButtonOff(sender: dateButton)
-        setButtonOff(sender: lowPrice)
-        setButtonOff(sender: highPrice)
+        setButtonOff(sender: lowPriceButton)
+        setButtonOff(sender: highPriceButton)
     }
     
     @IBAction func accuracyClicked(_ sender: UIButton) {
-        
-        let searchedKeywordList = UserDefaultManager.shared.keywords
-        callRequest(text: searchedKeywordList[index], sort: "sim")
-        
-        buttonClicked()
-        setButtonOn(sender: sender)
-//        sender.setTitleColor(.black, for: .normal)
+        sortButtonClicked(sort: .sim, sender: accuracyButton)
     }
     
     @IBAction func dateClicked(_ sender: UIButton) {
-        let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
-        callRequest(text: searchedKeywordList[index], sort: "date")
-        
-        buttonClicked()
-        setButtonOn(sender: sender)
+        sortButtonClicked(sort: .date, sender: dateButton)
     }
     
     @IBAction func highPriceClicked(_ sender: UIButton) {
-        let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
-        callRequest(text: searchedKeywordList[index], sort: "dsc")
-        
-        buttonClicked()
-        setButtonOn(sender: sender)
+        sortButtonClicked(sort: .dsc, sender: highPriceButton)
     }
     
     @IBAction func lowPriceClicked(_ sender: UIButton) {
-        let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
-        callRequest(text: searchedKeywordList[index], sort: "asc")
-        
+        sortButtonClicked(sort: .asc, sender: lowPriceButton)
+    }
+    
+    func sortButtonClicked(sort: sortType, sender: UIButton) {
+        callRequest(text: searchedKeywordList[index], sort: sort.rawValue)
         buttonClicked()
         setButtonOn(sender: sender)
     }
-    
     
     func callRequest(text: String, sort: String) {
         
@@ -140,7 +139,6 @@ class KeywordResultViewController: UIViewController {
     }
     
     func setLayout() {
-        // 아직 UICollectionViewFlowLayout이 무슨 역할을 하는지 모름
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 5
         let cellWidth = UIScreen.main.bounds.width - (spacing * 3)
@@ -179,12 +177,7 @@ extension KeywordResultViewController:  UICollectionViewDataSourcePrefetching {
 }
 
 extension KeywordResultViewController {
-    func configureUI() {
-        
-        numberOfKeywords.textColor = UIColor.pointColor
-        numberOfKeywords.font = Fonts.font13
-        
-    }
+
 }
 
 extension KeywordResultViewController: UICollectionViewDataSource, UICollectionViewDelegate  {

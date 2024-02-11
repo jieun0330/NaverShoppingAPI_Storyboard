@@ -418,7 +418,7 @@
                                     <action selector="accuracyClicked:" destination="nGk-GG-Nft" eventType="touchUpInside" id="I2d-ui-I36"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQU-ad-Cbl">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQU-ad-Cbl">
                                 <rect key="frame" x="76" y="110" width="46" height="30"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
@@ -426,7 +426,7 @@
                                     <action selector="dateClicked:" destination="nGk-GG-Nft" eventType="touchUpInside" id="Mjm-C9-wMc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hM-wJ-Fmk">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hM-wJ-Fmk">
                                 <rect key="frame" x="132" y="110" width="46" height="30"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
@@ -434,7 +434,7 @@
                                     <action selector="highPriceClicked:" destination="nGk-GG-Nft" eventType="touchUpInside" id="YX1-hK-luy"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NdM-ui-ABP">
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NdM-ui-ABP">
                                 <rect key="frame" x="188" y="110" width="46" height="30"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
@@ -475,10 +475,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="VAE-e6-BGf"/>
                     <connections>
-                        <outlet property="accuracy" destination="cFC-J0-M5m" id="NPG-GK-h9T"/>
-                        <outlet property="dateButton" destination="bQU-ad-Cbl" id="3HL-8Q-59h"/>
-                        <outlet property="highPrice" destination="8hM-wJ-Fmk" id="D4c-Dp-PJc"/>
-                        <outlet property="lowPrice" destination="NdM-ui-ABP" id="2PG-vA-RN5"/>
+                        <outlet property="accuracyButton" destination="cFC-J0-M5m" id="FzQ-jj-lPo"/>
+                        <outlet property="dateButton" destination="bQU-ad-Cbl" id="ZHt-fF-2GH"/>
+                        <outlet property="highPriceButton" destination="8hM-wJ-Fmk" id="DNs-wr-fzx"/>
+                        <outlet property="lowPriceButton" destination="NdM-ui-ABP" id="GOE-wg-MWG"/>
                         <outlet property="numberOfKeywords" destination="tnn-QE-fzV" id="ogF-6S-mqi"/>
                         <outlet property="resultView" destination="JsO-RR-zL6" id="zFR-Vb-BCH"/>
                     </connections>
