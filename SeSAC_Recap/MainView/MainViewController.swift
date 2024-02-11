@@ -14,21 +14,17 @@ class MainViewController: UIViewController {
     @IBOutlet var deleteAll: UIButton!
     @IBOutlet var keywordView: UITableView!
     
-    var list: Products = Products(total: 0, items: []) {
-        didSet {
-            keywordView.reloadData()
-        }
-    }
-        
+    var list: Products = Products(total: 0, items: [])
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
-
+        
     }
     
     func configureUI() {
-    
+        
         navigationItem.title = "\(UserDefaultManager.shared.nickname)님의 새싹쇼핑"
         navigationItem.backButtonTitle = ""
         navigationItem.setHidesBackButton(true, animated: true)
@@ -57,7 +53,6 @@ class MainViewController: UIViewController {
         super.viewWillAppear(true)
         
         searchBar.text = ""
-        
     }
 }
 
@@ -78,7 +73,6 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if UserDefaultManager.shared.keywords.count == 0 {
-
             return 1
         } else {
             return UserDefaultManager.shared.keywords.count
@@ -94,20 +88,17 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
             
             cell.selectionStyle = .none
             tableView.isUserInteractionEnabled = false
-//            tableView.isScrollEnabled = true
             
-//            cell.scroll
             return cell
             
         } else {
+            tableView.isUserInteractionEnabled = true
             
             keyword.text = "최근 검색"
             keyword.font = Fonts.font13
             deleteAll.setTitle("모두 지우기", for: .normal)
             deleteAll.titleLabel?.font = Fonts.font13
             deleteAll.setTitleColor(UIColor.pointColor, for: .normal)
-            
-            tableView.isUserInteractionEnabled = true
             
             let cell = tableView.dequeueReusableCell(withIdentifier: KeywordResultsTableViewCell.identifier, for: indexPath) as! KeywordResultsTableViewCell
             cell.keyword.text = UserDefaultManager.shared.keywords[indexPath.row]
@@ -127,8 +118,6 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if UserDefaultManager.shared.keywords.count == 0 {
-            // 스크롤 없애기
-//            scroll
             return 300
         } else {
             return 52
@@ -139,12 +128,11 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: KeywordResultsTableViewCell.identifier, for: indexPath) as! KeywordResultsTableViewCell
         
-        UserDefaults.standard.set(UserDefaultManager.shared.keywords, forKey: "키워드")
         keywordView.reloadData()
         
         let vc = storyboard?.instantiateViewController(identifier: KeywordResultViewController.identifier) as! KeywordResultViewController
         vc.index = indexPath.row
+        
         navigationController?.pushViewController(vc, animated: true)
     }
-    
 }
