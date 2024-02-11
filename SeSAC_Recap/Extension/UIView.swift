@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIViewController {
-    func profileImage(_ sender: UIImageView) {
+    func configureProfileImage(_ sender: UIImageView) {
         sender.contentMode = .scaleAspectFill
         sender.layer.masksToBounds = false
         sender.layer.cornerRadius = sender.frame.height / 2

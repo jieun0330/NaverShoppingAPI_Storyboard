@@ -30,7 +30,7 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
 
         UserDefaultManager.shared.profileImg = randomNum
         profileImg.image = UIImage(named: "profile\(UserDefaultManager.shared.profileImg)")
-        profileImage(profileImg)
+        configureProfileImage(profileImg)
         
         cameraImg.image = .camera
         
@@ -54,10 +54,11 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         
 //        nicknameTextField.text = UserDefaults.standard.string(forKey: "Nickname")
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
 //        let num = UserDefaults.standard.integer(forKey: "clickImg")
-//        profileImg.image = UIImage(named: "profile\(num+1)")
+        profileImg.image = UIImage(named: "profile\(UserDefaultManager.shared.profileImg)")
         
     }
     

@@ -12,7 +12,7 @@ class SettingProfileViewController: UIViewController {
     @IBOutlet var profileImg: UIImageView!
     @IBOutlet var profileListView: UICollectionView!
     
-    let randomNum = Int.random(in: 1...14)
+//    let randomNum = Int.random(in: 1...14)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,20 +26,17 @@ class SettingProfileViewController: UIViewController {
         navigationItem.title = "프로필 설정"
         
         profileImg.image = UIImage(named: "profile\(UserDefaultManager.shared.profileImg)")
-        
+        configureProfileImage(profileImg)
+
 //        let newImg = UserDefaults.standard.integer(forKey: "clickImg")
 //        profileImg.image = UIImage(named: "profile\(newImg+1)")
-        profileImg.contentMode = .scaleAspectFill
-        profileImg.layer.masksToBounds = false
-        profileImg.layer.cornerRadius = profileImg.frame.height / 2
-        profileImg.clipsToBounds = true
-        profileImg.layer.borderWidth = 5
-        profileImg.layer.borderColor = UIColor.pointColor.cgColor
+//        profileImg.contentMode = .scaleAspectFill
+//        profileImg.layer.masksToBounds = false
+//        profileImg.layer.cornerRadius = profileImg.frame.height / 2
+//        profileImg.clipsToBounds = true
+//        profileImg.layer.borderWidth = 5
+//        profileImg.layer.borderColor = UIColor.pointColor.cgColor
     }
-}
-
-extension SettingProfileViewController {
-
     
     func configureView() {
         
@@ -61,7 +58,6 @@ extension SettingProfileViewController {
         layout.minimumInteritemSpacing = spacing
         profileListView.collectionViewLayout = layout
     }
-    
 }
 
 extension SettingProfileViewController: UICollectionViewDataSource, UICollectionViewDelegate  {
@@ -74,8 +70,10 @@ extension SettingProfileViewController: UICollectionViewDataSource, UICollection
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileImgCollectionViewCell.identifier, for: indexPath) as! ProfileImgCollectionViewCell
 
-        let newImg = UserDefaults.standard.integer(forKey: "clickImg")
-        if indexPath.row == newImg {
+//        let newImg = UserDefaults.standard.integer(forKey: "clickImg")
+        
+        let selectedImg = UserDefaultManager.shared.profileImg - 1
+        if indexPath.row == selectedImg {
             cell.layer.borderColor = UIColor.pointColor.cgColor
             cell.layer.borderWidth = 5
             cell.contentMode = .scaleAspectFill
@@ -85,7 +83,7 @@ extension SettingProfileViewController: UICollectionViewDataSource, UICollection
         }
         
         // 전 화면에서 선택된 이미지가 다음 화면에서 다른 이미지 클릭 시 해제
-        collectionView.selectItem(at: [0, newImg], animated: false, scrollPosition: .init())
+        collectionView.selectItem(at: [0, selectedImg], animated: false, scrollPosition: .init())
         
         cell.profileImg.image = UIImage(named: "profile\(indexPath.row+1)")
         
@@ -94,11 +92,10 @@ extension SettingProfileViewController: UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        profileImg.image = UIImage(named: "profile\(indexPath.row+1)")
         
         if let cell = collectionView.cellForItem(at: indexPath) as? UICollectionViewCell {
             
-            let newImg = UserDefaults.standard.integer(forKey: "clickImg")
+//            let newImg = UserDefaults.standard.integer(forKey: "clickImg")
             
             cell.layer.borderColor = UIColor.pointColor.cgColor
             cell.layer.borderWidth = 5
@@ -106,7 +103,12 @@ extension SettingProfileViewController: UICollectionViewDataSource, UICollection
             cell.layer.masksToBounds = false
             cell.layer.cornerRadius = cell.frame.height / 2
             cell.clipsToBounds = true
-            UserDefaults.standard.set(indexPath.row, forKey: "clickImg")
+            
+            UserDefaultManager.shared.profileImg = indexPath.row + 1
+            profileImg.image = UIImage(named: "profile\(UserDefaultManager.shared.profileImg)")
+
+            
+//            UserDefaults.standard.set(indexPath.row, forKey: "clickImg")
         }
     }
     
