@@ -21,16 +21,7 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         configureUI()
-        
-        nicknameTextField.delegate = self
-        nicknameTextField.smartDashesType = .no
-        nicknameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
-        
-        doneButton.addTarget(self, action: #selector(doneButtonClicked), for: .touchUpInside)
-        doneButton.isEnabled = false
-        
-        // 앱 껐다가 키면 닉네임은 있는데, 완료 버튼이 비활성화 되어있음
-        nicknameTextField.text = UserDefaults.standard.string(forKey: "Nickname")
+
     }
     
     func configureUI() {
@@ -58,6 +49,17 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         doneButton.configureButtonPrimaryStyle(title: "완료")
         
         navigationItem.backButtonTitle = ""
+        
+        
+        nicknameTextField.delegate = self
+        nicknameTextField.smartDashesType = .no
+        nicknameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        
+        doneButton.addTarget(self, action: #selector(doneButtonClicked), for: .touchUpInside)
+        doneButton.isEnabled = false
+        
+        // 앱 껐다가 키면 닉네임은 있는데, 완료 버튼이 비활성화 되어있음
+        nicknameTextField.text = UserDefaults.standard.string(forKey: "Nickname")
     }
     
     override func viewWillAppear(_ animated: Bool) {

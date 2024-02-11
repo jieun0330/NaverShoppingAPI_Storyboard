@@ -7,7 +7,24 @@
 
 import UIKit
 
-//Mark: - identifier protocol 개념 정리하기
 protocol ReusableProtocol {
     static var identifier: String { get }
+}
+
+extension UIViewController: ReusableProtocol {
+    static var identifier: String {
+        return String(describing: self)
+    }
+}
+
+extension UICollectionViewCell: ReusableProtocol {
+    static var identifier: String {
+        return String(describing: self)
+    }
+}
+
+extension UITableViewCell: ReusableProtocol {
+    static var identifier: String {
+        return String(describing: self)
+    }
 }
