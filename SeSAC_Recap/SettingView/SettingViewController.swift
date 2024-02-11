@@ -26,9 +26,6 @@ class SettingViewController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
-        configureView()
-        settingView.delegate = self
-        settingView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,15 +33,13 @@ class SettingViewController: UIViewController {
         
         settingView.reloadData()
     }
-}
-
-
-extension SettingViewController {
+    
     func configureUI() {
         navigationItem.title = "설정"
-    }
-    
-    func configureView() {
+        
+        settingView.delegate = self
+        settingView.dataSource = self
+        
         let xib = UINib(nibName: NicknameTableViewCell.identifier, bundle: nil)
         settingView.register(xib, forCellReuseIdentifier: NicknameTableViewCell.identifier)
         
@@ -67,14 +62,16 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: NicknameTableViewCell.identifier, for: indexPath) as! NicknameTableViewCell
             
-            var likeNum = UserDefaultManager.shared.likes.count
+            let likeNum = UserDefaultManager.shared.likes.count
             cell.numberOfProducts.text = "\(likeNum)개의 상품"
+            cell.selectionStyle = .none
             
             return cell
         } else {
             let cell2 = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier, for: indexPath) as! SettingTableViewCell
             
             cell2.setting.text = Setting.setting.title[indexPath.row]
+            cell2.selectionStyle = .none
             
             return cell2
         }

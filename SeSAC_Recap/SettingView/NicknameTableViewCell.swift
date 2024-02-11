@@ -17,7 +17,7 @@ class NicknameTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        profileImg.image = UIImage(named: "profile\(UserDefaults.standard.integer(forKey: "clickImg"))")
+        profileImg.image = UIImage(named: "profile\(UserDefaultManager.shared.profileImg)")
         profileImg.contentMode = .scaleAspectFill
         profileImg.layer.masksToBounds = false
         profileImg.layer.cornerRadius = profileImg.frame.height / 2.7
@@ -25,7 +25,7 @@ class NicknameTableViewCell: UITableViewCell {
         profileImg.layer.borderWidth = 4
         profileImg.layer.borderColor = UIColor.pointColor.cgColor
         
-        nickname.text = UserDefaults.standard.string(forKey: "Nickname")
+        nickname.text = UserDefaultManager.shared.nickname
         nickname.font = Fonts.font15
         
         numberOfProducts.textColor = UIColor.pointColor
