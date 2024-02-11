@@ -12,7 +12,7 @@ class WebViewController: UIViewController {
     
     @IBOutlet var webView: WKWebView!
     
-    var list: Welcome = Welcome(total: 0, items: [])
+    var list: Products = Products(total: 0, items: [])
     var productID: String = ""
     var index: Int = 0
     

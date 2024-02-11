@@ -10,7 +10,7 @@ import Alamofire
 
 class KeywordResultViewController: UIViewController {
     
-    var list: Welcome = Welcome(total: 0, items: [])
+    var list: Products = Products(total: 0, items: [])
     
     @IBOutlet var numberOfKeywords: UILabel!
     @IBOutlet var accuracy: UIButton!
@@ -35,7 +35,7 @@ class KeywordResultViewController: UIViewController {
         
         setLayout()
         
-        let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
+//        let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
         // [index]가 아닌 다른 방법이 있는지 찾아보자
 //        navigationItem.title = searchedKeywordList[index]
         
@@ -70,7 +70,8 @@ class KeywordResultViewController: UIViewController {
     }
     
     @IBAction func accuracyClicked(_ sender: UIButton) {
-        let searchedKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] ?? [""]
+        
+        let searchedKeywordList = UserDefaultManager.shared.keywords
         callRequest(text: searchedKeywordList[index], sort: "sim")
         
         buttonClicked()
@@ -114,7 +115,7 @@ class KeywordResultViewController: UIViewController {
         
         AF
             .request(url, method: .get, headers: headers)
-            .responseDecodable(of: Welcome.self) { response in
+            .responseDecodable(of: Products.self) { response in
                 switch response.result {
                 case .success(let success):
                     
@@ -167,7 +168,7 @@ extension KeywordResultViewController:  UICollectionViewDataSourcePrefetching {
         for item in indexPaths {
             if list.items.count - 3 == item.row {
                 
-                guard let searchKeywordList = UserDefaults.standard.array(forKey: "키워드") as? [String] else { return }
+                let searchKeywordList = UserDefaultManager.shared.keywords
                 
 //                start += display
                 start += 30
