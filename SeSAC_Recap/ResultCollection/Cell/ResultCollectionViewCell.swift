@@ -14,7 +14,7 @@ class ResultCollectionViewCell: UICollectionViewCell {
     @IBOutlet var likeButton: UIButton!
     @IBOutlet var likebuttonBackground: UIView!
     @IBOutlet var mallName: UILabel!
-    @IBOutlet var title: UILabel!
+    @IBOutlet var productDetail: UILabel!
     @IBOutlet var lprice: UILabel!
     
     override func awakeFromNib() {
@@ -24,9 +24,9 @@ class ResultCollectionViewCell: UICollectionViewCell {
         image.layer.cornerRadius = 20
         mallName.font = Fonts.font13
         mallName.textColor = UIColor.textColor
-        title.font = Fonts.font14
+        productDetail.font = Fonts.font14
+        productDetail.numberOfLines = 2
         lprice.font = Fonts.font15
-        
         likebuttonBackground.layer.masksToBounds = false
         likebuttonBackground.layer.cornerRadius = likebuttonBackground.frame.height / 1.8
         likebuttonBackground.clipsToBounds = true

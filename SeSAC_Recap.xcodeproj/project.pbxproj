@@ -101,6 +101,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C20E7B182B78CD2800542D26 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C25FC44D2B5BD39B000D8F6E /* Keyword.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		C20F83902B591CF4006B2463 = {
 			isa = PBXGroup;
 			children = (
@@ -122,7 +130,7 @@
 		C20F839B2B591CF4006B2463 /* SeSAC_Recap */ = {
 			isa = PBXGroup;
 			children = (
-				C25FC44D2B5BD39B000D8F6E /* Keyword.swift */,
+				C20E7B182B78CD2800542D26 /* Model */,
 				C2F9EFEC2B5AC58200D0BBA1 /* Onboarding */,
 				C2F9EFED2B5AC59700D0BBA1 /* Profile */,
 				C2F9EFEF2B5AC5D300D0BBA1 /* MainView */,

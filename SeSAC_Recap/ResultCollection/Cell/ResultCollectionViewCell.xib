@@ -28,16 +28,16 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vi1-ix-xoP">
-                        <rect key="frame" x="10" y="332.33333333333331" width="41.333333333333336" height="15"/>
+                        <rect key="frame" x="10" y="332.33333333333331" width="359" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="15" id="S4C-V7-oLr"/>
+                            <constraint firstAttribute="height" constant="40" id="S4C-V7-oLr"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lY4-5z-MVC">
-                        <rect key="frame" x="10" y="357.33333333333331" width="42" height="23"/>
+                        <rect key="frame" x="10" y="382.33333333333331" width="42" height="23"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="EyO-gE-R92"/>
                             <constraint firstAttribute="height" constant="23" id="HE4-dI-re0"/>
@@ -76,6 +76,7 @@
                 <constraint firstItem="RUl-oS-P4w" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="IL9-ZD-WWY"/>
                 <constraint firstItem="eFx-Db-ftg" firstAttribute="top" secondItem="RUl-oS-P4w" secondAttribute="bottom" constant="10" id="IuH-Xs-gWl"/>
                 <constraint firstItem="fdg-cc-nBP" firstAttribute="bottom" secondItem="OTH-Sy-Hj7" secondAttribute="bottom" constant="-2" id="Mkv-kU-XWC"/>
+                <constraint firstItem="Vi1-ix-xoP" firstAttribute="trailing" secondItem="RUl-oS-P4w" secondAttribute="trailing" id="OLv-dT-vrl"/>
                 <constraint firstItem="Vi1-ix-xoP" firstAttribute="top" secondItem="eFx-Db-ftg" secondAttribute="bottom" constant="10" id="Od5-VQ-rqm"/>
                 <constraint firstItem="lY4-5z-MVC" firstAttribute="top" secondItem="Vi1-ix-xoP" secondAttribute="bottom" constant="10" id="STM-NO-Kf6"/>
                 <constraint firstAttribute="trailing" secondItem="RUl-oS-P4w" secondAttribute="trailing" constant="10" id="T1z-re-rsv"/>
@@ -94,7 +95,7 @@
                 <outlet property="likebuttonBackground" destination="OTH-Sy-Hj7" id="ftc-Ek-17l"/>
                 <outlet property="lprice" destination="lY4-5z-MVC" id="d6s-Gh-ZB9"/>
                 <outlet property="mallName" destination="eFx-Db-ftg" id="xgd-nh-idC"/>
-                <outlet property="title" destination="Vi1-ix-xoP" id="Oq8-bo-23j"/>
+                <outlet property="productDetail" destination="Vi1-ix-xoP" id="Oq8-bo-23j"/>
             </connections>
             <point key="canvasLocation" x="390.07633587786256" y="179.92957746478874"/>
         </collectionViewCell>

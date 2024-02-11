@@ -168,7 +168,6 @@ extension KeywordResultViewController:  UICollectionViewDataSourcePrefetching {
                 
                 let searchKeywordList = UserDefaultManager.shared.keywords
                 
-//                start += display
                 start += 30
                 callRequest(text: searchKeywordList[index], sort: "sim")
             }
@@ -176,36 +175,27 @@ extension KeywordResultViewController:  UICollectionViewDataSourcePrefetching {
     }
 }
 
-extension KeywordResultViewController {
-
-}
-
 extension KeywordResultViewController: UICollectionViewDataSource, UICollectionViewDelegate  {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(identifier: WebViewController.identifier) as! WebViewController
         vc.productID = list.items[indexPath.row].productID
-        
-        // push와 present와 pop을 구분해서 알아둬야 할 것 지은아
         navigationController?.pushViewController(vc, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return list.items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultCollectionViewCell.identifier, for: indexPath) as! ResultCollectionViewCell
-        let row = indexPath.row
-        let product = list.items[row]
+        let product = list.items[indexPath.row]
+        let productTitle = list.items[indexPath.item].title.replacingOccurrences(of: "<b>", with: "").replacingOccurrences(of: "</b>", with: "")
         
         cell.mallName.text = product.mallName
         cell.image.kf.setImage(with: URL(string: product.image))
-        // 두줄 구현 못함
-        // 상품명에 <b> 삭제 못함
-        cell.title.text = product.title
+        cell.productDetail.text = productTitle
         
         let numberFormatter: NumberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
@@ -213,7 +203,7 @@ extension KeywordResultViewController: UICollectionViewDataSource, UICollectionV
         
         cell.lprice.text = result
         cell.likeButton.setImage(UIImage(systemName: UserDefaultManager.shared.likes.contains(product.productID) ? "heart.fill" : "heart"), for: .normal)
-        cell.likeButton.tag = row
+        cell.likeButton.tag = indexPath.row
         cell.likeButton.addTarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
         
         return cell
