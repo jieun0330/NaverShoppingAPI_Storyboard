@@ -179,7 +179,11 @@ extension KeywordResultViewController: UICollectionViewDataSource, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(identifier: WebViewController.identifier) as! WebViewController
+        let productTitle = list.items[indexPath.item].title.replacingOccurrences(of: "<b>", with: "").replacingOccurrences(of: "</b>", with: "")
+        
         vc.productID = list.items[indexPath.row].productID
+        vc.productTitle = productTitle
+        
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -217,7 +221,6 @@ extension KeywordResultViewController: UICollectionViewDataSource, UICollectionV
         } else {
             UserDefaultManager.shared.likes.append(product.productID)
         }
-        
         resultView.reloadData()
     }
 }

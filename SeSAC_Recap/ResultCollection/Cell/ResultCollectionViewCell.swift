@@ -31,7 +31,6 @@ class ResultCollectionViewCell: UICollectionViewCell {
         likebuttonBackground.layer.cornerRadius = likebuttonBackground.frame.height / 1.8
         likebuttonBackground.clipsToBounds = true
         likebuttonBackground.backgroundColor = .white
-        
         likeButton.tintColor = .black
     }
 }
