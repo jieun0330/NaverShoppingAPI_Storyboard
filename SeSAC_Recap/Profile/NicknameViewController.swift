@@ -109,7 +109,7 @@ extension NicknameViewController {
         nicknameCondition.font = Fonts.font13
         nicknameCondition.text = ""
         
-        doneButton.configurePrimaryStyle(title: "완료")
+        doneButton.configureButtonPrimaryStyle(title: "완료")
         
         navigationItem.backButtonTitle = ""
     }
