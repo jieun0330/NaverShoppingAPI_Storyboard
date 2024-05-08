@@ -8,16 +8,7 @@
 import UIKit
 import Alamofire
 
-enum sortType: String {
-    case sim
-    case date
-    case dsc
-    case asc
-}
-
-class KeywordResultViewController: UIViewController {
-    
-    var list: Products = Products(total: 0, items: [])
+class ResultViewController: UIViewController {
     
     @IBOutlet var numberOfKeywords: UILabel!
     @IBOutlet var accuracyButton: UIButton!
@@ -25,6 +16,8 @@ class KeywordResultViewController: UIViewController {
     @IBOutlet var highPriceButton: UIButton!
     @IBOutlet var lowPriceButton: UIButton!
     @IBOutlet var resultView: UICollectionView!
+    
+    var list: Products = Products(total: 0, items: [])
     
     let searchedKeywordList = UserDefaultManager.shared.keywords
     
@@ -68,6 +61,7 @@ class KeywordResultViewController: UIViewController {
         buttonType(lowPriceButton, title: "가격낮은순")
     }
     
+    // 좋아요 버튼
     func setButtonOff(sender: UIButton) {
         sender.backgroundColor = .black
         sender.setTitleColor(.white, for: .normal)
@@ -85,23 +79,27 @@ class KeywordResultViewController: UIViewController {
         setButtonOff(sender: highPriceButton)
     }
     
+    // 정확도
     @IBAction func accuracyClicked(_ sender: UIButton) {
         sortButtonClicked(sort: .sim, sender: accuracyButton)
     }
     
+    // 날짜순
     @IBAction func dateClicked(_ sender: UIButton) {
         sortButtonClicked(sort: .date, sender: dateButton)
     }
     
+    // 가격높은순
     @IBAction func highPriceClicked(_ sender: UIButton) {
         sortButtonClicked(sort: .dsc, sender: highPriceButton)
     }
     
+    // 가격낮은순
     @IBAction func lowPriceClicked(_ sender: UIButton) {
         sortButtonClicked(sort: .asc, sender: lowPriceButton)
     }
     
-    func sortButtonClicked(sort: sortType, sender: UIButton) {
+    func sortButtonClicked(sort: SortType, sender: UIButton) {
         callRequest(text: searchedKeywordList[index], sort: sort.rawValue)
         buttonClicked()
         setButtonOn(sender: sender)
@@ -125,15 +123,12 @@ class KeywordResultViewController: UIViewController {
                     if self.start == 1 {
                         self.list = success
                         
-                        let numberFormatter: NumberFormatter = NumberFormatter()
-                        numberFormatter.numberStyle = .decimal
-                        let result: String = numberFormatter.string(for: self.list.total)!
+                        let result = NumberFormatManager.shared.numberFormat(number: self.list.total)
                         self.numberOfKeywords.text = "\(result)개의 검색 결과"
                         
                     } else {
                         self.list.items.append(contentsOf: success.items)
                     }
-                    
                     self.resultView.reloadData()
                     
                 case .failure(let failure):
@@ -164,7 +159,7 @@ class KeywordResultViewController: UIViewController {
     }
 }
 
-extension KeywordResultViewController:  UICollectionViewDataSourcePrefetching {
+extension ResultViewController:  UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         
         for item in indexPaths {
@@ -179,7 +174,7 @@ extension KeywordResultViewController:  UICollectionViewDataSourcePrefetching {
     }
 }
 
-extension KeywordResultViewController: UICollectionViewDataSource, UICollectionViewDelegate  {
+extension ResultViewController: UICollectionViewDataSource, UICollectionViewDelegate  {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(identifier: WebViewController.identifier) as! WebViewController
@@ -205,15 +200,12 @@ extension KeywordResultViewController: UICollectionViewDataSource, UICollectionV
         cell.image.kf.setImage(with: URL(string: product.image))
         cell.productDetail.text = productTitle
         
-        let numberFormatter: NumberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .decimal
-        let result: String = numberFormatter.string(from: NSNumber(value: Double(product.lprice)!))!
-        
+        let result = NumberFormatManager.shared.numberFormat(number: Double(product.lprice)!)
         cell.lprice.text = result
+        
         cell.likeButton.setImage(UIImage(systemName: UserDefaultManager.shared.likes.contains(product.productID) ? "heart.fill" : "heart"), for: .normal)
         cell.likeButton.tag = indexPath.row
         cell.likeButton.addTarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
-        
         
         return cell
     }

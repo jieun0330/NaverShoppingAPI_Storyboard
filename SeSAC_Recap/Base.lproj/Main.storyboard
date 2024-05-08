@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3lD-w8-o8e">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3lD-w8-o8e">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -62,10 +62,10 @@
             </objects>
             <point key="canvasLocation" x="1246.5648854961833" y="2.8169014084507045"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="iDX-VT-gJ4">
             <objects>
-                <viewController storyboardIdentifier="MainViewController" id="3uq-Ol-7nC" customClass="MainViewController" customModule="SeSAC_Recap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" id="3uq-Ol-7nC" customClass="SearchViewController" customModule="SeSAC_Recap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ct9-wd-A4l">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -396,10 +396,10 @@
             </objects>
             <point key="canvasLocation" x="6032.8244274809158" y="267.6056338028169"/>
         </scene>
-        <!--Keyword Result View Controller-->
+        <!--Result View Controller-->
         <scene sceneID="ssO-bj-H2B">
             <objects>
-                <viewController storyboardIdentifier="KeywordResultViewController" id="nGk-GG-Nft" customClass="KeywordResultViewController" customModule="SeSAC_Recap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="KeywordResultViewController" id="nGk-GG-Nft" customClass="ResultViewController" customModule="SeSAC_Recap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KTK-tI-wlH">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

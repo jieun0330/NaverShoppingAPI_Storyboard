@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class SearchViewController: UIViewController {
     
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var keyword: UILabel!
@@ -20,7 +20,6 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
-        
     }
     
     func configureUI() {
@@ -56,20 +55,20 @@ class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: UISearchBarDelegate {
+extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         UserDefaultManager.shared.keywords.insert(searchBar.text!, at: 0)
         keywordView.reloadData()
         
-        let vc = storyboard?.instantiateViewController(identifier: KeywordResultViewController.identifier) as! KeywordResultViewController
+        let vc = storyboard?.instantiateViewController(identifier: ResultViewController.identifier) as! ResultViewController
         
         navigationController?.pushViewController(vc, animated: true)
     }
 }
 
-extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
+extension SearchViewController: UITableViewDataSource, UITableViewDelegate  {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if UserDefaultManager.shared.keywords.count == 0 {
@@ -130,7 +129,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate  {
         
         keywordView.reloadData()
         
-        let vc = storyboard?.instantiateViewController(identifier: KeywordResultViewController.identifier) as! KeywordResultViewController
+        let vc = storyboard?.instantiateViewController(identifier: ResultViewController.identifier) as! ResultViewController
         vc.index = indexPath.row
         
         navigationController?.pushViewController(vc, animated: true)
