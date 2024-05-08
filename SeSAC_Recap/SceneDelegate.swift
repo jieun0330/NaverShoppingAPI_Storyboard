@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         
         // 사용자가 처음 들어온 것처럼 설정
-        if value == false {
+//        if value == false {
             guard let scene = (scene as? UIWindowScene) else { return }
             
             window = UIWindow(windowScene: scene)
@@ -34,17 +34,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             window?.rootViewController = nav
             window?.makeKeyAndVisible()
-        } else {
-            guard let scene = (scene as? UIWindowScene) else { return }
-            
-            window = UIWindow(windowScene: scene)
-            
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "mainTabBarController") as! UITabBarController
-            
-            window?.rootViewController = vc
-            window?.makeKeyAndVisible()
-        }
+//        } else {
+//            guard let scene = (scene as? UIWindowScene) else { return }
+//            
+//            window = UIWindow(windowScene: scene)
+//            
+//            let sb = UIStoryboard(name: "Main", bundle: nil)
+//            let vc = sb.instantiateViewController(withIdentifier: "mainTabBarController") as! UITabBarController
+//            
+//            window?.rootViewController = vc
+//            window?.makeKeyAndVisible()
+//        }
 
     }
 

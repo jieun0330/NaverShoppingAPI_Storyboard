@@ -21,7 +21,6 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         configureUI()
-        
     }
     
     func configureUI() {
@@ -30,7 +29,12 @@ class NicknameViewController: UIViewController, UITextFieldDelegate {
         
         UserDefaultManager.shared.profileImg = randomNum
         profileImg.image = UIImage(named: "profile\(UserDefaultManager.shared.profileImg)")
-        configureProfileImage(profileImg)
+        profileImg.layer.borderColor = UIColor.pointColor.cgColor
+        profileImg.layer.borderWidth = 5
+        profileImg.contentMode = .scaleAspectFill
+        profileImg.layer.masksToBounds = false
+        profileImg.layer.cornerRadius = profileImg.frame.height / 2
+        profileImg.clipsToBounds = true
         
         cameraImg.image = .camera
         

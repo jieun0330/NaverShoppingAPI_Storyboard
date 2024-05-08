@@ -60,7 +60,6 @@ class UserDefaultManager {
         }
     }
     
-    
     var likes: [String] {
         get {
             userDefaults.stringArray(forKey: UDKey.likes.rawValue) ?? []
