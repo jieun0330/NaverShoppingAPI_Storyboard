@@ -399,7 +399,7 @@
         <!--Result View Controller-->
         <scene sceneID="ssO-bj-H2B">
             <objects>
-                <viewController storyboardIdentifier="KeywordResultViewController" id="nGk-GG-Nft" customClass="ResultViewController" customModule="SeSAC_Recap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResultViewController" id="nGk-GG-Nft" customClass="ResultViewController" customModule="SeSAC_Recap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KTK-tI-wlH">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

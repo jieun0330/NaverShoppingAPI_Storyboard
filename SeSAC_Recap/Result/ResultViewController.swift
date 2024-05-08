@@ -100,41 +100,20 @@ class ResultViewController: UIViewController {
     }
     
     func sortButtonClicked(sort: SortType, sender: UIButton) {
-        callRequest(text: searchedKeywordList[index], sort: sort.rawValue)
+        //        callRequest(text: searchedKeywordList[index], sort: sort.rawValue)
+        
+        Task {
+            let result = try await fetchProductAsyncAwait(text: searchedKeywordList[index], sort: sort.rawValue)
+            self.list = result
+            
+            let resultCount = NumberFormatManager.shared.numberFormat(number: self.list.total)
+            self.numberOfKeywords.text = "\(resultCount)개의 검색 결과"
+            
+            self.resultView.reloadData()
+        }
+        
         buttonClicked()
         setButtonOn(sender: sender)
-    }
-    
-    func callRequest(text: String, sort: String) {
-        
-        let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        let url = "https://openapi.naver.com/v1/search/shop?query=\(query)&display=\(display)&sort=\(sort)&start=\(start)"
-        let headers: HTTPHeaders = [
-            "X-Naver-Client-Id": APIKey.clientID,
-            "X-Naver-Client-Secret": APIKey.clientSecret
-        ]
-        
-        AF
-            .request(url, method: .get, headers: headers)
-            .responseDecodable(of: Products.self) { response in
-                switch response.result {
-                case .success(let success):
-                    
-                    if self.start == 1 {
-                        self.list = success
-                        
-                        let result = NumberFormatManager.shared.numberFormat(number: self.list.total)
-                        self.numberOfKeywords.text = "\(result)개의 검색 결과"
-                        
-                    } else {
-                        self.list.items.append(contentsOf: success.items)
-                    }
-                    self.resultView.reloadData()
-                    
-                case .failure(let failure):
-                    print(failure)
-                }
-            }
     }
     
     func setLayout() {
@@ -157,6 +136,62 @@ class ResultViewController: UIViewController {
         sender.layer.borderWidth = 1
         sender.layer.cornerRadius = 10
     }
+    
+    //    func callRequest(text: String, sort: String) {
+    //
+    //        let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    //        let url = "https://openapi.naver.com/v1/search/shop?query=\(query)&display=\(display)&sort=\(sort)&start=\(start)"
+    //        let headers: HTTPHeaders = [
+    //            "X-Naver-Client-Id": APIKey.clientID,
+    //            "X-Naver-Client-Secret": APIKey.clientSecret
+    //        ]
+    //
+    //        AF
+    //            .request(url, method: .get, headers: headers)
+    //            .responseDecodable(of: Products.self) { response in
+    //                switch response.result {
+    //                case .success(let success):
+    //
+    //                    if self.start == 1 {
+    //                        self.list = success
+    //
+    //                        let result = NumberFormatManager.shared.numberFormat(number: self.list.total)
+    //                        self.numberOfKeywords.text = "\(result)개의 검색 결과"
+    //
+    //                    } else {
+    //                        self.list.items.append(contentsOf: success.items)
+    //                    }
+    //                    self.resultView.reloadData()
+    //
+    //                case .failure(let failure):
+    //                    print(failure)
+    //                }
+    //            }
+    //    }
+    
+    func fetchProductAsyncAwait(text: String, sort: String) async throws -> Products {
+        
+        let query = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let urlString = "https://openapi.naver.com/v1/search/shop?query=\(query)&display=\(display)&sort=\(sort)&start=\(start)"
+        let url = URL(string: urlString)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue(APIKey.clientID, forHTTPHeaderField: "X-Naver-Client-Id")
+        request.setValue(APIKey.clientSecret, forHTTPHeaderField: "X-Naver-Client-Secret")
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            throw APIError.invalidResponse
+        }
+        
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .useDefaultKeys // 내가 정한걸로 해! , camelcase -> 대문자를 만날때마다 앞에 언더바를 넣어줌
+        
+        let result = try decoder.decode(Products.self, from: data)
+        return result
+    }
+    
 }
 
 extension ResultViewController:  UICollectionViewDataSourcePrefetching {
@@ -168,7 +203,12 @@ extension ResultViewController:  UICollectionViewDataSourcePrefetching {
                 let searchKeywordList = UserDefaultManager.shared.keywords
                 
                 start += 30
-                callRequest(text: searchKeywordList[index], sort: "sim")
+                
+                Task {
+                    let result = try await fetchProductAsyncAwait(text: searchedKeywordList[index], sort: "sim")
+                    self.list.items.append(contentsOf: result.items)
+                    self.resultView.reloadData()
+                }
             }
         }
     }
