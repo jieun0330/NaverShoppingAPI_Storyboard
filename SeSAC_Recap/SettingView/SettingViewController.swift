@@ -60,7 +60,8 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: NicknameTableViewCell.identifier, for: indexPath) as! NicknameTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: NicknameTableViewCell.identifier,
+                                                     for: indexPath) as! NicknameTableViewCell
             
             let likeNum = UserDefaultManager.shared.likes.count
             cell.numberOfProducts.text = "\(likeNum)개의 상품"
@@ -68,7 +69,8 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
             
             return cell
         } else {
-            let cell2 = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier, for: indexPath) as! SettingTableViewCell
+            let cell2 = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.identifier,
+                                                      for: indexPath) as! SettingTableViewCell
             
             cell2.setting.text = Setting.setting.title[indexPath.row]
             cell2.selectionStyle = .none

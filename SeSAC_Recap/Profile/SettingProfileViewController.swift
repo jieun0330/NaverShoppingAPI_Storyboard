@@ -51,9 +51,11 @@ extension SettingProfileViewController: UICollectionViewDataSource, UICollection
         return 14
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileImgCollectionViewCell.identifier, for: indexPath) as! ProfileImgCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileImgCollectionViewCell.identifier,
+                                                      for: indexPath) as! ProfileImgCollectionViewCell
         
         cell.profileImg.image = UIImage(named: "profile\(indexPath.row+1)")
         

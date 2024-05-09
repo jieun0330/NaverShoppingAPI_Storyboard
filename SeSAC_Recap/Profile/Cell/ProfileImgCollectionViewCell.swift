@@ -17,5 +17,6 @@ class ProfileImgCollectionViewCell: UICollectionViewCell {
         profileImg.contentMode = .scaleAspectFill
         profileImg.layer.masksToBounds = false
         profileImg.layer.cornerRadius = profileImg.frame.height / 4.7
-        profileImg.clipsToBounds = true    }
+        profileImg.clipsToBounds = true
+    }
 }

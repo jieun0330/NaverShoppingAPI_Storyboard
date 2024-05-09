@@ -51,7 +51,8 @@ class ResultViewController: UIViewController {
         resultView.delegate = self
         resultView.dataSource = self
         resultView.prefetchDataSource = self
-        resultView.register(UINib(nibName: ResultCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: ResultCollectionViewCell.identifier)
+        resultView.register(UINib(nibName: ResultCollectionViewCell.identifier, bundle: nil),
+                            forCellWithReuseIdentifier: ResultCollectionViewCell.identifier)
         
         accuracyButton.setTitleColor(.black, for: .normal)
         
@@ -103,7 +104,8 @@ class ResultViewController: UIViewController {
         //        callRequest(text: searchedKeywordList[index], sort: sort.rawValue)
         
         Task {
-            let result = try await fetchProductAsyncAwait(text: searchedKeywordList[index], sort: sort.rawValue)
+            let result = try await fetchProductAsyncAwait(text: searchedKeywordList[index],
+                                                          sort: sort.rawValue)
             self.list = result
             
             let resultCount = NumberFormatManager.shared.numberFormat(number: self.list.total)
@@ -122,7 +124,10 @@ class ResultViewController: UIViewController {
         let cellWidth = UIScreen.main.bounds.width - (spacing * 3)
         
         layout.itemSize = CGSize(width: cellWidth / 2, height: cellWidth / 1.5)
-        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        layout.sectionInset = UIEdgeInsets(top: spacing,
+                                           left: spacing,
+                                           bottom: spacing,
+                                           right: spacing)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         resultView.collectionViewLayout = layout
@@ -195,7 +200,8 @@ class ResultViewController: UIViewController {
 }
 
 extension ResultViewController:  UICollectionViewDataSourcePrefetching {
-    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+    func collectionView(_ collectionView: UICollectionView,
+                        prefetchItemsAt indexPaths: [IndexPath]) {
         
         for item in indexPaths {
             if list.items.count - 3 == item.row {
@@ -216,7 +222,8 @@ extension ResultViewController:  UICollectionViewDataSourcePrefetching {
 
 extension ResultViewController: UICollectionViewDataSource, UICollectionViewDelegate  {
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(identifier: WebViewController.identifier) as! WebViewController
         let productTitle = list.items[indexPath.item].title.replacingOccurrences(of: "<b>", with: "").replacingOccurrences(of: "</b>", with: "")
         
@@ -226,13 +233,16 @@ extension ResultViewController: UICollectionViewDataSource, UICollectionViewDele
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         return list.items.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultCollectionViewCell.identifier, for: indexPath) as! ResultCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ResultCollectionViewCell.identifier,
+                                                      for: indexPath) as! ResultCollectionViewCell
         let product = list.items[indexPath.row]
         let productTitle = list.items[indexPath.item].title.replacingOccurrences(of: "<b>", with: "").replacingOccurrences(of: "</b>", with: "")
         

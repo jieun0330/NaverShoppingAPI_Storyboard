@@ -83,7 +83,8 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate  {
         tableView.separatorStyle = .none
         
         if UserDefaultManager.shared.keywords.count == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: NoKeywordTableViewCell.identifier, for: indexPath) as! NoKeywordTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: NoKeywordTableViewCell.identifier,
+                                                     for: indexPath) as! NoKeywordTableViewCell
             
             cell.selectionStyle = .none
             tableView.isUserInteractionEnabled = false
@@ -99,11 +100,13 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate  {
             deleteAll.titleLabel?.font = Fonts.font13
             deleteAll.setTitleColor(UIColor.pointColor, for: .normal)
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: KeywordResultsTableViewCell.identifier, for: indexPath) as! KeywordResultsTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: KeywordResultsTableViewCell.identifier,
+                                                     for: indexPath) as! KeywordResultsTableViewCell
             cell.keyword.text = UserDefaultManager.shared.keywords[indexPath.row]
             cell.selectionStyle = .none
             cell.deleteButton.tag = indexPath.row
-            cell.deleteButton.addTarget(self, action: #selector(deleteButtonClicked(_:)), for: .touchUpInside)
+            cell.deleteButton.addTarget(self, action: #selector(deleteButtonClicked(_:)),
+                                        for: .touchUpInside)
             
             return cell
         }
@@ -125,7 +128,8 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate  {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: KeywordResultsTableViewCell.identifier, for: indexPath) as! KeywordResultsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: KeywordResultsTableViewCell.identifier,
+                                                 for: indexPath) as! KeywordResultsTableViewCell
         
         keywordView.reloadData()
         
