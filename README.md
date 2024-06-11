@@ -29,8 +29,8 @@
 ## 🔧 구현 고려사항
 - asyn/await를 활용한 효율적인 네트워크 호출
 - 오프셋 기반 페이지네이션으로 추가 데이터 로드 구현
-- Reusable Protocol을 통해 스토리보드 식별자 명확화 및 인스턴스 생성 오류 감소
-- Property Wrapper를 통해 UserDefaults Service 로직 구조화
+- Reusable Protocol을 사용해 스토리보드 식별자 명확화 및 인스턴스 생성 오류 감소
+- Property Wrapper로 UserDefaults Service 로직 구조화
   
 
 <br/>
