@@ -6,7 +6,7 @@
 * `상품 검색` 네이버 쇼핑 API를 이용해 상품 검색
 * `좋아요 추가/제거` 상품마다 좋아요 설정 및 취소 기능
 
-![Group 517167397](https://github.com/jieun0330/NaverShoppingAPI_Storyboard/assets/42729069/d322b6a4-af9e-4abd-a482-101db3325774)
+<picture>![Group 517167397](https://github.com/jieun0330/NaverShoppingAPI_Storyboard/assets/42729069/d322b6a4-af9e-4abd-a482-101db3325774)</picture>
 
 <br/>
 
