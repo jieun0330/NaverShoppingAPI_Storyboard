@@ -97,7 +97,6 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate  {
             keyword.text = "최근 검색"
             keyword.font = Fonts.font13
             deleteAll.setTitle("모두 지우기", for: .normal)
-            deleteAll.titleLabel?.font = Fonts.font13
             deleteAll.setTitleColor(UIColor.pointColor, for: .normal)
             
             let cell = tableView.dequeueReusableCell(withIdentifier: KeywordResultsTableViewCell.identifier,
@@ -120,7 +119,7 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate  {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if UserDefaultManager.shared.keywords.count == 0 {
-            return 300
+            return 350
         } else {
             return 52
         }
