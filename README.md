@@ -4,18 +4,20 @@
 
 ### 네이버 쇼핑 API를 통해 상품을 검색하고, 좋아요를 관리하는 앱
 * `상품 검색` 네이버 쇼핑 API를 이용해 상품 검색
-* `좋아요 추가/제거` 상품마다 좋아요 설청 및 취소 기능
+* `좋아요 추가/제거` 상품마다 좋아요 설정 및 취소 기능
 
-
-|<picture>![스크린샷-2024-04-26-오전-11 37 53](https://github.com/jieun0330/jieun0330/assets/42729069/cc1258b5-299e-42f4-82fc-810c918416d7)</picture>|<picture>![naver_1](https://github.com/jieun0330/jieun0330/assets/42729069/1fe502b3-b498-4780-973f-5b1ed0f7e686)</picture>|<picture>![naver_2](https://github.com/jieun0330/jieun0330/assets/42729069/53ae6441-44c2-4ac6-a65e-2522fa52cfaa)</picture>|<picture>![스크린샷-2024-04-26-오전-11 33 52](https://github.com/jieun0330/jieun0330/assets/42729069/e6582c87-faa2-402c-b294-180d927c24bb)</picture>
-|---|---|---|---|
-
+<picture>![Group 517167397](https://github.com/jieun0330/NaverShoppingAPI_Storyboard/assets/42729069/d322b6a4-af9e-4abd-a482-101db3325774)</picture>
 
 <br/>
 
 ## 🔨 개발기간
 2024년 1월 18일 ~ 22일 (약 5일, 업데이트 진행중)
 
+<br/>
+
+## ⚙️ 앱 개발 환경
+- 최소 버전: iOS 17.2
+- iPhone SE ~ iPhone 15 Pro Max 기기 대응
 
 <br/>
 
@@ -25,10 +27,10 @@
 <br/>
 
 ## 🔧 구현 고려사항
-- `Reusable Protocol`을 통해 스토리보드 식별자를 명확히 지정하여 인스턴스 생성 시 오류를 줄임
-- `UserDefaults`를 사용하여 사용자 정보 관리
-- 네트워크 호출을 위해 `asyn/await` 사용
-- 오프셋 기반 페이지네이션 방식을 통해 추가 데이터 로드
+- asyn/await를 활용한 효율적인 네트워크 호출
+- 오프셋 기반 페이지네이션으로 추가 데이터 로드 구현
+- Reusable Protocol을 사용해 스토리보드 식별자 명확화 및 인스턴스 생성 오류 감소
+- Property Wrapper로 UserDefaults Service 로직 구조화
   
 
 <br/>
